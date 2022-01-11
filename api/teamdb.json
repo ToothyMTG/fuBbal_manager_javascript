@@ -1,0 +1,42 @@
+{
+"teams" : [
+		{
+		"0":{"name":"Liverpool","atk":6,"mid":5,"def":5,"home":"red","away":"white","tid":"e01"},
+		"1":{"name":"Man_City","atk":5,"mid":6,"def":5,"home":"lightblue","away":"white","tid":"e02"},
+		"2":{"name":"Tottenham","atk":6,"mid":5,"def":5,"home":"purple","away":"white","tid":"e03"},
+		"3":{"name":"Man_Utd","atk":5,"mid":5,"def":5,"home":"red","away":"black","tid":"e04"},
+		"4":{"name":"Chelsea","atk":5,"mid":5,"def":5,"home":"blue","away":"yellow","tid":"e05"},
+		"5":{"name":"Arsenal","atk":5,"mid":4,"def":4,"home":"red","away":"yellow","tid":"e06"},
+		"6":{"name":"Leicester","atk":5,"mid":5,"def":4,"home":"blue","away":"white","tid":"e07"},
+		"7":{"name":"Everton","atk":5,"mid":4,"def":5,"home":"blue","away":"white","tid":"e08"},
+		"8":{"name":"Wolverhampton","atk":4,"mid":5,"def":4,"home":"yellow","away":"black","tid":"e09"},
+		"9":{"name":"West_Ham","atk":4,"mid":4,"def":4,"home":"maroon","away":"lightblue","tid":"e10"},
+		"10":{"name":"Aston_Villa","atk":4,"mid":4,"def":4,"home":"red","away":"green","tid":"e11"},
+		"11":{"name":"Leeds","atk":4,"mid":4,"def":4,"home":"white","away":"blue","tid":"e12"},
+		"12":{"name":"Southampton","atk":4,"mid":4,"def":4,"home":"white","away":"red","tid":"e13"},
+		"13":{"name":"Crystal_Palace","atk":4,"mid":4,"def":4,"home":"blue","away":"yellow","tid":"e14"},
+		"14":{"name":"Newcastle","atk":4,"mid":4,"def":3,"home":"black","away":"lightblue","tid":"e15"},
+		"15":{"name":"Burnley","atk":4,"mid":4,"def":4,"home":"maroon","away":"black","tid":"e16"},
+		"name":"England", "lcode":"eng"		
+		},
+		{
+		"0":{"name":"Real_Madrid","atk":5,"mid":6,"def":5,"home":"white","away":"black","tid":"s01"},
+		"1":{"name":"Barcelona","atk":6,"mid":5,"def":5,"home":"blue","away":"red","tid":"s02"},
+		"2":{"name":"Atletico","atk":6,"mid":5,"def":5,"home":"red","away":"white","tid":"s03"},
+		"3":{"name":"Sevilla","atk":5,"mid":5,"def":5,"home":"white","away":"red","tid":"s04"},
+		"4":{"name":"Villareal","atk":5,"mid":4,"def":4,"home":"yellow","away":"black","tid":"s05"},
+		"5":{"name":"Real_Sociedad","atk":5,"mid":5,"def":4,"home":"white","away":"blue","tid":"s06"},
+		"6":{"name":"Bilbao","atk":5,"mid":4,"def":4,"home":"red","away":"green","tid":"s07"},
+		"7":{"name":"Real_Betis","atk":4,"mid":4,"def":4,"home":"green","away":"white","tid":"s08"},
+		"8":{"name":"Grenada","atk":4,"mid":4,"def":4,"home":"green","away":"yellow","tid":"s09"},
+		"9":{"name":"Getafe","atk":4,"mid":4,"def":4,"home":"blue","away":"red","tid":"s10"},
+		"10":{"name":"Valencia","atk":4,"mid":4,"def":4,"home":"white","away":"orange","tid":"s11"},
+		"11":{"name":"Levante","atk":4,"mid":4,"def":4,"home":"red","away":"blue","tid":"s12"},
+		"12":{"name":"Alaves","atk":4,"mid":3,"def":4,"home":"white","away":"blue","tid":"s13"},
+		"13":{"name":"Osasuna","atk":4,"mid":4,"def":4,"home":"red","away":"green","tid":"s14"},
+		"14":{"name":"Eibar","atk":4,"mid":4,"def":3,"home":"blue","away":"green","tid":"s15"},
+		"15":{"name":"Celta_Vigo","atk":5,"mid":4,"def":4,"home":"lightblue","away":"red","tid":"s16"},
+		"Name":"Spain", "lcode":"esp"
+		}
+	]
+}

@@ -1,0 +1,43 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>fuBbal manager</title>
+    <link rel="stylesheet" href='style.css'>
+    <script src="scripts.js"></script>
+    <script src="api/db.js"></script>
+</head>
+<body>
+    <div id="mainframe">
+        <div id="loginbox" style='display:none'>
+            <h1 class='gametitle'>fuBbal manager</h1>
+            <button class='loginbox' id='newgame'>New Game</button>
+            <button class='loginbox' id='loadgame'>Load Game</button>
+            <button class='loginbox' id='exitgame'>Exit Game</button>
+        </div>
+        <div id='menubox'>
+            <button class='menubutton' id='runfixture'>Run fixture</button>
+            <button class='menubutton' id='mystats'>My stats</button>
+            <button class='menubutton' id='myleague'>My league</button>
+            <button class='menubutton' id='showleague'>Show league</button>
+            <div id='infofield'>
+                <p id='teamname'>Teamname</p>
+                <div id='powerbox'>
+                    <p id="pbox1">Atk <br> 5</p>
+                    <p id="pbox2">Mid <br> 5</p>
+                    <p id="pbox3">Def <br> 5</p>
+                </div>
+                <p id='manager'>Manager</p>
+                <p id='season'>Season 1 (Year)</p>
+            </div>
+            <button class='menubutton' id='showteam'>Show team</button>
+            <button class='menubutton' id='settings'>Settings</button>
+            <button class='menubutton' id='save'>Save</button>
+            <button class='menubutton' id='save_exit'>Save and Exit</button>
+        </div>
+        <div id="databox" style='display:none'></div>
+        <div id='matchbox' style='display:none'></div>
+    </div>
+</body>
+</html>

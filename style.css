@@ -1,0 +1,157 @@
+:root {
+    --green:#3EF278 ;
+    --blue:#00B5FF;
+    --red:#FF9100 ;
+}
+
+body {
+    margin: 0;
+    border: 0;
+    padding: none;
+    background-color: black;
+    font-family:monospace;
+}
+
+.gametitle {
+    color:white;
+    position: absolute;
+    top:10%;
+    width: 50%;
+    left: 25%;
+    text-align: center;
+}
+.gametitle:hover {color: var(--red);}
+
+#mainframe {
+    background-color:var(--red);
+    width: 40vw;
+    height: 40vw;
+    left: 30vw;
+    position: relative;
+    font-size: 1vw;
+}
+
+@media (max-width: 1000px) {
+    #mainframe {
+        position:relative;
+        height:80vw;
+        width:80vw;
+        left: 10vw;
+        font-size: 2vw; 
+    }
+}
+
+button {
+    font-size: 150%;
+    font-family: monospace;
+}
+
+/* Login box */
+#loginbox {
+    background-color: black;
+    width: 100%;
+    height: 100%;
+}
+
+.loginbox {
+    width: 32%;
+    height: 32%;  
+    position:absolute;
+    border-color: white;
+}
+
+.loginbox:hover {background-color: var(--blue);}
+.loginbox:active {background-color: var(--green);}
+
+#newgame {left: 2%; top: 37%;}
+#loadgame {left: 34%; top: 37%;}
+#exitgame {left: 66%; top: 37%;}
+
+/* Menu Box */
+#menubox {
+    background-color: black;
+    width: 100%;
+    height: 100%;
+}
+
+.menubutton {
+    width: 32%;
+    height: 32%;
+    float:left;
+    top: 2%;
+    position:relative;
+    left: 2%;
+}
+
+#runfixture {background-color: var(--red);}
+#runfixture:hover {background-color: var(--blue);}
+#runfixture:active {background-color: var(--green);}
+
+.menubutton:hover {background-color: var(--blue);}
+.menubutton:active {background-color: var(--green);}
+
+#infofield {
+    width: 32%;
+    height: 32%;
+    float:left;
+    color:white;
+    position: relative;
+    top: 2%;
+    left: 2%;
+}
+
+#teamname {
+    width: 100%;
+    text-align:center;
+    height:25%;
+    float:left;
+    margin:0;
+    vertical-align: middle;
+    line-height: 300%;
+}
+
+#powerbox {
+    width: 100%;
+    background-color: var(--red);
+    height: 25%;
+    float:left;    
+}
+
+#powerbox p {
+    float:left;
+    height: 100%;
+    text-align: center;
+    line-height: 150%;
+    margin: 0;
+    color:black;
+}
+
+#pbox1 {background-color: var(--red);}
+#pbox2 {background-color: var(--green);}
+#pbox3 {background-color: var(--blue);}
+
+#infofield p:hover {
+    color:var(--red)
+}
+
+#manager {
+    width: 100%;
+    height: 25%;
+    float:left;
+    position:relative;
+    margin: 0;
+    vertical-align: middle;
+    text-align: center;
+    line-height: 300%;
+}
+
+#season {
+    width: 100%;
+    height: 25%;
+    float:left;
+    position:relative;
+    margin: 0;
+    vertical-align: middle;
+    text-align: center;
+    line-height: 300%;
+}
