@@ -23,10 +23,10 @@ body {
 .gametitle:hover {color: var(--red);}
 
 #mainframe {
-    background-color:var(--red);
-    width: 40vw;
-    height: 40vw;
-    left: 30vw;
+    background-color:black;
+    width: 50vw;
+    height: 50vw;
+    left: 25vw;
     position: relative;
     font-size: 1vw;
 }
@@ -34,15 +34,15 @@ body {
 @media (max-width: 1000px) {
     #mainframe {
         position:relative;
-        height:80vw;
-        width:80vw;
-        left: 10vw;
-        font-size: 2vw; 
+        height:100vw;
+        width:100vw;
+        left: 0;
+        font-size: 2vw;
     }
 }
 
 button {
-    font-size: 150%;
+    font-size: 100%;
     font-family: monospace;
 }
 
@@ -55,7 +55,7 @@ button {
 
 .loginbox {
     width: 32%;
-    height: 32%;  
+    height: 32%;
     position:absolute;
     border-color: white;
 }
@@ -70,17 +70,17 @@ button {
 /* Menu Box */
 #menubox {
     background-color: black;
-    width: 100%;
+    width: 15%;
     height: 100%;
+    float:left
 }
 
 .menubutton {
-    width: 32%;
-    height: 32%;
+    width: 90%;
+    height: 10%;
     float:left;
-    top: 2%;
-    position:relative;
-    left: 2%;
+    margin-left: 5%;
+    margin-top:  5%;
 }
 
 #runfixture {background-color: var(--red);}
@@ -91,67 +91,192 @@ button {
 .menubutton:active {background-color: var(--green);}
 
 #infofield {
-    width: 32%;
-    height: 32%;
+    width: 85%;
+    height: 15%;
     float:left;
     color:white;
-    position: relative;
-    top: 2%;
-    left: 2%;
+    background-color: black;
 }
 
 #teamname {
-    width: 100%;
-    text-align:center;
+    width: 25%;
     height:25%;
     float:left;
     margin:0;
-    vertical-align: middle;
-    line-height: 300%;
+    line-height: 200%;
+}
+
+#teamname:hover {
+    color: purple;
+    background-color: blue;
 }
 
 #powerbox {
-    width: 100%;
-    background-color: var(--red);
+    width: 50%;
+    background-color:var(--blue);
     height: 25%;
-    float:left;    
+    float:left;
 }
 
 #powerbox p {
     float:left;
     height: 100%;
     text-align: center;
-    line-height: 150%;
+    line-height: 100%;
     margin: 0;
     color:black;
 }
 
-#pbox1 {background-color: var(--red);}
-#pbox2 {background-color: var(--green);}
-#pbox3 {background-color: var(--blue);}
-
-#infofield p:hover {
-    color:var(--red)
-}
+#pbox1 {background-color: var(--red); width: 33%}
+#pbox2 {background-color: var(--green); width: 33%}
+#pbox3 {background-color: var(--blue); width: 33%}
 
 #manager {
     width: 100%;
     height: 25%;
     float:left;
-    position:relative;
     margin: 0;
-    vertical-align: middle;
-    text-align: center;
-    line-height: 300%;
+    line-height: 200%;
 }
 
 #season {
     width: 100%;
     height: 25%;
     float:left;
-    position:relative;
     margin: 0;
-    vertical-align: middle;
-    text-align: center;
+    line-height: 200%;
+}
+
+#databox {
+    width: 85%;
+    height: 40%;
+    float:left;
+    background-color: black;
+}
+
+#dataleft{
+    width: 50%;
+    float:left;
+    height:100%;
+    background-color:black;
+}
+
+#dataright{
+    width: 50%;
+    float:left;
+    height:100%;
+    background-color: black;
+}
+
+#matchbox {
+    width: 85%;
+    height: 45%;
+    float:left;
+    background-color: white;
+    color:white;
+}
+
+#pitchbox {
+    float:left;
+    width: 59%;
+    height: 98%;
+    margin:0.5%;
+}
+
+#matchfield {
+    float:left;
+    background-color:grey;
+    width: 100%;
+    height: 60%;
+}
+
+.fieldpart {
+    float:left;
+    height: 98%;
+    margin: 0.5%;
+    background-color: black;
+}
+
+#fieldleft {width: 32%;}
+#fieldcenter {width: 33%;}
+#fieldright {width:32%;}
+
+.teamsbox {
+    background-color: grey;
+    float:left;
+    top: 0%;
+    width: 100%;
+    height:20%;
+    font-size: 80%;
     line-height: 300%;
+}
+
+#team1box h2 {
+    width: 50%;
+    float:left;
+    text-align: center;
+}
+
+#team2box h2 {
+    width: 50%;
+    float:left;
+    text-align:center;
+}
+
+#eventbox {
+    text-align: center;
+    float:left;
+    width: 40%;
+    background-color: grey;
+    height: 100%;
+    font-size: 70%;
+    line-height: 200%;
+}
+#eventbox p {
+    text-align: center;
+    height: 5%;
+    float:left;
+    width: 100%
+}
+
+.ebgroup1 {
+    display:none;
+}
+
+#match_runner {
+    width: 100%;
+    height: 10%;
+}
+
+#tactic_selection {
+    width: 40%;
+    height: 10%;
+    margin: 0;
+    border: 0;
+    float:left;
+    text-align: center;
+}
+
+#start_match {
+    width: 60%;
+    height: 10%;
+    float:left;
+}
+#start_match:hover {
+    background-color: var(--blue);
+}
+#start_match:active {
+    background-color: var(--red);
+}
+
+.statbox {
+    background-color: var(--green);
+    width: 100%;
+    height: 5%;
+    float:left;
+}
+
+.statbar {
+    float:left;
+    height: 100%;
 }

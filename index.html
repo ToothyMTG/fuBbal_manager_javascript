@@ -17,27 +17,83 @@
             <button class='loginbox' id='exitgame'>Exit Game</button>
         </div>
         <div id='menubox'>
-            <button class='menubutton' id='runfixture'>Run fixture</button>
-            <button class='menubutton' id='mystats'>My stats</button>
-            <button class='menubutton' id='myleague'>My league</button>
-            <button class='menubutton' id='showleague'>Show league</button>
-            <div id='infofield'>
-                <p id='teamname'>Teamname</p>
-                <div id='powerbox'>
-                    <p id="pbox1">Atk <br> 5</p>
-                    <p id="pbox2">Mid <br> 5</p>
-                    <p id="pbox3">Def <br> 5</p>
-                </div>
-                <p id='manager'>Manager</p>
-                <p id='season'>Season 1 (Year)</p>
-            </div>
-            <button class='menubutton' id='showteam'>Show team</button>
-            <button class='menubutton' id='settings'>Settings</button>
-            <button class='menubutton' id='save'>Save</button>
-            <button class='menubutton' id='save_exit'>Save and Exit</button>
+            <button class='menubutton' id='runfixture'>Run fixture (R)</button>
+            <button class='menubutton' id='mystats'>My stats (1)</button>
+            <button class='menubutton' id='myleague'>My league (2)</button>
+            <button class='menubutton' id='showleague'>Show league (3)</button>
+            <button class='menubutton' id='showteam'>Show team (4)</button>
+            <button class='menubutton' id='settings'>Settings (5)</button>
+            <button class='menubutton' id='save'>Save (Q)</button>
+            <button class='menubutton' id='save_exit'>Save and Exit (X)</button>
         </div>
-        <div id="databox" style='display:none'></div>
-        <div id='matchbox' style='display:none'></div>
+        <div id='infofield'>
+            <p id='manager'>Manager</p>
+            <p id='teamname'>Teamname</p>
+            <div id='powerbox'>
+                <p id="pbox1">Atk<br>5</p>
+                <p id="pbox2">Mid<br>5</p>
+                <p id="pbox3">Def<br>5</p>
+            </div>
+            <p id='season'>Season 1 (Year) | Fixture X</p>
+        </div>
+        <div id="databox" >
+            <div id="dataleft"></div>
+            <div id="dataright"></div>
+        </div>
+        <div id='matchbox' >
+            <div id='pitchbox'>
+                <div id='team1box' class="teamsbox">
+                    <h2 id="team1name">Poland</h2>
+                    <h2 id="team1stars">A:1|M:1|D:1 </h2>
+                </div>
+                <div id="matchfield">
+                    <div id="fieldleft" class="fieldpart">
+                        <div id="fieldleft1"></div><div id="fieldleft2"></div>
+                    </div>
+                    <div id="fieldcenter" class="fieldpart">
+                        <div id="fieldcenter1"></div><div id="fieldcenter2"></div>
+                    </div>
+                    <div id="fieldright" class="fieldpart">
+                        <div id="fieldright1"></div><div id="fieldright2"></div>
+                    </div>
+                </div>
+                <div id="team2box" class="teamsbox">
+                    <h2 id="team2stars">A:3|M:4|D:6 </h2>
+                    <h2 id="team2name">Germany</h2>
+                </div>
+            </div>
+            <div id="eventbox">
+                <p id="teamnames" class="eventboxinfo">Poland 0 : 0 Germany</p>
+                <select id="tactic_selection" name="tactica"></select>
+                <button id="start_match" onclick=start_match()>Begin Match (S)</button>
+                <button id="match_runner" class="ebgroup1">Advance Game (P)</button>
+                <p id="minutebox" class="ebgroup1">26 Minute:</p>
+                <p id="who" class="ebgroup1"></p>
+                <p id="what" class="ebgroup1"></p>
+                <p id='poslabel'>Possesion</p>
+                <div id="posbox" class="statbox">
+                    <div id='posbar' class='statbar'></div>
+                </div>
+                <p id='chanlabel'>Chances</p>
+                <div id='chanbox' class='statbox'>
+                    <div id='chanbar' class='statbar'></div>
+                </div>
+            </div>
+        </div>
     </div>
+    <script>
+        //DEBUG VALUES
+        document.getElementById('matchbox').style.display = 'none'
+        assign_team("Barcelona");
+        populate_tactics ()
+        generate_season ()
+        ldb.Results = []
+        ldb.Tables = []
+        ldb.fxt = 0
+        ldb.year = 2022
+    </script>
+    <script src="match.js"></script>
+    <script src="fixture.js"></script>
+    <script src="listeners.js"></script>
 </body>
 </html>

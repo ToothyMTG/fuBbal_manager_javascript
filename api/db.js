@@ -46,7 +46,7 @@ Teams = [
 "USA 4 3 3 ame n45 white blue",
 "Paraguay 4 3 3 ame n46 white red",
 "Ecuador 3 3 4 ame n47 yellow black",
-"Venezuela 3 3 3 ame n48 marron white",
+"Venezuela 3 3 3 ame n48 maroon white",
 "Peru 3 3 3 ame n49 white red",
 "Canada 3 3 2 ame n50 red white",
 "Liverpool 6 5 5 eng e01 red white",
@@ -121,14 +121,14 @@ Teams = [
 "AC_Milan 5 4 5 ita i06 red black",
 "AS_Roma 4 4 4 ita i07 red white",
 "Florentina 4 4 4 ita i08 purple white",
-"Torino 4 3 4 ita i09 marron white",
+"Torino 4 3 4 ita i09 maroon white",
 "Sassuolo 4 4 3 ita i10 green black",
 "Sampdoria 4 4 3 ita i11 blue white",
 "Udinese 4 4 3 ita i12 white green",
 "Cagliari 4 3 3 ita i13 red blue",
 "Verona 4 4 3 ita i14 yellow blue",
 "Bologna 4 4 3 ita i15 red darkblue",
-"Parma 3 3 3 ita  i16 yellow blue",
+"Parma 3 3 3 ita i16 yellow blue",
 "PSG 6 5 5 fra f01 blue red",
 "Lyon 4 4 4 fra f02 white blue",
 "Monaco 4 4 4 fra f03 red white",
@@ -182,7 +182,7 @@ Teams = [
 Leagues = [
     "Germany ger g 16",
     "Italy ita i 16",
-    "Spain esp e 16",
+    "Spain esp s 16",
     "France fra f 16",
     "Netherlands ned h 16",
     "England eng e 16",
@@ -193,3 +193,80 @@ Leagues = [
     "Africa afr n 4",
     "Asia apj n 4",
 ]
+
+Tactics = [
+    [1,5,4], 
+    [1,4,5], 
+    [2,4,4],
+    [2,5,3],
+    [2,3,5],
+    [3,4,3],
+    [3,3,4]
+]
+
+GameTypes = [
+    'lg|ger,ita,esp,ned,fra,eng,por,pol',
+    'euroelim|ee1,ee2,ee3,ee4,ee5,ee6',
+    'wcelim|wce1,wce2,wce3,wce4,wce5,wce6,wce7,wce8,wce9,wce10',
+    'club|club'
+]
+
+Fixture_lg = [
+"0-9,2-14,6-12,8-13,1-5,3-10,4-15,7-11",
+"0-13,12-5,14-10,9-15,2-11,6-7,8-4,1-3",
+"0-14,9-12,2-13,6-5,8-10,1-15,3-11,4-7",
+"0-8,1-6,3-2,4-9,7-14,11-12,15-13,10-5",
+"0-15,10-11,5-7,13-4,12-3,14-1,9-8,2-6",
+"0-7,11-4,15-3,10-1,5-8,13-6,12-2,14-9",
+"0-10,5-15,13-11,12-7,14-4,9-3,2-1,6-8",
+"0-6,8-2,1-9,3-14,4-12,7-13,11-5,15-10",
+"0-1,3-8,4-6,7-2,11-9,15-14,10-12,5-13",
+"0-12,14-13,9-5,2-10,6-15,8-11,1-7,3-4",
+"0-4,7-3,11-1,15-8,10-6,5-2,13-9,12-14",
+"0-5,13-10,12-15,14-11,9-7,2-4,6-3,8-1",
+"5-14,13-12,0-3,4-1,7-8,11-6,15-2,10-9",
+"0-2,6-9,8-14,1-12,3-13,4-5,7-10,11-15",
+"0-11,15-7,10-4,5-3,13-1,12-8,14-6,9-2",
+"10-0,15-5,11-13,7-12,4-14,3-9,1-2,8-6",
+"13-0,5-12,10-14,15-9,11-2,7-6,4-8,3-1",
+"7-0,4-11,3-15,1-10,8-5,6-13,2-12,9-14",
+"9-0,14-2,12-6,13-8,5-1,10-3,15-4,11-7",
+"5-0,10-13,15-12,11-14,7-9,4-2,3-6,1-8",
+"8-0,6-1,2-3,9-4,14-7,12-11,13-15,5-10",
+"12-0,13-14,5-9,10-2,15-6,11-8,7-1,4-3",
+"1-0,8-3,6-4,2-7,9-11,14-15,12-10,13-5",
+"11-0,7-15,4-10,3-5,1-13,8-12,6-14,2-9",
+"6-0,2-8,9-1,14-3,12-4,13-7,5-11,10-15",
+"14-0,12-9,13-2,5-6,10-8,15-1,11-3,7-4",
+"15-0,11-10,7-5,4-13,3-12,1-14,8-9,6-2",
+"4-0,3-7,1-11,8-15,6-10,2-5,9-13,14-12",
+"2-0,9-6,14-8,12-1,13-3,5-4,10-7,15-11",
+"9-10,14-5,12-13,3-0,1-4,8-7,6-11,2-15",
+]
+
+Fixture_nel = [
+'2-0,3-4',
+'0-3,1-2',
+'3-1,4-0',
+'1-4,2-3',
+'4-2,0-1',
+'2-4,1-0',
+'4-1,3-2',
+'1-3,0-4',
+'3-0,2-1',
+'0-2,4-3',
+]
+
+Fixture_club = [
+'0-127',
+'128-191',
+'192-223',
+'224-239',
+'240-247',
+'248-251',
+'252-253'
+]
+
+let schedule = 'lg 1,lg 2,euroelim 1,lg 3,club 1,lg 4,wcelim 1,lg 5,lg 6,euroelim 2,lg 7,lg 8,wcelim 2,lg 9,club 2,lg 10,euroelim 3,lg 11,lg 12,wcelim 3,lg 13,lg 14,euroelim 4,lg 15,club 3,lg 16,wcelim 4,lg 17,euroelim 5,lg 18,wcelim 5,lg 19,euroelim 6,lg 20,club 4,wcelim 6,lg 21,euroelim 7,lg 22,wcelim 7,lg 23,club 5,euroelim 8,lg 24,wcelim 8,lg 25,euroelim 9,lg 26,club 6,wcelim 9,lg 27,euroelim 10,lg 28,wcelim 10,lg 29,club 7,lg 30'
+
+Schedule = schedule.split(',')
