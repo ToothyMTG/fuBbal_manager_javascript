@@ -18,9 +18,10 @@
         </div>
         <div id='menubox'>
             <button class='menubutton' id='runfixture'>Run fixture (R)</button>
+            <button class='menubutton' id='dummybutton'></button>
             <button class='menubutton' id='mystats'>My stats (1)</button>
             <button class='menubutton' id='myleague'>My league (2)</button>
-            <button class='menubutton' id='showleague'>Show league (3)</button>
+            <button class='menubutton' id='showleague'>Results (3)</button>
             <button class='menubutton' id='showteam'>Show team (4)</button>
             <button class='menubutton' id='settings'>Settings (5)</button>
             <button class='menubutton' id='save'>Save (Q)</button>
@@ -37,8 +38,8 @@
             <p id='season'>Season 1 (Year) | Fixture X</p>
         </div>
         <div id="databox" >
-            <div id="dataleft"></div>
-            <div id="dataright"></div>
+            <div id="dataleft" tabindex="-1"></div>
+            <div id="dataright" tabindex="-2"></div>
         </div>
         <div id='matchbox' >
             <div id='pitchbox'>
@@ -84,13 +85,14 @@
     <script>
         //DEBUG VALUES
         document.getElementById('matchbox').style.display = 'none'
-        assign_team("Barcelona");
+        assign_team("Man_Utd");
         populate_tactics ()
         generate_season ()
         ldb.Results = []
         ldb.Tables = []
         ldb.fxt = 0
         ldb.year = 2022
+        //ldb = JSON.parse(localStorage.test)
     </script>
     <script src="match.js"></script>
     <script src="fixture.js"></script>

@@ -194,6 +194,86 @@ function run_fixture () {
     ldb.fxt++
 }
 
+function make_table (t) {
+    let base = ldb.Tables.filter(x => x.includes(t))
+    var uniq = [...new Set(base)].sort()
+    let table = []
+    for (let i = 0; i < uniq.length; i++) {
+        let code = uniq[i].split('-')[0]
+        let team = Teams.filter(x => x.includes(code))[0].split(' ')[0]
+        let color1 = Teams.filter(x => x.includes(code))[0].split(' ')[6]
+        let color2 = Teams.filter(x => x.includes(code))[0].split(' ')[7]
+        let points = base.filter(x => x.includes(code)).length
+        let teaminfo = [points,team,color1,color2]
+        table.push(teaminfo)
+    }
+    //console.log(table)
+    var sortedtable = table.sort(function(a, b) {return b[0] - a[0]})
+    //console.log(sortedtable)
+    let box = document.getElementById('dataright')
+    box.innerHTML = ''
+    for (let i = 0; i < sortedtable.length; i++) {
+        let p = document.createElement('div')
+        p.style.height = "5%"
+        p.style.width = "100%"
+        p.style.float = "left"
+        let pos = document.createElement('p')
+        pos.innerHTML = (i + 1)
+        pos.style.width = "20%"
+        pos.style.textAlign = "center"
+        pos.style.marginleft = "10%"
+        pos.style.color = "white"
+        pos.style.float = "left"
+        if (sortedtable[i][1] == ldb.my_team[0]) {
+            pos.style.backgroundColor = "gold"
+            pos.style.color = "black"
+        }
+        let pts = document.createElement('p')
+        pts.innerHTML = sortedtable[i][0]
+        pts.style.width = "20%"
+        pts.style.textAlign = "center"
+        pts.style.marginRight = "10%"
+        pts.style.color = "white"
+        pts.style.float = "left"
+        let team = document.createElement(["p"])
+        team.innerHTML = sortedtable[i][1]
+        team.style.backgroundColor = sortedtable[i][2]
+        team.style.width = "40%"
+        team.style.color = sortedtable[i][3]
+        team.style.float = "left"
+        p.appendChild(pos)
+        p.appendChild(team)
+        p.appendChild(pts)
+        box.appendChild(p)
+    }
+}
+
+function make_results (r) {
+    let base = ldb.Results.filter(x => x.includes(r))
+    let div = document.getElementById('dataleft')
+    div.innerHTML = ""
+    for (let i = 0; i < base.length; i++) {
+        let data = base[i].split('-')
+        let team1 = Teams.filter(x => x.includes (data[0]))[0].split(' ')[0]
+        let goals1 = data[1]
+        let team2 = Teams.filter(x => x.includes (data[2]))[0].split(' ')[0]
+        let goals2 = data[3]
+        let league = data[4]
+        let p = document.createElement('p')
+        p.innerHTML = team1 + " : " + goals1 + " - " + goals2 + " : " + team2 + " (" + league + ")"
+        if ((team1 == ldb.my_team[0]) || (team2 == ldb.my_team[0])) {
+            p.style.color = "gold"
+        }
+        div.appendChild(p)
+    }
+    div.scrollTop = div.scrollHeight
+}
+
+function myleague (n) {
+    document.getElementById('databox').style.height = "85%"
+    make_table (n)
+    make_results (n)
+}
 
 
 

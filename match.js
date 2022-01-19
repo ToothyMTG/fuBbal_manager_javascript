@@ -46,22 +46,35 @@ function match_runner() {
         document.getElementById('match_runner').style.display = "none"
         turn_stage = -5
         document.getElementById('minutebox').style.display = "none"
+        document.getElementById('dummybutton').style.display = 'none'
+        document.getElementById('runfixture').style.display = 'block'
         t_1 = team1[5]
         g_1 = goals1
         t_2 = team2[5]
         g_2 = goals2
         result = t_1 + "-" + g_1 + '-' + t_2 + '-' + g_2 + '-' + cnt
         ldb.Results.push(result)
-        if (g_1 > g_2) {
-            for (let i = 0; i < 3; i++) {ldb.Tables.push(t_1 + "-" + cnt)}
+        let p = document.createElement('p')
+        p.innerHTML = team1[0] + " : " + g_1 + " - " + g_2 + " : " + team2[0] + " (" + cnt + ")"
+        p.style.color = "gold"
+        document.getElementById('dataleft').appendChild(p)
+        if (md == "po") {
+            if (g_1 > g_2) {ldb.teams_ordered[24][1].push(t_1)}
+            if (g_2 > g_1) {ldb.teams_ordered[24][1].push(t_2)}
+        } else {
+            if (g_1 > g_2) {
+                for (let i = 0; i < 3; i++) {ldb.Tables.push(t_1 + "-" + cnt)}
+            }
+            if (g_2 > g_1) { 
+                for (let i = 0; i < 3; i++) {ldb.Tables.push(t_2 + "-" + cnt)}
+            }
+            if (g_1 == g_2) {
+                ldb.Tables.push(t_1 + '-' + cnt)
+                ldb.Tables.push(t_2 + '-' + cnt)
+            }
         }
-        if (g_2 > g_1) { 
-            for (let i = 0; i < 3; i++) {ldb.Tables.push(t_2 + "-" + cnt)}
-        }
-        if (g_1 == g_2) {
-            ldb.Tables.push(t_1 + '-' + cnt)
-            ldb.Tables.push(t_2 + '-' + cnt)
-        }
+        make_table(cnt)
+        document.getElementById("dataleft").scrollTop = document.getElementById('dataleft').scrollHeight
     }
     if (turn_stage == 1) {
         let randminute = Math.floor((Math.random() * 9) + 1)

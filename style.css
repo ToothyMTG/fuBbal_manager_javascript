@@ -26,7 +26,7 @@ body {
     background-color:black;
     width: 50vw;
     height: 50vw;
-    left: 25vw;
+    /*left: 25vw; */
     position: relative;
     font-size: 1vw;
 }
@@ -86,10 +86,27 @@ button {
 #runfixture {background-color: var(--red);}
 #runfixture:hover {background-color: var(--blue);}
 #runfixture:active {background-color: var(--green);}
+#dummybutton {background-color: var(--red); display:none}
 
 .menubutton:hover {background-color: var(--blue);}
 .menubutton:active {background-color: var(--green);}
 
+/* Data Fields */
+#dataleft {
+    color:white;
+    font-size: 70%;
+    overflow:auto;
+    margin: 0;
+    line-height: 50%;
+}
+
+#dataright {
+    background-color: grey;
+    overflow:auto;
+}
+
+
+/* Game box */
 #infofield {
     width: 85%;
     height: 15%;

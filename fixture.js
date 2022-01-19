@@ -1,4 +1,5 @@
 function fixture(t, n) {
+    document.getElementById('dataleft').innerHTML = ''
     let lgs = GameTypes.filter(x => x.includes(t))[0].split('|')[1].split(',')
     //console.log(lgs)
     let fixt_pat
@@ -20,18 +21,24 @@ function fixture(t, n) {
             let tmm2 = Teams.filter(x => x.includes(o2))[0].split(' ')[0]
             if ((tmm1 == ldb.my_team[0]) || (tmm2 == ldb.my_team[0])) {
                 document.getElementById('matchbox').style.display = 'block'
+                document.getElementById('runfixture').style.display = 'none'
+                document.getElementById('dummybutton').style.display = "block"
                 set_matchbox(tmm1, tmm2)
                 cnt = 'club'
                 continue
             }
             //console.log(tmm1, tmm2)
             simulate_match(tmm1,tmm2)
+            let p = document.createElement('p')
+            p.innerHTML = tmm1 + " : " + g_1 + " - " + g_2 + " : " + tmm2 + " (club)"
+            document.getElementById('dataleft').appendChild(p)
             let result = t_1 + "-" + g_1 + '-' + t_2 + '-' + g_2 + '-' + 'club'
             ldb.Results.push(result)
             if (g_1 > g_2) {ldb.teams_ordered[24][1].push(t_1)}
             if (g_2 > g_1) {ldb.teams_ordered[24][1].push(t_2)}
         }
     } else {
+        cnt = 'null'
         //Working for lg and wc/euro eliminations
         for (let i = 0;i < lgs.length;i++) {
             //console.log(lgs[i])
@@ -48,12 +55,17 @@ function fixture(t, n) {
                 let tmm2 = Teams.filter(x => x.includes(container[1][o2]))[0].split(' ')[0]
                 if ((tmm1 == ldb.my_team[0]) || (tmm2 == ldb.my_team[0])) {
                     document.getElementById('matchbox').style.display = 'block'
+                    document.getElementById('runfixture').style.display = 'none'
+                    document.getElementById('dummybutton').style.display = "block"
                     set_matchbox(tmm1, tmm2)
                     cnt = container[0]
                     continue
                 }
                 //console.log(tmm1, tmm2)
                 simulate_match(tmm1,tmm2)
+                let p = document.createElement('p')
+                p.innerHTML = tmm1 + " : " + g_1 + " - " + g_2 + " : " + tmm2 + " (" + container[0] + ")"
+                document.getElementById('dataleft').appendChild(p)
                 let result = t_1 + "-" + g_1 + '-' + t_2 + '-' + g_2 + '-' + container[0]
                 if (g_1 > g_2) {
                     for (let i = 0; i < 3; i++) {ldb.Tables.push(t_1 + "-" + container[0])}
@@ -69,4 +81,6 @@ function fixture(t, n) {
             }
         }
     }
+    make_table(cnt)
+    document.getElementById("dataleft").scrollTop = document.getElementById('dataleft').scrollHeight
 }

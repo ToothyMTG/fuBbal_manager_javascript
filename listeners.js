@@ -30,3 +30,19 @@ window.addEventListener('keydown', function (e) {
         console.log('pressed')
     }
 })
+// focus on dataleft div
+let ELdataleft = document.getElementById('dataleft')
+window.addEventListener('keydown', function (e) {
+    if ((e.key === "q") && (ELrfix.style.display !== "none")) {
+        ELdataleft.focus()
+        console.log('pressed')
+    }
+})
+// focus on dataright div
+let ELdataright = document.getElementById('dataright')
+window.addEventListener('keydown', function (e) {
+    if ((e.key === "w") && (ELrfix.style.display !== "none")) {
+        ELdataright.focus()
+        console.log('pressed')
+    }
+})
