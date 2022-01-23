@@ -40,6 +40,8 @@ function set_matchbox (t1, t2) {
 
 function assign_team (a) {
 ldb.my_team = Teams.filter(x => x.includes(a))[0].split(' ')
+let league = ldb.my_team[4]
+ldb.my_league = Leagues.filter(x => x.includes(league))[0].split(' ')[4]
 let teamname = document.getElementById('teamname')
 teamname.innerHTML = ldb.my_team[0]
 teamname.style.backgroundColor = ldb.my_team[6]
@@ -138,7 +140,7 @@ function generate_season () {
     let gcode = "wce"
     let r = 0
     for (let t = 0; t < 10; t++) {
-        let ggcode = gcode + (t + 1)
+        let ggcode = gcode + t
         //console.log(ggcode)
         ldb.teams_ordered[i] = []
         ldb.teams_ordered[i][0] = ggcode
@@ -186,6 +188,8 @@ function generate_season () {
 }
 
 function run_fixture () {
+    document.getElementById('datatop').style.display = 'none'
+    document.getElementById('databox').style.height = "40%"
     document.getElementById('season').innerHTML = "Season 1 (" + ldb.year + ") | Fixture " + (ldb.fxt + 1)  
     document.getElementById('matchbox').style.display = "none"
     let fxt_var = Schedule[ldb.fxt].split(' ')
@@ -270,26 +274,178 @@ function make_results (r) {
 }
 
 function myleague (n) {
+    document.getElementById('datatop').style.display = 'none'
+    document.getElementById('matchbox').style.display = 'none'
     document.getElementById('databox').style.height = "85%"
     make_table (n)
     make_results (n)
 }
 
+function res_list () {
+    document.getElementById('matchbox').style.display = 'none'
+    let datatop = document.getElementById('datatop')
+    datatop.style.display = 'block'
+    datatop.innerHTML = ''
+    document.getElementById('databox').style.height = "65%"
+    let sel = document.createElement('select')
+    sel.style.width = "50%"
+    sel.style.height = "50%"
+    sel.style.textAlign = "center"
+    sel.style.fontSize = "150%"
+    sel.id = 'teamsel'
+    let opts = []
+    for (let i = 0; i < GameTypes.length; i++) {
+        let type = GameTypes[i].split('|')[1].split(',')
+        opts += type + ','
+    }
+    opts += "wce,"
+    opts += "ee"
+    let types = opts.split(',')
+    for (let i = 0; i < types.length; i++) {
+        let option = document.createElement('option')
+        option.innerHTML = types[i]
+        option.value = types[i]
+        sel.appendChild(option)
+    }
+    datatop.appendChild(sel)
+    let init = document.getElementById('teamsel').value
+    make_table (init)
+    make_results (init)
+    sel.onchange = function(){
+        let value = sel.value
+        make_table (value)
+        make_results (value)
+    }
+    window.addEventListener('keydown', function (e) {
+        if ((e.key === "z") && (sel.style.display !== "none")) {
+            sel.focus()
+            console.log('pressed')
+        }
+    })
+}
 
+function gather_team_info (t) {
+    let dataleft = document.getElementById('dataleft')
+    dataleft.innerHTML = ''
+    let dataright = document.getElementById('dataright')
+    dataright.innerHTML = ''
+    let datatop = document.getElementById('datatop')
+    datatop.style.display = "block"
+    document.getElementById('databox').style.height = "65%"
+    let teaminfo = Teams.filter(x => x.includes(t))[0].split(' ')
+    let teamresults = ldb.Results.filter(x => x.includes(teaminfo[5]))
+    for (let i = 0; i < teamresults.length; i++) {
+        //console.log(teamresults[i])
+        let team1 = Teams.filter(x => x.includes(teamresults[i].split('-')[0]))[0].split(' ')
+        let golas1 = Number(teamresults[i].split('-')[1])
+        let team2 = Teams.filter(x => x.includes(teamresults[i].split('-')[2]))[0].split(' ')
+        let golas2 = Number(teamresults[i].split('-')[3])
+        let gmtype = teamresults[i].split('-')[4]
+        let colorclass = ''
+        if (((golas1 > golas2) && (team1[0] == teaminfo[0])) || ((golas2 > golas1) && (team2[0] == teaminfo[0]))) {
+            colorclass = "good"   
+        } else {colorclass = "bad"}
+        if (golas1 == golas2){colorclass = "neutral"}
+        //console.log(team1[0],golas1,team2[0],golas2,gmtype,colorclass)
+        let p = document.createElement('p')
+        p.classList.add(colorclass)
+        p.innerHTML = team1[0] + " : " + golas1 + " - " + golas2 + " : " + team2[0] + " (" + gmtype + ")"
+        dataleft.appendChild(p)
+    }
+    dataleft.scrollTop = dataleft.scrollHeight
+    // Right panel info
+    dataright.style.color = "white"
+    dataright.style.textAlign = "center"
+    let r0 = document.createElement('p')
+    r0.innerHTML = "Statistics"
+    r0.style.fontSize = "150%"
+    dataright.appendChild(r0)
+    let r1 = document.createElement('p')
+    r1.innerHTML = teamresults.length + " matches"
+    dataright.appendChild(r1)
+    let thegood = dataleft.getElementsByClassName('good').length
+    let r2 = document.createElement('p')
+    r2.innerHTML = thegood + " wins (" + Math.floor(thegood / teamresults.length * 100) + "%)"
+    r2.classList.add('good')
+    dataright.appendChild(r2)
+    let thebad = dataleft.getElementsByClassName('bad').length
+    let r3 = document.createElement('p')
+    r3.innerHTML = thebad + " defeats (" + Math.floor(thebad / teamresults.length * 100) + "%)"
+    r3.classList.add('bad')
+    dataright.appendChild(r3)
+    let theugly = dataleft.getElementsByClassName('neutral').length
+    let r4 = document.createElement('p')
+    r4.innerHTML = theugly + " draws (" + Math.floor(theugly / teamresults.length * 100) + "%)"
+    r4.classList.add('neutral')
+    dataright.appendChild(r4)
+    let teampoints = ldb.Tables.filter(x => x.includes(teaminfo[5]))
+    let uniq = [...new Set(teampoints)].sort()
+    //console.log(uniq)
+    for (let i = 0; i < uniq.length; i++) {
+        let count = teampoints.filter(x => x.includes(uniq[i])).length
+        //console.log(count)
+        let p = document.createElement('p')
+        p.innerHTML = count + " points in " + uniq[i].split('-')[1]
+        dataright.appendChild(p)
+    }
+}
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+function showteam() {
+    document.getElementById('matchbox').style.display = "none"
+    document.getElementById('databox').style.height = "65%"
+    let datatop = document.getElementById('datatop')
+    datatop.innerHTML = ''
+    let dataleft = document.getElementById('dataleft')
+    dataleft.innerHTML = ''
+    let dataright = document.getElementById('dataright')
+    dataright.innerHTML = ''
+    datatop.style.display = "block"
+    let seek1 = document.createElement('select')
+    seek1.id = 'seek1'
+    seek1.classList.add("seek")
+    datatop.appendChild(seek1)   
+    let blank = document.createElement('option')
+    blank.style.display = "none"
+    seek1.appendChild(blank)
+    for (let i = 0; i < Leagues.length; i++) {
+        let inner = Leagues[i].split(' ')[0]
+        let value = Leagues[i].split(' ')[1]
+        //console.log(inner,value)
+        let option = document.createElement('option')
+        option.innerHTML = inner
+        option.value = value
+        seek1.appendChild(option)
+    }
+    seek1.default = ""
+    let seek2 = document.createElement('select')
+    seek2.id = 'seek2'
+    seek2.classList.add('seek')
+    datatop.appendChild(seek2)
+    seek1.onchange = function() {
+        seek2.innerHTML = ''
+        let source = seek1.value
+        let things = Teams.filter(x => x.includes(' ' + source))
+        seek2.appendChild(blank)
+        seek2.style.backgroundColor = "white"
+        seek2.style.color = "black"
+        for (let i = 0; i < things.length; i++) {
+            let option = document.createElement('option')
+            option.innerHTML = things[i].split(' ')[0]
+            option.value = option.innerHTML
+            seek2.appendChild(option)
+            seek2.focus()
+        }
+    }
+    seek2.onchange = function() {
+        let fancy = Teams.filter(x => x.includes(seek2.value))[0].split(' ')
+        seek2.style.backgroundColor = fancy[6]
+        seek2.style.color = fancy[7]
+        gather_team_info(seek2.value)
+    }
+    window.addEventListener('keydown', function (e) {
+        if ((e.key === "z") && (seek1.style.display !== "none")) {
+            seek1.focus()
+            console.log('pressed')
+        }
+    })
+}

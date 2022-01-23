@@ -171,6 +171,13 @@ button {
     background-color: black;
 }
 
+#datatop {
+    width: 100%;
+    float:left;
+    height: 20%;
+    background-color: black;
+    display:none;
+}
 #dataleft{
     width: 50%;
     float:left;
@@ -296,4 +303,22 @@ button {
 .statbar {
     float:left;
     height: 100%;
+}
+
+.good {
+    color: var(--green)
+}
+.neutral {
+    color: var(--blue)
+}
+.bad {
+    color:var(--red)
+}
+
+.seek {
+    width: 50%;
+    height: 30%;
+    float:left;
+    text-align: center;
+    font-size: 150%;
 }

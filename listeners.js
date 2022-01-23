@@ -30,10 +30,16 @@ window.addEventListener('keydown', function (e) {
         console.log('pressed')
     }
 })
+ELrfix.addEventListener('click', function (e) {
+    if (ELrfix.style.display !== "none") {
+        run_fixture ()
+        console.log('pressed')
+    }
+})
 // focus on dataleft div
 let ELdataleft = document.getElementById('dataleft')
 window.addEventListener('keydown', function (e) {
-    if ((e.key === "q") && (ELrfix.style.display !== "none")) {
+    if ((e.key === "q") && (ELdataleft.style.display !== "none")) {
         ELdataleft.focus()
         console.log('pressed')
     }
@@ -41,8 +47,72 @@ window.addEventListener('keydown', function (e) {
 // focus on dataright div
 let ELdataright = document.getElementById('dataright')
 window.addEventListener('keydown', function (e) {
-    if ((e.key === "w") && (ELrfix.style.display !== "none")) {
+    if ((e.key === "w") && (ELdataright.style.display !== "none")) {
         ELdataright.focus()
         console.log('pressed')
     }
 })
+//My League button
+let ELmyleague = document.getElementById('myleague')
+window.addEventListener('keydown', function (e) {
+    if ((e.key === "2") && (ELrfix.style.display !== "none")) {
+        myleague(ldb.my_league)
+        console.log('pressed')
+    }
+})
+ELmyleague.addEventListener('click', function (e) {
+    if (ELrfix.style.display !== "none") {
+        myleague(ldb.my_league)
+        console.log('pressed')
+    }
+})
+//Results button
+let ELshowleague = document.getElementById('showleague')
+window.addEventListener('keydown', function (e) {
+    if ((e.key === "3") && (ELrfix.style.display !== "none")) {
+        res_list ()
+        document.getElementById('teamsel').focus()
+        console.log('pressed')
+    }
+})
+ELshowleague.addEventListener('click', function (e) {
+    if (ELrfix.style.display !== "none") {
+        res_list ()
+        console.log('pressed')
+    }
+})
+//Show Team button
+let ELshowteam = document.getElementById('showteam')
+window.addEventListener('keydown', function (e) {
+    if ((e.key === "4") && (ELrfix.style.display !== "none")) {
+        showteam ()
+        document.getElementById('seek1').focus()
+        console.log('pressed')
+    }
+})
+ELshowteam.addEventListener('click', function (e) {
+    if (ELrfix.style.display !== "none") {
+        showteam ()
+        console.log('pressed')
+    }
+})
+//Show my stats
+let ELmystats = document.getElementById('mystats')
+window.addEventListener('keydown', function (e) {
+    if ((e.key === "1") && (ELrfix.style.display !== "none")) {
+        document.getElementById('matchbox').style.display = "none"
+        document.getElementById('datatop').innerHTML = ''
+        gather_team_info(ldb.my_team[0])
+        console.log('pressed')
+    }
+})
+ELmystats.addEventListener('click', function (e) {
+    if (ELrfix.style.display !== "none") {
+        document.getElementById('matchbox').style.display = "none"
+        document.getElementById('datatop').innerHTML = ''
+        gather_team_info(ldb.my_team[0])
+        console.log('pressed')
+    }
+})
+
+

@@ -36,7 +36,7 @@ Teams = [
 "Ivory_Coast 4 4 4 afr n35 orange green",
 "Cameroon 3 3 2 afr n36 green white",
 "Egypt 4 3 3 afr n37 red black",
-"South_Africa 3 3 3 afr n38 yello green",
+"South_Africa 3 3 3 afr n38 yellow green",
 "Argentina 6 5 5 ame n39 lightblue white",
 "Brazil 5 5 5 ame n40 yellow blue",
 "Colombia 5 4 4 ame n41 yellow darkblue",
@@ -180,18 +180,18 @@ Teams = [
 ]
 
 Leagues = [
-    "Germany ger g 16",
-    "Italy ita i 16",
-    "Spain esp s 16",
-    "France fra f 16",
-    "Netherlands ned h 16",
-    "England eng e 16",
-    "Portugal por o 16",
-    "Poland pol p 16",
-    "Europe eur n 30",
-    "America ame n 12",
-    "Africa afr n 4",
-    "Asia apj n 4",
+    "Germany ger g 16 ger",
+    "Italy ita i 16 ita",
+    "Spain esp s 16 esp",
+    "France fra f 16 fra",
+    "Netherlands ned h 16 ned",
+    "England eng e 16 eng",
+    "Portugal por o 16 por",
+    "Poland pol p 16 pol",
+    "Europe eur n 30 ee",
+    "America ame n 12 wce",
+    "Africa afr n 4 wce",
+    "Asia apj n 4 wce",
 ]
 
 Tactics = [
@@ -207,7 +207,7 @@ Tactics = [
 GameTypes = [
     'lg|ger,ita,esp,ned,fra,eng,por,pol',
     'euroelim|ee1,ee2,ee3,ee4,ee5,ee6',
-    'wcelim|wce1,wce2,wce3,wce4,wce5,wce6,wce7,wce8,wce9,wce10',
+    'wcelim|wce1,wce2,wce3,wce4,wce5,wce6,wce7,wce8,wce9,wce0',
     'club|club'
 ]
 
