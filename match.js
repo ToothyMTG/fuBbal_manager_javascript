@@ -56,7 +56,7 @@ function match_runner() {
         ldb.Results.push(result)
         let p = document.createElement('p')
         p.innerHTML = team1[0] + " : " + g_1 + " - " + g_2 + " : " + team2[0] + " (" + cnt + ")"
-        p.style.color = "gold"
+        p.classList.add('bad')
         document.getElementById('dataleft').appendChild(p)
         if (md == "po") {
             if (g_1 > g_2) {ldb.teams_ordered[24][1].push(t_1)}

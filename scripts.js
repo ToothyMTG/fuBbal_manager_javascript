@@ -229,7 +229,7 @@ function make_table (t) {
         pos.style.color = "white"
         pos.style.float = "left"
         if (sortedtable[i][1] == ldb.my_team[0]) {
-            pos.style.backgroundColor = "gold"
+            pos.classList.add('bg_bad')
             pos.style.color = "black"
         }
         let pts = document.createElement('p')
@@ -266,7 +266,7 @@ function make_results (r) {
         let p = document.createElement('p')
         p.innerHTML = team1 + " : " + goals1 + " - " + goals2 + " : " + team2 + " (" + league + ")"
         if ((team1 == ldb.my_team[0]) || (team2 == ldb.my_team[0])) {
-            p.style.color = "gold"
+            p.classList.add('bad')
         }
         div.appendChild(p)
     }
@@ -289,7 +289,7 @@ function res_list () {
     document.getElementById('databox').style.height = "65%"
     let sel = document.createElement('select')
     sel.style.width = "50%"
-    sel.style.height = "50%"
+    sel.style.height = "30%"
     sel.style.textAlign = "center"
     sel.style.fontSize = "150%"
     sel.id = 'teamsel'

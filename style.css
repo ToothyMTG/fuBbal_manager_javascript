@@ -314,6 +314,18 @@ button {
 .bad {
     color:var(--red)
 }
+.bg_good {
+    color: black;
+    background-color: var(--green)
+}
+.bg_neutral {
+    color: black;
+    background-color: var(--blue)
+}
+.bg_bad {
+    color: black;
+    background-color:var(--red)
+}
 
 .seek {
     width: 50%;

@@ -24,7 +24,7 @@
             <button class='menubutton' id='showleague'>Results (3)</button>
             <button class='menubutton' id='showteam'>Show team (4)</button>
             <button class='menubutton' id='settings'>Settings (5)</button>
-            <button class='menubutton' id='save'>Save (S)</button>
+            <button class='menubutton' id='save'>Save (C)</button>
             <button class='menubutton' id='save_exit'>Save and Exit (X)</button>
         </div>
         <div id='infofield'>
@@ -89,6 +89,7 @@
         assign_team("Barcelona");
         populate_tactics ()
         generate_season ()
+        document.getElementById('settings').style.display = "none"
         ldb.Results = []
         ldb.Tables = []
         ldb.fxt = 0
