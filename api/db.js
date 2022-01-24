@@ -208,7 +208,17 @@ GameTypes = [
     'lg|ger,ita,esp,ned,fra,eng,por,pol',
     'euroelim|ee1,ee2,ee3,ee4,ee5,ee6',
     'wcelim|wce1,wce2,wce3,wce4,wce5,wce6,wce7,wce8,wce9,wce0',
-    'club|club'
+    'club|club',
+    'EURO|EURO1,EURO2,EURO3,EURO4',
+    'EUROpo|EUROpo',
+    'COPA|COPA1,COPA2,COPA3',
+    'COPApo|COPApo',
+    'AFRICUP|AFRICUP',
+    'AFRICUPpo|AFRICUPpo',
+    'APJCUP|APJCUP',
+    'APJCUPpo|APJCUPpo',
+    'WORLD_CUP|WORLD_CUP1,WORLD_CUP2,WORLD_CUP3,WORLD_CUP4,WORLD_CUP5,WORLD_CUP6,WORLD_CUP7,WORLD_CUP8',
+    'WORLD_CUPpo|WORLD_CUPpo'
 ]
 
 Fixture_lg = [

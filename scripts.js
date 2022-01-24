@@ -190,11 +190,12 @@ function generate_season () {
 function run_fixture () {
     document.getElementById('datatop').style.display = 'none'
     document.getElementById('databox').style.height = "40%"
-    document.getElementById('season').innerHTML = "Season 1 (" + ldb.year + ") | Fixture " + (ldb.fxt + 1)  
+    //document.getElementById('season').innerHTML = "Season 1 (" + ldb.year + ") | Fixture " + (ldb.fxt + 1)  
     document.getElementById('matchbox').style.display = "none"
     let fxt_var = Schedule[ldb.fxt].split(' ')
     fixture(fxt_var[0],fxt_var[1])
-    console.log(fxt_var)
+    document.getElementById('season').innerHTML = "Season 1 (" + ldb.year + ") | Fixture " + (ldb.fxt + 1) + " | " + fxt_var[0] + ' - ' + fxt_var[1] 
+    //console.log(fxt_var)
     ldb.fxt++
 }
 
@@ -229,7 +230,7 @@ function make_table (t) {
         pos.style.color = "white"
         pos.style.float = "left"
         if (sortedtable[i][1] == ldb.my_team[0]) {
-            pos.classList.add('bg_bad')
+            pos.classList.add('bg_good')
             pos.style.color = "black"
         }
         let pts = document.createElement('p')
@@ -266,7 +267,7 @@ function make_results (r) {
         let p = document.createElement('p')
         p.innerHTML = team1 + " : " + goals1 + " - " + goals2 + " : " + team2 + " (" + league + ")"
         if ((team1 == ldb.my_team[0]) || (team2 == ldb.my_team[0])) {
-            p.classList.add('bad')
+            p.classList.add('good')
         }
         div.appendChild(p)
     }
@@ -286,20 +287,20 @@ function res_list () {
     let datatop = document.getElementById('datatop')
     datatop.style.display = 'block'
     datatop.innerHTML = ''
-    document.getElementById('databox').style.height = "65%"
+    document.getElementById('databox').style.height = "75%"
     let sel = document.createElement('select')
     sel.style.width = "50%"
-    sel.style.height = "30%"
+    sel.style.height = "60%"
     sel.style.textAlign = "center"
     sel.style.fontSize = "150%"
     sel.id = 'teamsel'
     let opts = []
+    opts += "wce,"
+    opts += "ee,"
     for (let i = 0; i < GameTypes.length; i++) {
         let type = GameTypes[i].split('|')[1].split(',')
         opts += type + ','
     }
-    opts += "wce,"
-    opts += "ee"
     let types = opts.split(',')
     for (let i = 0; i < types.length; i++) {
         let option = document.createElement('option')
@@ -319,7 +320,7 @@ function res_list () {
     window.addEventListener('keydown', function (e) {
         if ((e.key === "z") && (sel.style.display !== "none")) {
             sel.focus()
-            console.log('pressed')
+            //console.log('pressed')
         }
     })
 }
@@ -330,8 +331,9 @@ function gather_team_info (t) {
     let dataright = document.getElementById('dataright')
     dataright.innerHTML = ''
     let datatop = document.getElementById('datatop')
-    datatop.style.display = "block"
-    document.getElementById('databox').style.height = "65%"
+    //datatop.style.display = "block"
+    document.getElementById('databox').style.height = "75%"
+    team_info (t)
     let teaminfo = Teams.filter(x => x.includes(t))[0].split(' ')
     let teamresults = ldb.Results.filter(x => x.includes(teaminfo[5]))
     for (let i = 0; i < teamresults.length; i++) {
@@ -392,7 +394,7 @@ function gather_team_info (t) {
 
 function showteam() {
     document.getElementById('matchbox').style.display = "none"
-    document.getElementById('databox').style.height = "65%"
+    document.getElementById('databox').style.height = "75%"
     let datatop = document.getElementById('datatop')
     datatop.innerHTML = ''
     let dataleft = document.getElementById('dataleft')
@@ -445,7 +447,41 @@ function showteam() {
     window.addEventListener('keydown', function (e) {
         if ((e.key === "z") && (seek1.style.display !== "none")) {
             seek1.focus()
-            console.log('pressed')
+            //console.log('pressed')
         }
     })
+}
+
+function team_info (t) {
+    let the_team = Teams.filter(x => x.includes(t))[0].split(' ')
+    let the_atk = Number(the_team[1])
+    let the_mid = Number(the_team[2])
+    let the_def = Number(the_team[3])
+    let the_powtot = the_atk + the_def + the_mid
+    let div = document.getElementById('dataright')
+    console.log(the_team + "★")
+    let p_atk = document.createElement('p')
+    p_atk.innerHTML = "Atk: " + the_atk
+    p_atk.classList.add('bg_bad')
+    p_atk.style.float = 'left'
+    p_atk.id = 'patk'
+    p_atk.style.width = (the_atk / the_powtot * 100) + '%'
+    p_atk.style.textAlign = 'center'
+    div.appendChild(p_atk) 
+    let p_mid = document.createElement('p')
+    p_mid.innerHTML = "Mid: " + the_mid
+    p_mid.classList.add('bg_good')
+    p_mid.style.float = 'left'
+    p_mid.id = 'pmid'
+    p_mid.style.width = (the_mid / the_powtot * 100) + '%'
+    p_mid.style.textAlign = 'center'
+    div.appendChild(p_mid) 
+    let p_def = document.createElement('p')
+    p_def.innerHTML = "Def: " + the_def
+    p_def.classList.add('bg_neutral')
+    p_def.style.float = 'left'
+    p_def.id = 'pdef'
+    p_def.style.width = (the_def / the_powtot * 100) + '%'
+    p_def.style.textAlign = 'center'
+    div.appendChild(p_def) 
 }

@@ -174,7 +174,7 @@ button {
 #datatop {
     width: 100%;
     float:left;
-    height: 20%;
+    height: 10%;
     background-color: black;
     display:none;
 }
@@ -329,7 +329,7 @@ button {
 
 .seek {
     width: 50%;
-    height: 30%;
+    height: 60%;
     float:left;
     text-align: center;
     font-size: 150%;

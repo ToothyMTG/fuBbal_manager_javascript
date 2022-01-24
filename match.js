@@ -56,7 +56,7 @@ function match_runner() {
         ldb.Results.push(result)
         let p = document.createElement('p')
         p.innerHTML = team1[0] + " : " + g_1 + " - " + g_2 + " : " + team2[0] + " (" + cnt + ")"
-        p.classList.add('bad')
+        p.classList.add('good')
         document.getElementById('dataleft').appendChild(p)
         if (md == "po") {
             if (g_1 > g_2) {ldb.teams_ordered[24][1].push(t_1)}
@@ -85,7 +85,7 @@ function match_runner() {
     }
     if (turn_stage == 2) {
         let randwho = Math.floor((Math.random() * centerpow) + 1)
-        console.log(randwho)
+        //console.log(randwho)
         if (randwho <= team1pow[1]) {
             teamsel = team1
             atkval = team1pow[0]
@@ -99,7 +99,7 @@ function match_runner() {
         }
         document.getElementById('who').innerHTML = teamsel[0] + " takes the ball." 
         totalval = atkval + defval
-        console.log(teamsel)
+        //console.log(teamsel)
         matchfacts.push(teamsel[0] + "-a")
         let posesionvar = matchfacts.filter(x => x.includes(team1[0] + '-a')).length
         let posesiontotal = matchfacts.filter(x => x.includes('-a')).length
@@ -108,7 +108,7 @@ function match_runner() {
     }
     if (turn_stage == 3) {
         let randwhat = Math.floor((Math.random() * totalval) + 1)
-        console.log(randwhat)
+        //console.log(randwhat)
         if (randwhat <= atkval) {
             document.getElementById('what').innerHTML = "There's a chance..."
             matchfacts.push(teamsel[0] + "-c")
@@ -124,7 +124,7 @@ function match_runner() {
     }
     if (turn_stage == 4) {
         let randgoal = Math.floor((Math.random() * goalval) + 1)
-        console.log(randgoal)
+        //console.log(randgoal)
         if ( randgoal <= Number(teamsel[1]) ) {
             document.getElementById('what').innerHTML += " GOAL!"
             document.getElementById('matchbox').style.backgroundColor = 'gold'
@@ -227,7 +227,7 @@ function simulate_match(t1, t2) {
             if ((gls1 == gls2) && (i >= 4)) {pens++}
         }
     }
-    console.log(tm1[0] + ' ' + gls1 + " : " + gls2 + ' ' + tm2[0] )
+    //console.log(tm1[0] + ' ' + gls1 + " : " + gls2 + ' ' + tm2[0] )
     //console.log(tm1[5]+'-'+gls1+'-'+tm2[5]+'-'+gls2)
     t_1 = tm1[5]
     g_1 = gls1

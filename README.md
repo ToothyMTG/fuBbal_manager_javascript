@@ -4,10 +4,10 @@
 
 - [ ] Tournament mode
 - [ ] Settings
-- [ ] Team info
+- [x] Team info
 - [ ] Achievements
 - [ ] Save/load module
-- [ ] add CSS for default colors bg
+- [x] add CSS for default colors bg
 
 ## Hotkeys
 
