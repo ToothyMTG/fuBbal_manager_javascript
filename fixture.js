@@ -6,38 +6,129 @@ function fixture(t, n) {
     if (t == "lg") {fixt_pat = Fixture_lg[n - 1]; md = "lg"}
     if (t == "wcelim") {fixt_pat = Fixture_nel[n - 1]; md = "lg"}
     if (t == "euroelim") {fixt_pat = Fixture_nel[n - 1]; md = "lg"}
-    if (t == "club") {fixt_pat = Fixture_club[n - 1]; md = "po"}
+    if (t == "club") {fixt_pat = Fixture_club[n - 1]; md = "po"; ponum = 24}
+    if (t == 'draw1') {fixt_pat = '0,0'}
+    if (t == 'TOUR') {fixt_pat = Fixture_tour[n - 1]; md = 'lg'}
+    if (t == 'draw2') {fixt_pat = '0,0'}
+    if (t == "TOURpo") {fixt_pat = Fixture_8[n - 1]; md = "po"}
+    if (t == "FINALpo") {fixt_pat = Fixture_8[n]; md = "po"}
+    if (t == 'WC') {fixt_pat = Fixture_tour[n - 1]; md = 'lg'}
+    if (t == 'draw3') {fixt_pat = '0,0'}
+    if (t == "WCpo") {fixt_pat = Fixture_16[n - 1]; md = "po"}
+    if (t == "WCFINAL") {fixt_pat = Fixture_8[n]; md = "po"}
+
     fixt_pat = fixt_pat.split(',')
     //console.log(fixt_pat)
-    if (t == "club") {
-        let valope = fixt_pat[0].split('-')[0]
-        let valmax = fixt_pat[0].split('-')[1]
-        //console.log(valope,valmax)
-        for (let i = valope; i <= valmax; i++) {
-            let o1 = ldb.teams_ordered[24][1][i]
-            i++
-            let o2 = ldb.teams_ordered[24][1][i]
-            let tmm1 = Teams.filter(x => x.includes(o1))[0].split(' ')[0]
-            let tmm2 = Teams.filter(x => x.includes(o2))[0].split(' ')[0]
-            if ((tmm1 == ldb.my_team[0]) || (tmm2 == ldb.my_team[0])) {
-                document.getElementById('matchbox').style.display = 'block'
-                document.getElementById('runfixture').style.display = 'none'
-                document.getElementById('dummybutton').style.display = "block"
-                set_matchbox(tmm1, tmm2)
-                cnt = 'club'
-                continue
+    if (t == 'draw3') {
+        draw_playoffs(lgs[0])
+        let lg = ldb.teams_ordered[46][0]
+        let tms = ldb.teams_ordered[46][1]
+        let tmsn = []
+        let p = document.createElement('p')
+        for (let x = 0; x < tms.length; x++) {
+            let tmsf1 = Teams.filter(b => b.includes(tms[x]))[0].split(' ')[0]
+            x++
+            let tmsf2 = Teams.filter(b => b.includes(tms[x]))[0].split(' ')[0]
+            if ((tmsf1 == ldb.my_team[0]) || (tmsf2 == ldb.my_team[0])) {
+                p.classList.add('good')
             }
-            //console.log(tmm1, tmm2)
-            simulate_match(tmm1,tmm2)
-            let p = document.createElement('p')
-            p.innerHTML = tmm1 + " : " + g_1 + " - " + g_2 + " : " + tmm2 + " (club)"
-            document.getElementById('dataleft').appendChild(p)
-            let result = t_1 + "-" + g_1 + '-' + t_2 + '-' + g_2 + '-' + 'club'
-            ldb.Results.push(result)
-            if (g_1 > g_2) {ldb.teams_ordered[24][1].push(t_1)}
-            if (g_2 > g_1) {ldb.teams_ordered[24][1].push(t_2)}
+            tmsn += tmsf1 + ' vs ' + tmsf2 + "<br>"
         }
-    } else {
+        p.style.lineHeight = "100%"
+        p.style.textAlign = "center"
+        p.innerHTML = lg + "<br>" + tmsn
+        document.getElementById('databox').style.height = '85%'
+        dataleft.appendChild(p)
+        
+    }
+    if (t == 'draw2') {
+        for (let i = 0; i < lgs.length; i++) {
+            draw_playoffs(lgs[i])
+        }
+        for (let i = 42; i < 46; i++) {
+            let lg = ldb.teams_ordered[i][0]
+            let tms = ldb.teams_ordered[i][1]
+            let tmsn = []
+            let p = document.createElement('p')
+            for (let x = 0; x < tms.length; x++) {
+                let tmsf1 = Teams.filter(b => b.includes(tms[x]))[0].split(' ')[0]
+                x++
+                let tmsf2 = Teams.filter(b => b.includes(tms[x]))[0].split(' ')[0]
+                if ((tmsf1 == ldb.my_team[0]) || (tmsf2 == ldb.my_team[0])) {
+                    p.classList.add('good')
+                }
+                tmsn += tmsf1 + ' vs ' + tmsf2 + "<br>"
+            }
+            p.style.lineHeight = "100%"
+            p.style.textAlign = "center"
+            p.innerHTML = lg + "<br>" + tmsn
+            document.getElementById('databox').style.height = '85%'
+            dataleft.appendChild(p)
+        }
+    }
+    if (t == "draw1") {
+        for (let i = 0; i < lgs.length; i++) {
+            draw_tournament(lgs[i])
+            }
+        let dataleft = document.getElementById('dataleft')
+        for (let i = 25; i < 42; i++) {
+            let lg = ldb.teams_ordered[i][0]
+            let tms = ldb.teams_ordered[i][1]
+            let tmsn = []
+            let p = document.createElement('p')
+            for (let x = 0; x < tms.length; x++) {
+                let tmsf = Teams.filter(b => b.includes(tms[x]))[0].split(' ')[0]
+                if (tmsf == ldb.my_team[0]) {
+                    p.classList.add('good')
+                }
+                tmsn.push(tmsf)
+            }
+            p.style.lineHeight = "100%"
+            p.style.textAlign = "center"
+            p.innerHTML = lg + "<br>" + tmsn
+            document.getElementById('databox').style.height = '85%'
+            dataleft.appendChild(p)
+        }
+    }
+    if ((t == "club") || (t == 'TOURpo') || (t == 'FINALpo') || (t == 'WCpo') || (t =='WCFINAL')) {
+        for (let dd = 0; dd < lgs.length; dd++) {
+            let tt = lgs[dd]
+            ponum = POLOC[tt]
+            let valope = Number(fixt_pat[0].split('-')[0])
+            let valmax = Number(fixt_pat[0].split('-')[1])
+            if ((t == 'FINALpo') || (t == 'WCFINAL')) {
+                valope = ldb.teams_ordered[ponum][1].length - 2
+                valmax = valope + 1
+            }
+            console.log(valope,valmax, ponum, tt)
+            for (let i = valope; i <= valmax; i++) {
+                let o1 = ldb.teams_ordered[ponum][1][i]
+                i++
+                let o2 = ldb.teams_ordered[ponum][1][i]
+                let tmm1 = Teams.filter(x => x.includes(o1))[0].split(' ')[0]
+                let tmm2 = Teams.filter(x => x.includes(o2))[0].split(' ')[0]
+                //console.log(tmm1,tmm2,ponum)
+                if ((tmm1 == ldb.my_team[0]) || (tmm2 == ldb.my_team[0])) {
+                    document.getElementById('matchbox').style.display = 'block'
+                    document.getElementById('runfixture').style.display = 'none'
+                    document.getElementById('dummybutton').style.display = "block"
+                    set_matchbox(tmm1, tmm2)
+                    cnt = tt
+                    continue
+                }
+                //console.log(tmm1, tmm2)
+                simulate_match(tmm1,tmm2)
+                let p = document.createElement('p')
+                p.innerHTML = tmm1 + " : " + g_1 + " - " + g_2 + " : " + tmm2 + " (" + tt + ")"
+                document.getElementById('dataleft').appendChild(p)
+                let result = t_1 + "-" + g_1 + '-' + t_2 + '-' + g_2 + '-' + tt
+                ldb.Results.push(result)
+                if (g_1 > g_2) {ldb.teams_ordered[ponum][1].push(t_1)}
+                if (g_2 > g_1) {ldb.teams_ordered[ponum][1].push(t_2)}
+            }
+        }
+    } 
+    if ((t == 'lg') || (t == 'euroelim') || (t == 'wcelim') || (t == 'TOUR') || (t =='WC')) {
         cnt = 'null'
         //Working for lg and wc/euro eliminations
         for (let i = 0;i < lgs.length;i++) {

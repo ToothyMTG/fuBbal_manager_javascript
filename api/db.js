@@ -209,16 +209,15 @@ GameTypes = [
     'euroelim|ee1,ee2,ee3,ee4,ee5,ee6',
     'wcelim|wce1,wce2,wce3,wce4,wce5,wce6,wce7,wce8,wce9,wce0',
     'club|club',
-    'EURO|EURO1,EURO2,EURO3,EURO4',
-    'EUROpo|EUROpo',
-    'COPA|COPA1,COPA2,COPA3',
-    'COPApo|COPApo',
-    'AFRICUP|AFRICUP',
-    'AFRICUPpo|AFRICUPpo',
-    'APJCUP|APJCUP',
-    'APJCUPpo|APJCUPpo',
-    'WORLD_CUP|WORLD_CUP1,WORLD_CUP2,WORLD_CUP3,WORLD_CUP4,WORLD_CUP5,WORLD_CUP6,WORLD_CUP7,WORLD_CUP8',
-    'WORLD_CUPpo|WORLD_CUPpo'
+    'TOUR|EURO1,EURO2,EURO3,EURO4,COPA1,COPA2,COPA3,AFRICUP,APJCUP',
+    'TOURpo|EUROpo,COPApo',
+    'FINALpo|EUROpo,COPApo,APJCUPpo,AFRICUPpo',
+    'WC|WORLD_CUP1,WORLD_CUP2,WORLD_CUP3,WORLD_CUP4,WORLD_CUP5,WORLD_CUP6,WORLD_CUP7,WORLD_CUP8',
+    'WCpo|WORLD_CUPpo',
+    'WCFINAL|WORLD_CUPpo',
+    'draw1|EURO,COPA,AFRICUP,APJCUP,WORLD_CUP',
+    'draw2|EUROpo,COPApo,AFRICUPpo,APJCUPpo',
+    'draw3|WORLD_CUPpo'
 ]
 
 Fixture_lg = [
@@ -277,6 +276,58 @@ Fixture_club = [
 '252-253'
 ]
 
-let schedule = 'lg 1,lg 2,euroelim 1,lg 3,club 1,lg 4,wcelim 1,lg 5,lg 6,euroelim 2,lg 7,lg 8,wcelim 2,lg 9,club 2,lg 10,euroelim 3,lg 11,lg 12,wcelim 3,lg 13,lg 14,euroelim 4,lg 15,club 3,lg 16,wcelim 4,lg 17,euroelim 5,lg 18,wcelim 5,lg 19,euroelim 6,lg 20,club 4,wcelim 6,lg 21,euroelim 7,lg 22,wcelim 7,lg 23,club 5,euroelim 8,lg 24,wcelim 8,lg 25,euroelim 9,lg 26,club 6,wcelim 9,lg 27,euroelim 10,lg 28,wcelim 10,lg 29,club 7,lg 30'
+Fixture_tour = [
+    '1-2,3-0',
+    '1-3,2-0',
+    '1-0,2-3'
+]
+
+Fixture_16 = [
+    '0-15', 
+    '16-23', 
+    '24-27', 
+//    '28-29', //final
+]
+Fixture_8 = [
+    '0-7', 
+    '8-11',
+//    '12-13', //final
+]
+Fixture_4 = [
+    '0-3', //1/2 final
+//    '4-5', //final
+]
+
+let schedule = 'lg 1,lg 2,euroelim 1,lg 3,club 1,lg 4,wcelim 1,lg 5,lg 6,euroelim 2,lg 7,lg 8,wcelim 2,lg 9,club 2,lg 10,euroelim 3,lg 11,lg 12,wcelim 3,lg 13,lg 14,euroelim 4,lg 15,club 3,lg 16,wcelim 4,lg 17,euroelim 5,lg 18,wcelim 5,lg 19,euroelim 6,lg 20,club 4,wcelim 6,lg 21,euroelim 7,lg 22,wcelim 7,lg 23,club 5,euroelim 8,lg 24,wcelim 8,lg 25,euroelim 9,lg 26,club 6,wcelim 9,lg 27,euroelim 10,lg 28,wcelim 10,lg 29,club 7,lg 30,'
+
+let tournams = [
+    'draw1 0',
+    'TOUR 1',
+    'TOUR 2',
+    'TOUR 3',
+    'draw2 0',
+    'TOURpo 1',
+    'TOURpo 2',
+    'FINALpo 0',
+    'WC 1',
+    'WC 2',
+    'WC 3',
+    'draw3 0',
+    'WCpo 1',
+    'WCpo 2',
+    'WCpo 3',
+    'WCFINAL 0',
+]
+
+schedule += tournams
 
 Schedule = schedule.split(',')
+
+POLOC = {
+    'club' : 24,
+    'EUROpo' : 42,
+    'COPApo' : 43,
+    'AFRICUPpo' : 44,
+    'APJCUPpo' : 45,
+    'WORLD_CUPpo' : 46,
+}

@@ -2,12 +2,31 @@
 
 ## To do
 
-- [ ] Tournament mode
-- [ ] Settings
-- [x] Team info
-- [ ] Achievements
-- [ ] Save/load module
 - [x] add CSS for default colors bg
+- [x] Team info
+- [x] Tournament mode
+- [ ] Display upcoming matches for Playoff mode
+- [ ] Final Fixture - winners and other statistics
+- [ ] Save/load module
+- [ ] New Season
+- [ ] Achievements
+- [ ] Settings
+
+### Known bugs
+- [ ] Frame doesn't show properly when in wide screen mode
+- [ ] Doubled entries in Results
+
+## Milestones
+- [x] 0.1 Fixtures window is designed
+- [x] 0.2 Menu and functionalities are designed and implemented
+- [x] 0.3 Whole season can be played
+- [ ] 0.4 Season can be finished
+- [ ] 0.5 Game state can be saved and loaded
+- [ ] 0.6 New Season can be started
+- [ ] 0.7 Game is playable in loop
+- [ ] 0.8 Game is optimised for keyboard/mouse
+- [ ] 0.9 Game look is in final shape
+- [ ] 1.0 Leftovers are removed and game can be published.
 
 ## Hotkeys
 

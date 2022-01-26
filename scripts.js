@@ -459,7 +459,6 @@ function team_info (t) {
     let the_def = Number(the_team[3])
     let the_powtot = the_atk + the_def + the_mid
     let div = document.getElementById('dataright')
-    console.log(the_team + "★")
     let p_atk = document.createElement('p')
     p_atk.innerHTML = "Atk: " + the_atk
     p_atk.classList.add('bg_bad')
@@ -484,4 +483,138 @@ function team_info (t) {
     p_def.style.width = (the_def / the_powtot * 100) + '%'
     p_def.style.textAlign = 'center'
     div.appendChild(p_def) 
+}
+
+function source_table (t, n) {
+    let base = ldb.Tables.filter(x => x.includes(t))
+    var uniq = [...new Set(base)].sort()
+    let table = []
+    for (let i = 0; i < uniq.length; i++) {
+        let code = uniq[i].split('-')[0]
+        let team = Teams.filter(x => x.includes(code))[0].split(' ')[0]
+        let points = base.filter(x => x.includes(code)).length
+        let teaminfo = [points,code]
+        table.push(teaminfo)
+    }
+    let sortedtable = table.sort(function(a, b) {return b[0] - a[0]})
+    //console.log(sortedtable)
+    for (let i = 0; i < n; i++) {
+        drawteams.push(sortedtable[i][1])
+    }
+}
+
+function draw_tournament(b) {
+    drawteams = [] 
+    let t = ''
+    let n = ''
+    let drawsource = []
+    if (b == "EURO") {
+        t = "-ee";n = 16
+        source_table(t, n)
+    }
+    if (b == "WORLD_CUP") {
+        t = "-wce";n = 32
+        source_table(t, n)
+    }
+    if (b == "COPA") {
+        t = " ame"; n = 12
+        for (let i = 0; i < n; i++) {
+            drawsource.push(Teams.filter(x => x.includes(t))[i].split(' ')[5])
+        }
+        drawteams = drawsource
+    }
+    if (b == "APJCUP") {
+        t = " apj"; n = 4
+        for (let i = 0; i < n; i++) {
+            drawsource.push(Teams.filter(x => x.includes(t))[i].split(' ')[5])
+        }
+        drawteams = drawsource
+    }
+    if (b == "AFRICUP") {
+        t = " afr"; n = 4
+        for (let i = 0; i < n; i++) {
+            drawsource.push(Teams.filter(x => x.includes(t))[i].split(' ')[5])
+        }
+        drawteams = drawsource
+    }
+    drawteams = drawteams.sort(() => Math.random() - 0.5)
+    //console.log(drawteams)
+    let g = n / 4
+    let nn = 0
+    //console.log(g)
+    for (let i = 0; i < g; i++) {
+        let to = []
+        if (g == 1) {to[0] = b}
+        if (g !== 1) {to[0] = b + (i+1)}
+        to[1] = []
+        for (let x = 0; x < 4; x++) {
+            to[1][x] = drawteams[nn]
+            nn++
+        }
+        //console.log(to) 
+        ldb.teams_ordered.push(to)
+    }
+}
+
+function draw_playoffs(b) {
+    drawteams = []
+    let t
+    if (b == 'EUROpo') {
+        let to = []
+        to[0] = b
+        to[1] = []
+        for (let i = 0; i < 4; i++) {
+            drawteams = []
+            t = "EURO" + (i + 1)
+            source_table(t, 2)
+            to[1].push(drawteams[0])
+            to[1].push(drawteams[1])
+        }
+        to[1] = to[1].sort(() => Math.random() - 0.5)
+        ldb.teams_ordered.push(to)
+    }
+    if (b == 'WORLD_CUPpo') {
+        let to = []
+        to[0] = b
+        to[1] = []
+        for (let i = 0; i < 8; i++) {
+            drawteams = []
+            t = "WORLD_CUP" + (i + 1)
+            source_table(t, 2)
+            to[1].push(drawteams[0])
+            to[1].push(drawteams[1])
+        }
+        to[1] = to[1].sort(() => Math.random() - 0.5)
+        ldb.teams_ordered.push(to)
+    }
+    if (b == 'COPApo') {
+        let to = []
+        to[0] = b
+        to[1] = []
+        t = "COPA"
+        source_table(t, 8)
+        to[1] = drawteams
+        to[1] = to[1].sort(() => Math.random() - 0.5)
+        ldb.teams_ordered.push(to)
+    }
+    if (b == 'AFRICUPpo') {
+        let to = []
+        to[0] = b
+        to[1] = []
+        t = 'AFRICUP'
+        source_table(t, 2)
+        to[1] = drawteams
+        to[1] = to[1].sort(() => Math.random() - 0.5)
+        ldb.teams_ordered.push(to)
+    }
+    if (b == 'APJCUPpo') {
+        let to = []
+        to[0] = b
+        to[1] = []
+        t = 'APJCUP'
+        source_table(t, 2)
+        to[1] = drawteams
+        to[1] = to[1].sort(() => Math.random() - 0.5)
+        ldb.teams_ordered.push(to)
+    }
 }

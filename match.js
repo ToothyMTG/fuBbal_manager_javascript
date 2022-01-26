@@ -59,8 +59,8 @@ function match_runner() {
         p.classList.add('good')
         document.getElementById('dataleft').appendChild(p)
         if (md == "po") {
-            if (g_1 > g_2) {ldb.teams_ordered[24][1].push(t_1)}
-            if (g_2 > g_1) {ldb.teams_ordered[24][1].push(t_2)}
+            if (g_1 > g_2) {ldb.teams_ordered[ponum][1].push(t_1)}
+            if (g_2 > g_1) {ldb.teams_ordered[ponum][1].push(t_2)}
         } else {
             if (g_1 > g_2) {
                 for (let i = 0; i < 3; i++) {ldb.Tables.push(t_1 + "-" + cnt)}
