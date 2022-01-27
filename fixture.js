@@ -1,5 +1,6 @@
 function fixture(t, n) {
     document.getElementById('dataleft').innerHTML = ''
+    document.getElementById('dataright').innerHTML = ''
     let lgs = GameTypes.filter(x => x.includes(t))[0].split('|')[1].split(',')
     //console.log(lgs)
     let fixt_pat
@@ -114,6 +115,7 @@ function fixture(t, n) {
                     document.getElementById('dummybutton').style.display = "block"
                     set_matchbox(tmm1, tmm2)
                     cnt = tt
+                    pondum = ponum
                     continue
                 }
                 //console.log(tmm1, tmm2)
