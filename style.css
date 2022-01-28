@@ -26,7 +26,7 @@ body {
     background-color:black;
     width: 50vw;
     height: 50vw;
-    /*left: 25vw; */
+    left: 25vw; 
     position: relative;
     font-size: 1vw;
 }

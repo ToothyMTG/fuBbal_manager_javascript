@@ -13,7 +13,7 @@
 - [ ] Settings
 
 ### Known bugs
-- [ ] Frame doesn't show properly when in wide screen mode
+- [x] Frame doesn't show properly when in wide screen mode
 - [ ] Doubled entries in Results
 
 ## Milestones
