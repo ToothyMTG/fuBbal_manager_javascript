@@ -217,6 +217,42 @@ function make_table (t) {
     //console.log(sortedtable)
     let box = document.getElementById('dataright')
     box.innerHTML = ''
+    if ((t == 'club') || (t == 'EUROpo') || (t == 'COPApo') || (t == 'APJCUPpo') || (t == 'AFRICUPpo') || (t == 'WORLD_CUPpo')) {
+        let num = POLOC[t]
+        let min = (ldb.Results.filter(x => x.includes(t)).length) * 2
+        let max = ldb.teams_ordered[num][1].length
+        let tm1o
+        let tm2o
+        for (i = min; i < max;i++) {
+            let tm1 = ldb.teams_ordered[num][1][i]
+            if (tm1 === undefined) {
+                tm1o = ''
+            } else {
+                tm1o = Teams.filter(x => x.includes(tm1))[0].split(' ')[0]
+            }
+            i++
+            let tm2 = ldb.teams_ordered[num][1][i]
+            let p = document.createElement('p')
+            if (tm2 === undefined) {
+                tm2o = ''
+                p.innerHTML = tm1o
+            } else {
+                tm2o = Teams.filter(x => x.includes(tm2))[0].split(' ')[0]
+                p.innerHTML = tm1o + " vs " + tm2o
+            }
+            p.style.textAlign = 'center'
+            p.style.width = "100%"
+            p.style.float = "left"
+            p.style.lineHeight = "50%"
+            if ((tm1o == ldb.my_team[0]) || (tm2o == ldb.my_team[0])) {
+                p.classList.add('good')
+            } else {
+                p.style.color = 'white'
+            }
+            box.appendChild(p)
+        }
+        return
+    }
     for (let i = 0; i < sortedtable.length; i++) {
         let p = document.createElement('div')
         p.style.height = "5%"
@@ -295,13 +331,24 @@ function res_list () {
     sel.style.fontSize = "150%"
     sel.id = 'teamsel'
     let opts = []
-    opts += "wce,"
-    opts += "ee,"
+    opts.push('wce')
+    opts.push('ee')
     for (let i = 0; i < GameTypes.length; i++) {
+        let typeo = GameTypes[i].split('|')[0].split(',')[0]
+        if ((typeo == 'TOURpo') || (typeo == 'WCFINAL') || (typeo == 'draw1') || (typeo == 'draw2') || (typeo == 'draw3')) {
+            continue
+        }
         let type = GameTypes[i].split('|')[1].split(',')
-        opts += type + ','
+        for (let l = 0; l < type.length; l++) {
+            opts.push(type[l])
+        }
+        if (typeo == 'TOUR') {
+            opts.push('EURO')
+            opts.push('COPA')
+            opts.push('WORLD_CUP')
+        }
     }
-    let types = opts.split(',')
+    let types = opts
     for (let i = 0; i < types.length; i++) {
         let option = document.createElement('option')
         option.innerHTML = types[i]

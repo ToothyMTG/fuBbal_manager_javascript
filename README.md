@@ -5,7 +5,7 @@
 - [x] add CSS for default colors bg
 - [x] Team info
 - [x] Tournament mode
-- [ ] Display upcoming matches for Playoff mode
+- [x] Display upcoming matches for Playoff mode
 - [ ] Final Fixture - winners and other statistics
 - [ ] Save/load module
 - [ ] New Season
@@ -14,7 +14,8 @@
 
 ### Known bugs
 - [x] Frame doesn't show properly when in wide screen mode
-- [ ] Doubled entries in Results
+- [x] Doubled entries in Results
+- [x] Team results display incorrectly
 
 ## Milestones
 - [x] 0.1 Fixtures window is designed

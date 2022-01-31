@@ -101,7 +101,7 @@ function fixture(t, n) {
                 valope = ldb.teams_ordered[ponum][1].length - 2
                 valmax = valope + 1
             }
-            console.log(valope,valmax, ponum, tt)
+            //console.log(valope,valmax, ponum, tt)
             for (let i = valope; i <= valmax; i++) {
                 let o1 = ldb.teams_ordered[ponum][1][i]
                 i++
@@ -128,6 +128,9 @@ function fixture(t, n) {
                 if (g_1 > g_2) {ldb.teams_ordered[ponum][1].push(t_1)}
                 if (g_2 > g_1) {ldb.teams_ordered[ponum][1].push(t_2)}
             }
+            let pp = document.createElement('p')
+            pp.innerHTML = '<br>'
+            document.getElementById('dataleft').appendChild(pp)
         }
     } 
     if ((t == 'lg') || (t == 'euroelim') || (t == 'wcelim') || (t == 'TOUR') || (t =='WC')) {
@@ -172,6 +175,9 @@ function fixture(t, n) {
                 }
                 ldb.Results.push(result)
             }
+            let pp = document.createElement('p')
+            pp.innerHTML = '<br>'
+            document.getElementById('dataleft').appendChild(pp)
         }
     }
     make_table(cnt)
