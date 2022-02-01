@@ -10,13 +10,15 @@
 </head>
 <body>
     <div id="mainframe">
-        <div id="loginbox" style='display:none'>
+        <div id="loginbox">
             <h1 class='gametitle'>fuBbal manager</h1>
-            <button class='loginbox' id='newgame'>New Game</button>
-            <button class='loginbox' id='loadgame'>Load Game</button>
-            <button class='loginbox' id='exitgame'>Exit Game</button>
+            <button class='loginbox' id='newgame'>New Game (N)</button>
+            <div id='ngsel' style='display:none'></div>
+            <button class='loginbox' id='loadgame'>Load Game (L)</button>
+            <div id='lgsel' style='display:none'></div>
+            <button class='loginbox' id='exitgame'>Exit Game (X)</button>
         </div>
-        <div id='menubox'>
+        <div id='menubox' style='display:none'>
             <button class='menubutton' id='runfixture'>Run fixture (R)</button>
             <button class='menubutton' id='dummybutton'></button>
             <button class='menubutton' id='mystats'>My stats (1)</button>
@@ -27,8 +29,8 @@
             <button class='menubutton' id='save'>Save (C)</button>
             <button class='menubutton' id='save_exit'>Save and Exit (X)</button>
         </div>
-        <div id='infofield'>
-            <p id='manager'>Manager</p>
+        <div id='infofield' style='display:none'>
+            <p id='manager'>Manager</p> 
             <p id='teamname'>Teamname</p>
             <div id='powerbox'>
                 <p id="pbox1">Atk<br>5</p>
@@ -37,12 +39,12 @@
             </div>
             <p id='season'>Season 1 (Year) | Fixture X</p>
         </div>
-        <div id="databox" >
+        <div id="databox" style='display:none' >
             <div id='datatop'></div>
             <div id="dataleft" tabindex="-1"></div>
             <div id="dataright" tabindex="-2"></div>
         </div>
-        <div id='matchbox' >
+        <div id='matchbox' style='display:none' >
             <div id='pitchbox'>
                 <div id='team1box' class="teamsbox">
                     <h2 id="team1name">Poland</h2>
@@ -85,19 +87,11 @@
     </div>
     <script>
         //DEBUG VALUES
-        document.getElementById('matchbox').style.display = 'none'
-        assign_team("Brazil");
-        populate_tactics ()
-        generate_season ()
-        document.getElementById('settings').style.display = "none"
-        ldb.Results = []
-        ldb.Tables = []
-        ldb.fxt = 0
-        ldb.year = 2022
-        ldb = JSON.parse(localStorage.test)
+        //ldb = JSON.parse(localStorage.test)
     </script>
     <script src="match.js"></script>
     <script src="fixture.js"></script>
+    <script src='login.js'></script>
     <script src="listeners.js"></script>
 </body>
 </html>

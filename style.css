@@ -54,8 +54,8 @@ button {
 }
 
 .loginbox {
-    width: 32%;
-    height: 32%;
+    width: 33.333%;
+    height: 33%;
     position:absolute;
     border-color: white;
 }
@@ -63,9 +63,44 @@ button {
 .loginbox:hover {background-color: var(--blue);}
 .loginbox:active {background-color: var(--green);}
 
-#newgame {left: 2%; top: 37%;}
-#loadgame {left: 34%; top: 37%;}
-#exitgame {left: 66%; top: 37%;}
+#newgame {left: 0%; top: 37%;}
+#loadgame {left: 33.333%; top: 37%;}
+#exitgame {left: 66.666%; top: 37%;}
+
+#ngsel {
+    position: relative;
+    left: 0%;
+    top: 37%;
+    width: 33.333%;
+    height: 33%;
+    color: white;
+}
+#lgsel {
+    position: relative;
+    left: 33.333%;
+    top: 37%;
+    width: 33.333%;
+    height: 33%;
+    color: white;
+}
+
+.boxlogin {
+    float:left;
+    width: 100%;
+    text-align: center;
+}
+
+#teamlist option:active {
+    background-color: var(--green);
+    color: black;
+}
+
+#start_game:hover {
+    background-color: var(--blue);
+}
+#start_game:active {
+    background-color: var(--red);
+}
 
 /* Menu Box */
 #menubox {
