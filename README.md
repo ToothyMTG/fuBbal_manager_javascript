@@ -6,6 +6,8 @@
 - [x] Team info
 - [x] Tournament mode
 - [x] Display upcoming matches for Playoff mode
+- [x] New Game button
+- [ ] Load Game button
 - [ ] Final Fixture - winners and other statistics
 - [ ] Save/load module
 - [ ] New Season
