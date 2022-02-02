@@ -20,6 +20,7 @@ function ngdo () {
     let rankinfo = document.createElement('p')
     rankinfo.classList.add('boxlogin')
     rankinfo.innerHTML = "Your manager rank is " + ldb.rank
+    rankinfo.style.margin = '2%'
     //
     let teamlist = document.createElement('select')
     teamlist.style.width = '100%'

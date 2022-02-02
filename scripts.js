@@ -243,7 +243,9 @@ function make_table (t) {
             p.style.textAlign = 'center'
             p.style.width = "100%"
             p.style.float = "left"
-            p.style.lineHeight = "50%"
+            p.style.height = "6%"
+            p.style.margin = "0"
+            p.style.fontSize = '80%'
             if ((tm1o == ldb.my_team[0]) || (tm2o == ldb.my_team[0])) {
                 p.classList.add('good')
             } else {
@@ -255,7 +257,7 @@ function make_table (t) {
     }
     for (let i = 0; i < sortedtable.length; i++) {
         let p = document.createElement('div')
-        p.style.height = "5%"
+        p.style.height = "6%"
         p.style.width = "100%"
         p.style.float = "left"
         let pos = document.createElement('p')
@@ -265,6 +267,7 @@ function make_table (t) {
         pos.style.marginleft = "10%"
         pos.style.color = "white"
         pos.style.float = "left"
+        pos.style.margin = '0'
         if (sortedtable[i][1] == ldb.my_team[0]) {
             pos.classList.add('bg_good')
             pos.style.color = "black"
@@ -276,12 +279,14 @@ function make_table (t) {
         pts.style.marginRight = "10%"
         pts.style.color = "white"
         pts.style.float = "left"
+        pts.style.margin = '0'
         let team = document.createElement(["p"])
         team.innerHTML = sortedtable[i][1]
         team.style.backgroundColor = sortedtable[i][2]
         team.style.width = "40%"
         team.style.color = sortedtable[i][3]
         team.style.float = "left"
+        team.style.margin = '0'
         p.appendChild(pos)
         p.appendChild(team)
         p.appendChild(pts)
