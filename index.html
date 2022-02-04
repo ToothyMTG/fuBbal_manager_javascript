@@ -84,10 +84,22 @@
                 </div>
             </div>
         </div>
+        <div id='new_season'>
+            <div id='ns_left'></div>
+            <div id='ns_right'></div>
+        </div>
     </div>
     <script>
         //DEBUG VALUES
-        //ldb = JSON.parse(localStorage.test)
+        ldb = JSON.parse(localStorage.test)
+        ldb.rank = 5
+        ldb.my_playoffs = 'WORLD_CUPpo'
+        document.getElementById('loginbox').style.display = 'none'
+        console.clear()
+        get_myteam_stats ()
+        render_finaldata ()
+        generate_achievements ()
+        evaluate_achievements ()
     </script>
     <script src="match.js"></script>
     <script src="fixture.js"></script>

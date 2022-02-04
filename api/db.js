@@ -180,18 +180,18 @@ Teams = [
 ]
 
 Leagues = [
-    "Germany ger g 16 ger",
-    "Italy ita i 16 ita",
-    "Spain esp s 16 esp",
-    "France fra f 16 fra",
-    "Netherlands ned h 16 ned",
-    "England eng e 16 eng",
-    "Portugal por o 16 por",
-    "Poland pol p 16 pol",
-    "Europe eur n 30 ee",
-    "America ame n 12 wce",
-    "Africa afr n 4 wce",
-    "Asia apj n 4 wce",
+    "Germany ger g 16 ger club",
+    "Italy ita i 16 ita club",
+    "Spain esp s 16 esp club",
+    "France fra f 16 fra club",
+    "Netherlands ned h 16 ned club",
+    "England eng e 16 eng club",
+    "Portugal por o 16 por club",
+    "Poland pol p 16 pol club",
+    "Europe eur n 30 ee WORLD_CUPpo",
+    "America ame n 12 wce WORLD_CUPpo",
+    "Africa afr n 4 wce WORLD_CUPpo",
+    "Asia apj n 4 wce WORLD_CUPpo",
 ]
 
 Tactics = [
@@ -330,4 +330,15 @@ POLOC = {
     'AFRICUPpo' : 44,
     'APJCUPpo' : 45,
     'WORLD_CUPpo' : 46,
+}
+
+Achievements = {
+    'scope': ['global','myleague','playoffs'],
+    'achies':[
+        ['ptsrate',[0,10,25,40,55,65,75,80],'Achieve points rate of ','mt'],
+        ['goalrate',[15,25,35,45,55,65,75,80],'Achieve goal rate of ','mt'],
+        ['maxgoaldiff',[0,1,2,3,4,5,6,7],'Difference in goals scored by you and your opponent is ','mt'],
+        ['winrate',[0,10,20,30,40,50,60,70],'Achieve win rate of ','mt'],
+        ['lossrate',[80,70,60,50,40,30,20,10],'Do not achieve defeat rate of ','lt'],
+    ]
 }

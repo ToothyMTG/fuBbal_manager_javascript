@@ -42,6 +42,7 @@ function assign_team (a) {
 ldb.my_team = Teams.filter(x => x.includes(a))[0].split(' ')
 let league = ldb.my_team[4]
 ldb.my_league = Leagues.filter(x => x.includes(league))[0].split(' ')[4]
+ldb.my_playoffs = Leagues.filter(x => x.includes(league))[0].split(' ')[5]
 let teamname = document.getElementById('teamname')
 teamname.innerHTML = ldb.my_team[0]
 teamname.style.backgroundColor = ldb.my_team[6]
@@ -668,5 +669,266 @@ function draw_playoffs(b) {
         to[1] = drawteams
         to[1] = to[1].sort(() => Math.random() - 0.5)
         ldb.teams_ordered.push(to)
+    }
+}
+
+function get_myteam_stats() {
+    let t = ldb.my_team
+    let t_name = t[0]
+    let t_code = t[5]
+    let t_results = ldb.Results.filter(x => x.includes(t_code))
+    let t_points = ldb.Tables.filter(x => x.includes(t_code))
+    MyTeamStats = {}
+    MyTeamStats.name = t_name
+    MyTeamStats.games = t_results.length
+    MyTeamStats.goals = 0
+    MyTeamStats.losts = 0
+    MyTeamStats.wins = 0
+    MyTeamStats.draws = 0
+    MyTeamStats.defeats = 0
+    MyTeamStats.points = 0
+    let tempgoaldiff = []
+    let tempmaxgoals = []
+    let t_p_uniq = [...new Set(t_points)].sort()
+    let temp1 = []
+    for (let i = 0; i < t_results.length; i++) {
+        let temp2 = t_results[i].split('-')[4]
+        temp1.push(temp2)
+    }
+    MyTeamStats.lgs = [...new Set(temp1)].sort()
+    for (let i = 0; i < MyTeamStats.lgs.length; i++) {
+        let t_lg = MyTeamStats.lgs[i]
+        MyTeamStats[t_lg] = {}
+        let l_games = t_results.filter(x => x.includes(t_lg))
+        MyTeamStats[t_lg].games = l_games.length
+        let l_pts = t_points.filter(x => x.includes(t_lg))
+        //console.log(l_games)
+        MyTeamStats[t_lg].wins = 0
+        MyTeamStats[t_lg].draws = 0
+        MyTeamStats[t_lg].defeats = 0
+        MyTeamStats[t_lg].goals = 0
+        MyTeamStats[t_lg].losts = 0
+        MyTeamStats[t_lg].pts = 0
+        for (let w = 0; w < l_games.length; w++) {
+            let match_parsed = l_games[w].split('-')
+            //console.log(match_parsed)
+            if ((Number(match_parsed[1]) > Number(match_parsed[3])) && (match_parsed[0] == t_code) ) {
+                MyTeamStats[t_lg].wins++
+                MyTeamStats[t_lg].pts += 3
+                tempgoaldiff.push(Number(match_parsed[1] - Number(match_parsed[3])))
+            }
+            if ((Number(match_parsed[1]) < Number(match_parsed[3])) && (match_parsed[0] == t_code) ) {
+                MyTeamStats[t_lg].defeats++
+                tempgoaldiff.push(Number(match_parsed[1] - Number(match_parsed[3])))
+            }
+            if ((Number(match_parsed[1]) > Number(match_parsed[3])) && (match_parsed[2] == t_code) ) {
+                MyTeamStats[t_lg].defeats++
+                tempgoaldiff.push(Number(match_parsed[3] - Number(match_parsed[1])))
+            }
+            if ((Number(match_parsed[1]) < Number(match_parsed[3])) && (match_parsed[2] == t_code) ) {
+                MyTeamStats[t_lg].wins++
+                MyTeamStats[t_lg].pts += 3
+                tempgoaldiff.push(Number(match_parsed[3] - Number(match_parsed[1])))
+            }
+            if (Number(match_parsed[1]) == Number(match_parsed[3]) ) {
+                MyTeamStats[t_lg].draws++
+                MyTeamStats[t_lg].pts += 1
+            }
+            if (match_parsed[0] == t_code) {
+                MyTeamStats[t_lg].goals += Number(match_parsed[1])
+                MyTeamStats[t_lg].losts += Number(match_parsed[3])
+            } else {
+                MyTeamStats[t_lg].losts += Number(match_parsed[1])
+                MyTeamStats[t_lg].goals += Number(match_parsed[3])
+            }
+        }
+        MyTeamStats[t_lg].maxpts = l_games.length * 3
+        MyTeamStats[t_lg].ptsrate = Math.floor(MyTeamStats[t_lg].pts / MyTeamStats[t_lg].maxpts * 100)
+        MyTeamStats[t_lg].winrate = Math.floor(MyTeamStats[t_lg].wins / MyTeamStats[t_lg].games * 100)
+        MyTeamStats[t_lg].lossrate = Math.floor(MyTeamStats[t_lg].defeats / MyTeamStats[t_lg].games * 100)
+        let totalgoals = MyTeamStats[t_lg].goals + MyTeamStats[t_lg].losts
+        MyTeamStats[t_lg].goalrate = Math.floor(MyTeamStats[t_lg].goals / totalgoals * 100)
+        MyTeamStats.goals += MyTeamStats[t_lg].goals
+        MyTeamStats.losts += MyTeamStats[t_lg].losts
+        MyTeamStats.wins += MyTeamStats[t_lg].wins
+        MyTeamStats.draws += MyTeamStats[t_lg].draws
+        MyTeamStats.defeats += MyTeamStats[t_lg].defeats
+        MyTeamStats.points += MyTeamStats[t_lg].pts
+    }
+    MyTeamStats.winrate = Math.floor(MyTeamStats.wins / MyTeamStats.games * 100)
+    MyTeamStats.lossrate = Math.floor(MyTeamStats.defeats / MyTeamStats.games * 100)
+    MyTeamStats.goalrate = Math.floor(MyTeamStats.goals / (MyTeamStats.goals + MyTeamStats.losts) * 100)
+    MyTeamStats.maxpoints = t_results.length * 3
+    MyTeamStats.ptsrate = Math.floor(MyTeamStats.points / MyTeamStats.maxpoints * 100)
+    tempgoaldiff = tempgoaldiff.sort(function(a, b) {return b - a})
+    MyTeamStats.maxgoaldiff = tempgoaldiff[0]
+    //console.log(MyTeamStats)
+}
+
+function render_finaldata () {
+    let r_div = document.getElementById('ns_left')
+    r_div.innerHTML = ''
+    //
+    let title = document.createElement('h1')
+    title.innerHTML = MyTeamStats.name
+    title.style.width = '100%'
+    title.style.textAlign = 'center'
+    title.style.fontWeight = 'bold'
+    title.style.backgroundColor = ldb.my_team[6]
+    title.style.color = ldb.my_team[7]
+    r_div.appendChild(title)
+    //
+    let n_games = document.createElement('h3')
+    n_games.innerHTML = MyTeamStats.games + " games"
+    r_div.appendChild(n_games)
+    //
+    let n_w = document.createElement('p')   
+    n_w.innerHTML = MyTeamStats.wins
+    n_w.style.width = MyTeamStats.wins / MyTeamStats.games * 100 + '%'
+    n_w.classList.add('bg_good')
+    r_div.appendChild(n_w)
+    //
+    let n_d = document.createElement('p')   
+    n_d.innerHTML = MyTeamStats.draws
+    n_d.style.width = MyTeamStats.draws / MyTeamStats.games * 100 + '%'
+    n_d.classList.add('bg_neutral')
+    r_div.appendChild(n_d)
+    //
+    let n_l = document.createElement('p')   
+    n_l.innerHTML = MyTeamStats.defeats
+    n_l.style.width = MyTeamStats.defeats / MyTeamStats.games * 100 + '%'
+    n_l.classList.add('bg_bad')
+    r_div.appendChild(n_l)
+    //
+    let n_pts = document.createElement('h3')
+    n_pts.innerHTML = MyTeamStats.points + ' points'
+    //r_div.appendChild(n_pts)
+    //
+    let n_ptsa = document.createElement('p')
+    n_ptsa.style.width = MyTeamStats.points / MyTeamStats.maxpoints * 100 + '%'
+    n_ptsa.classList.add('bg_good')
+    n_ptsa.innerHTML = MyTeamStats.points + " points"
+    r_div.appendChild(n_ptsa)
+    //
+    let n_ptsb = document.createElement('p')
+    n_ptsb.style.width = 100 - (MyTeamStats.points / MyTeamStats.maxpoints * 100) + '%'
+    n_ptsb.classList.add('bg_bad')
+    n_ptsb.innerHTML = "of " + MyTeamStats.maxpoints
+    r_div.appendChild(n_ptsb)
+    //
+    let n_goals = document.createElement('p')
+    n_goals.innerHTML = MyTeamStats.goals + ' goals scored'
+    n_goals.classList.add('bg_good')
+    n_goals.style.width = MyTeamStats.goals / (MyTeamStats.goals + MyTeamStats.losts) * 100 + '%'
+    r_div.appendChild(n_goals)
+    //
+    let n_losts = document.createElement('p')
+    n_losts.innerHTML = MyTeamStats.losts + ' goals lost'
+    n_losts.classList.add('bg_bad')
+    n_losts.style.width = 100 - MyTeamStats.goals / (MyTeamStats.goals + MyTeamStats.losts) * 100 + '%'
+    r_div.appendChild(n_losts)
+    for (let i = 0; i < MyTeamStats.lgs.length; i++) {
+        let name = MyTeamStats.lgs[i]
+        let h_title = document.createElement('h2')
+        h_title.innerHTML = name
+        r_div.appendChild(h_title)       
+        //
+        let n_games = document.createElement('h3')
+        n_games.innerHTML = MyTeamStats[name].games + " games"
+        r_div.appendChild(n_games)
+        //
+        let n_w = document.createElement('p')   
+        n_w.innerHTML = MyTeamStats[name].wins
+        n_w.style.width = MyTeamStats[name].wins / MyTeamStats[name].games * 100 + '%'
+        n_w.classList.add('bg_good')
+        r_div.appendChild(n_w)
+        //
+        let n_d = document.createElement('p')   
+        n_d.innerHTML = MyTeamStats[name].draws
+        n_d.style.width = MyTeamStats[name].draws / MyTeamStats[name].games * 100 + '%'
+        n_d.classList.add('bg_neutral')
+        r_div.appendChild(n_d)
+        //
+        let n_l = document.createElement('p')   
+        n_l.innerHTML = MyTeamStats[name].defeats
+        n_l.style.width = MyTeamStats[name].defeats / MyTeamStats[name].games * 100 + '%'
+        n_l.classList.add('bg_bad')
+        r_div.appendChild(n_l)
+        //
+        let n_pts = document.createElement('h3')
+        n_pts.innerHTML = MyTeamStats[name].pts + ' points'
+        //r_div.appendChild(n_pts)
+        //
+        let n_ptsa = document.createElement('p')
+        n_ptsa.style.width = MyTeamStats[name].pts / MyTeamStats[name].maxpts * 100 + '%'
+        n_ptsa.classList.add('bg_good')
+        n_ptsa.innerHTML = MyTeamStats[name].pts + " points"
+        r_div.appendChild(n_ptsa)
+        //
+        let n_ptsb = document.createElement('p')
+        n_ptsb.style.width = 100 - (MyTeamStats[name].pts / MyTeamStats[name].maxpts * 100) + '%'
+        n_ptsb.classList.add('bg_bad')
+        n_ptsb.innerHTML = 'of ' + MyTeamStats[name].maxpts
+        r_div.appendChild(n_ptsb)
+        //
+        let n_goals = document.createElement('p')
+        n_goals.innerHTML = MyTeamStats[name].goals + ' goals scored'
+        n_goals.classList.add('bg_good')
+        n_goals.style.width = MyTeamStats[name].goals / (MyTeamStats[name].goals + MyTeamStats[name].losts) * 100 + '%'
+        r_div.appendChild(n_goals)
+        //
+        let n_losts = document.createElement('p')
+        n_losts.innerHTML = MyTeamStats[name].losts + ' goals lost'
+        n_losts.classList.add('bg_bad')
+        n_losts.style.width = 100 - MyTeamStats[name].goals / (MyTeamStats[name].goals + MyTeamStats[name].losts) * 100 + '%'
+        r_div.appendChild(n_losts)
+    }
+}
+
+function generate_achievements () {
+    ldb.achievements = []
+    for (let i = 0; i < Achievements.achies.length; i++) {
+        let randscope = Math.floor(Math.random() * 3)
+        ldb.achievements[i] = {}
+        ldb.achievements[i].param = Achievements.achies[i][0]
+        let tempscope = Achievements.scope[randscope]
+        if (tempscope == 'global') {
+            ldb.achievements[i].scope = 'global'
+        }
+        if (tempscope == 'myleague') {
+            ldb.achievements[i].scope = ldb.my_league
+        }
+        if (tempscope == 'playoffs') {
+            ldb.achievements[i].scope = ldb.my_playoffs
+        }
+        if (Achievements.achies[i][0] == 'maxgoaldiff') {
+            ldb.achievements[i].scope = 'global'
+        }
+        ldb.achievements[i].definition = Achievements.achies[i][2]
+        let randlevel = Math.floor(Math.random() * 3 - 1)
+        //console.log(randlevel)
+        ldb.achievements[i].level = Achievements.achies[i][1][ldb.rank + randlevel]
+        ldb.achievements[i].cond = Achievements.achies[i][3]
+    }
+    //console.log(ldb.achievements)
+}
+
+function evaluate_achievements () {
+    for (let i = 0; i < ldb.achievements.length; i++) {
+        let ach = ldb.achievements[i]
+        let source
+        if (ldb.achievements[i].scope == 'global') {
+            source = MyTeamStats
+        } else {
+            let temp = MyTeamStats.lgs.filter(x => x.includes(ldb.achievements[i].scope))[0]
+            source = MyTeamStats[temp]
+            if (source === undefined) {
+                ldb.achievements[i].state = 'Failed'
+                continue
+            }
+        }
+        let lookup = ach.param
+        let value = source[lookup]
+        console.log(lookup,value,ach.cond,ach.level)
     }
 }
