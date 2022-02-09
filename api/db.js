@@ -335,10 +335,10 @@ POLOC = {
 Achievements = {
     'scope': ['global','myleague','playoffs'],
     'achies':[
-        ['ptsrate',[0,10,25,40,55,65,75,80],'Achieve points rate of ','mt'],
-        ['goalrate',[15,25,35,45,55,65,75,80],'Achieve goal rate of ','mt'],
+        ['ptsrate',[15,25,35,45,50,55,60,70],'Achieve points rate of ','mt'],
+        ['goalrate',[15,25,35,45,50,55,60,70],'Achieve goal rate of ','mt'],
         ['maxgoaldiff',[0,1,2,3,4,5,6,7],'Difference in goals scored by you and your opponent is ','mt'],
-        ['winrate',[0,10,20,30,40,50,60,70],'Achieve win rate of ','mt'],
+        ['winrate',[15,25,35,40,45,50,60,65],'Achieve win rate of ','mt'],
         ['lossrate',[80,70,60,50,40,30,20,10],'Do not achieve defeat rate of ','lt'],
     ]
 }

@@ -7,11 +7,12 @@
 - [x] Tournament mode
 - [x] Display upcoming matches for Playoff mode
 - [x] New Game button
+- [x] Achievements
+- [ ] Adapt New Game screen team selection to display better
 - [ ] Load Game button
 - [ ] Final Fixture - winners and other statistics
 - [ ] Save/load module
 - [ ] New Season
-- [ ] Achievements
 - [ ] Settings
 
 ### Known bugs

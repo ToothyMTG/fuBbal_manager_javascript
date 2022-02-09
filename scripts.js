@@ -443,6 +443,10 @@ function gather_team_info (t) {
         p.innerHTML = count + " points in " + uniq[i].split('-')[1]
         dataright.appendChild(p)
     }
+    if (t == ldb.my_team[0]) {
+        get_myteam_stats ()
+        render_objectives('dataright')
+    }
 }
 
 function showteam() {
@@ -914,6 +918,7 @@ function generate_achievements () {
 }
 
 function evaluate_achievements () {
+    ldb.achievements.states = []
     for (let i = 0; i < ldb.achievements.length; i++) {
         let ach = ldb.achievements[i]
         let source
@@ -923,12 +928,78 @@ function evaluate_achievements () {
             let temp = MyTeamStats.lgs.filter(x => x.includes(ldb.achievements[i].scope))[0]
             source = MyTeamStats[temp]
             if (source === undefined) {
-                ldb.achievements[i].state = 'Failed'
+                ldb.achievements.states[i] = 'Failed'
+                ldb.achievements[i].value = 0
                 continue
             }
         }
         let lookup = ach.param
         let value = source[lookup]
-        console.log(lookup,value,ach.cond,ach.level)
+        ldb.achievements[i].value = value
+        if ((value >= ach.level ) && (ach.cond == 'mt')) {
+            ldb.achievements.states[i] = 'Passed'
+        }
+        if ((value < ach.level ) && (ach.cond == 'mt')) {
+            ldb.achievements.states[i] = 'Failed'
+        }
+        if ((value <= ach.level ) && (ach.cond == 'lt')) {
+            ldb.achievements.states[i] = 'Passed'
+        }
+        if ((value > ach.level ) && (ach.cond == 'lt')) {
+            ldb.achievements.states[i] = 'Failed'
+        }
+        console.log(lookup,value,ach.cond,ach.level,ldb.achievements.states[i],ldb.achievements[i].scope)
+    }
+}
+
+function render_objectives (w) {
+    evaluate_achievements ()
+    let r_div = document.getElementById(w)
+    for (let i = 0; i < ldb.achievements.length; i++) {
+        let r_tit = document.createElement('h3')
+        r_tit.innerHTML = ldb.achievements[i].definition + ldb.achievements[i].level + ' (' + ldb.achievements[i].scope + ')'
+        r_div.appendChild(r_tit)
+        let r_val = document.createElement('div')
+        let size = ldb.achievements[i].value / ldb.achievements[i].level * 100
+        if (isNaN(size)) {
+            size = 0
+        }
+        if (size === undefined) {
+            size = 0
+        }
+        if (size < 0) {
+            size = 0
+        }
+        let isover
+        let isbelow
+        let isleft
+        if (ldb.achievements[i].cond == 'lt') {
+            isover = 'bg_bad'
+            isbelow = 'bg_neutral'
+            isleft = 'bg_good'
+        } else {
+            if (size == 0) {
+                isover = 'bg_good'
+                isbelow = 'bg_bad'
+                isleft = 'bg_bad'
+            } else {
+                isover = 'bg_good'
+                isbelow = 'bg_bad'
+                isleft = 'bg_neutral'
+            }
+        }
+        if (size >= 100) {
+            size = 100
+            r_val.classList.add(isover)
+        } else {
+            r_val.classList.add(isbelow)
+        }
+        r_val.style.width = size + '%'
+        r_val.innerHTML = ldb.achievements[i].value
+        r_div.appendChild(r_val)
+        r_nal = document.createElement('div')
+        r_nal.style.width = 100 - size + '%'        
+        r_nal.classList.add(isleft)
+        r_div.appendChild(r_nal)
     }
 }

@@ -416,8 +416,33 @@ button {
 }
 
 #ns_right {
-    background-color: var(--green);
+    background-color: black;
     width: 40%;
     height: 100%;
     float:left
+}
+#ns_right div {
+    height: 2.5%;
+    float: left;
+    text-align: center;
+}
+#ns_right h3 {
+    margin: 0;
+    font-size: 80%;;
+    text-align: center;
+    line-height: 200%;
+}
+#dataright div {
+    height: 2.5%;
+    float: left;
+    text-align: center;
+}
+#dataright h3 {
+    margin: 0;
+    font-size: 80%;;
+    text-align: center;
+    line-height: 200%;
+}
+#dataright p {
+    margin: 0;
 }

@@ -75,6 +75,7 @@ function ngdo () {
         document.getElementById('menubox').style.display = 'block'
         document.getElementById('infofield').style.display = 'block'
         document.getElementById('databox').style.display = 'block'
+        generate_achievements ()
     }
 }
 //New Game button
