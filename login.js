@@ -25,24 +25,30 @@ function ngdo () {
     let teamlist = document.createElement('select')
     teamlist.style.width = '100%'
     teamlist.style.float = 'left'
-    teamlist.size = '5'
     teamlist.id = 'teamlist'
     teamlist.style.overflow = 'auto'
-    teamlist.style.verticalAlign = 'middle'
+    teamlist.style.textAlign = 'center'
     let seekpat = ' ' + ldb.rank + ' '
     let teampick = Teams.filter(x => x.includes(seekpat)).sort(() => Math.random() - 0.5)
     //console.log(teampick)
+    let blank = document.createElement('option')
+    blank.style.display = "none"
+    teamlist.appendChild(blank)
     for (let i = 0;i < 5;i++) {
         let tp = teampick[i].split(' ')
         let option = document.createElement('option')
         option.style.backgroundColor = tp[6]
         option.style.color = tp[7]
-        //option.style.height = '10%'
+        option.style.height = '10%'
         option.style.textAlign = 'center'
-        option.style.verticalAlign = 'middle'
         option.value = tp[0]
         option.innerHTML = tp[0] +' | '+ tp[4] +' | A:'+ tp[1] +' | M:'+ tp[2] +' | D:'+ tp[3]
         teamlist.appendChild(option)
+    }
+    teamlist.onchange = function() {
+        let temp = Teams.filter(x => x.includes(teamlist.value))[0].split(' ')
+        teamlist.style.color = temp[7]
+        teamlist.style.backgroundColor = temp[6]
     }
     //
     let startgame = document.createElement('button')

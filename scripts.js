@@ -411,9 +411,8 @@ function gather_team_info (t) {
     // Right panel info
     dataright.style.color = "white"
     dataright.style.textAlign = "center"
-    let r0 = document.createElement('p')
+    let r0 = document.createElement('h2')
     r0.innerHTML = "Statistics"
-    r0.style.fontSize = "150%"
     dataright.appendChild(r0)
     let r1 = document.createElement('p')
     r1.innerHTML = teamresults.length + " matches"
@@ -955,6 +954,9 @@ function evaluate_achievements () {
 function render_objectives (w) {
     evaluate_achievements ()
     let r_div = document.getElementById(w)
+    let r_head = document.createElement('h2')
+    r_head.innerHTML = "Objectives"
+    r_div.appendChild(r_head)
     for (let i = 0; i < ldb.achievements.length; i++) {
         let r_tit = document.createElement('h3')
         r_tit.innerHTML = ldb.achievements[i].definition + ldb.achievements[i].level + ' (' + ldb.achievements[i].scope + ')'

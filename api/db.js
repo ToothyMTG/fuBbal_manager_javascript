@@ -217,7 +217,8 @@ GameTypes = [
     'WCFINAL|WORLD_CUPpo',
     'draw1|EURO,COPA,AFRICUP,APJCUP,WORLD_CUP',
     'draw2|EUROpo,COPApo,AFRICUPpo,APJCUPpo',
-    'draw3|WORLD_CUPpo'
+    'draw3|WORLD_CUPpo',
+    'NS|ns'
 ]
 
 Fixture_lg = [
@@ -322,6 +323,7 @@ let tournams = [
 schedule += tournams
 
 Schedule = schedule.split(',')
+Schedule.push('NS 0')
 
 POLOC = {
     'club' : 24,

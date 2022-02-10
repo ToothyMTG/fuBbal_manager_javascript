@@ -17,9 +17,22 @@ function fixture(t, n) {
     if (t == 'draw3') {fixt_pat = '0,0'}
     if (t == "WCpo") {fixt_pat = Fixture_16[n - 1]; md = "po"}
     if (t == "WCFINAL") {fixt_pat = Fixture_8[n]; md = "po"}
+    if (t == 'NS') {fixt_pat = '0,0'}
 
     fixt_pat = fixt_pat.split(',')
     //console.log(fixt_pat)
+    if (t == 'NS') {
+        document.getElementById('new_season').style.display = 'block'
+        document.getElementById('menubox').style.display = 'none'
+        document.getElementById('infofield').style.display = 'none'
+        document.getElementById('matchbox').style.display = 'none'
+        document.getElementById('databox').style.display = 'none'
+        document.getElementById('runfixture').style.display = 'none'
+        get_myteam_stats ()
+        render_finaldata ()
+        generate_achievements ()
+        render_objectives ('ns_right')
+    }
     if (t == 'draw3') {
         draw_playoffs(lgs[0])
         let lg = ldb.teams_ordered[46][0]
