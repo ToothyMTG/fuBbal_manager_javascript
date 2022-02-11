@@ -188,10 +188,10 @@ Leagues = [
     "England eng e 16 eng club",
     "Portugal por o 16 por club",
     "Poland pol p 16 pol club",
-    "Europe eur n 30 ee WORLD_CUPpo",
-    "America ame n 12 wce WORLD_CUPpo",
-    "Africa afr n 4 wce WORLD_CUPpo",
-    "Asia apj n 4 wce WORLD_CUPpo",
+    "Europe eur n 30 ee EUROpo",
+    "America ame n 12 wce COPApo",
+    "Africa afr n 4 wce AFRICUPpo",
+    "Asia apj n 4 wce APJCUPpo",
 ]
 
 Tactics = [

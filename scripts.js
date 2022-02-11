@@ -978,7 +978,11 @@ function render_objectives (w) {
         if (ldb.achievements[i].cond == 'lt') {
             isover = 'bg_bad'
             isbelow = 'bg_neutral'
-            isleft = 'bg_good'
+            if (ldb.achievements.states[i] == 'Failed') {
+                isleft = 'bg_bad'
+            } else {
+                isleft = 'bg_good'
+            }
         } else {
             if (size == 0) {
                 isover = 'bg_good'

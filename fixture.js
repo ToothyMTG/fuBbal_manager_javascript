@@ -30,7 +30,6 @@ function fixture(t, n) {
         document.getElementById('runfixture').style.display = 'none'
         get_myteam_stats ()
         render_finaldata ()
-        generate_achievements ()
         render_objectives ('ns_right')
     }
     if (t == 'draw3') {
