@@ -103,4 +103,47 @@ ELmystats.addEventListener('click', function (e) {
     }
 })
 
+let ns_listener = document.getElementById('new_season')
+//New Season - Statistics
+let NSstats = document.getElementById('ns_stats')
+window.addEventListener('keydown', function (e) {
+    if ((e.key === "1") && (ns_listener.style.display !== "none")) {
+        document.getElementById('ns_content').innerHTML = ''
+        render_finaldata()
+    }
+})
+NSstats.addEventListener('click', function (e) {
+    if (ns_listener.style.display !== "none") {
+        document.getElementById('ns_content').innerHTML = ''
+        render_finaldata()
+    }
+})
+//New Season - Statistics
+let NSobjectives = document.getElementById('ns_obj')
+window.addEventListener('keydown', function (e) {
+    if ((e.key === "2") && (ns_listener.style.display !== "none")) {
+        document.getElementById('ns_content').innerHTML = ''
+        render_objectives('ns_content')
+    }
+})
+NSobjectives.addEventListener('click', function (e) {
+    if (ns_listener.style.display !== "none") {
+        document.getElementById('ns_content').innerHTML = ''
+        render_objectives('ns_content')
+    }
+})
+//New Season - Winners
+let NSwinners = document.getElementById('ns_winners')
+window.addEventListener('keydown', function (e) {
+    if ((e.key === "3") && (ns_listener.style.display !== "none")) {
+        document.getElementById('ns_content').innerHTML = ''
+        render_winners()
+    }
+})
+NSwinners.addEventListener('click', function (e) {
+    if (ns_listener.style.display !== "none") {
+        document.getElementById('ns_content').innerHTML = ''
+        render_winners()
+    }
+})
 

@@ -85,22 +85,27 @@
             </div>
         </div>
         <div id='new_season'>
-            <div id='ns_left'></div>
-            <div id='ns_right'></div>
+            <div id='ns_nav'>
+                <button id="ns_stats">Statistics (1)
+                <button id="ns_obj">Objectives (2)
+                <button id="ns_winners">Winners (3)
+                <button id="ns_offers">Offers (4)
+            </div>
+            <div id='ns_content'></div>
         </div>
     </div>
     <script>
         //DEBUG VALUES
-        //ldb = JSON.parse(localStorage.test)
+        ldb = JSON.parse(localStorage.test)
         //ldb.rank = 5
         //ldb.my_playoffs = 'WORLD_CUPpo'
-        //document.getElementById('loginbox').style.display = 'none'
+        //nnnndocument.getElementById('loginbox').style.display = 'none'
         document.getElementById('new_season').style.display = 'none'
         console.clear()
         document.getElementById('newgame').click()
-        //get_myteam_stats ()
+        get_myteam_stats ()
         //render_finaldata ()
-        //generate_achievements ()
+        generate_achievements ()
         //render_objectives ('ns_right')
     </script>
     <script src="match.js"></script>
@@ -108,7 +113,12 @@
     <script src='login.js'></script>
     <script>
         //DEBUG VALUES
-        document.getElementById('newgame').click()
+        //document.getElementById('newgame').click()
+        //document.getElementById('runfixture').style.display = 'none'
+        ldb.winners = {}
+        //get_winners ()
+        //console.log(ldb.winners)
+        //render_winners ()
     </script>
     <script src="listeners.js"></script>
 </body>

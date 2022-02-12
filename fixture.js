@@ -28,9 +28,8 @@ function fixture(t, n) {
         document.getElementById('matchbox').style.display = 'none'
         document.getElementById('databox').style.display = 'none'
         document.getElementById('runfixture').style.display = 'none'
+        get_winners ()
         get_myteam_stats ()
-        render_finaldata ()
-        render_objectives ('ns_right')
     }
     if (t == 'draw3') {
         draw_playoffs(lgs[0])

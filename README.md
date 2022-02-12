@@ -8,9 +8,10 @@
 - [x] Display upcoming matches for Playoff mode
 - [x] New Game button
 - [x] Achievements
-- [ ] Adapt New Game screen team selection to display better
+- [x] Adapt New Game screen team selection to display better
+- [x] Final Fixture - winners and other statistics
+- [ ] Next season offers
 - [ ] Load Game button
-- [ ] Final Fixture - winners and other statistics
 - [ ] Save/load module
 - [ ] New Season
 - [ ] Settings
@@ -24,9 +25,9 @@
 - [x] 0.1 Fixtures window is designed
 - [x] 0.2 Menu and functionalities are designed and implemented
 - [x] 0.3 Whole season can be played
-- [ ] 0.4 Season can be finished
-- [ ] 0.5 Game state can be saved and loaded
-- [ ] 0.6 New Season can be started
+- [x] 0.4 Season can be finished
+- [ ] 0.5 New Season can be started
+- [ ] 0.6 Game state can be saved and loaded
 - [ ] 0.7 Game is playable in loop
 - [ ] 0.8 Game is optimised for keyboard/mouse
 - [ ] 0.9 Game look is in final shape

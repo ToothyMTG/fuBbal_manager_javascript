@@ -769,11 +769,11 @@ function get_myteam_stats() {
 }
 
 function render_finaldata () {
-    let r_div = document.getElementById('ns_left')
+    let r_div = document.getElementById('ns_content')
     r_div.innerHTML = ''
     //
     let title = document.createElement('h1')
-    title.innerHTML = MyTeamStats.name
+    title.innerHTML = MyTeamStats.name + ' stats'
     title.style.width = '100%'
     title.style.textAlign = 'center'
     title.style.fontWeight = 'bold'
@@ -799,7 +799,7 @@ function render_finaldata () {
     //
     let n_l = document.createElement('p')   
     n_l.innerHTML = MyTeamStats.defeats
-    n_l.style.width = MyTeamStats.defeats / MyTeamStats.games * 100 + '%'
+    n_l.style.width = 100 - (MyTeamStats.wins / MyTeamStats.games * 100) - (MyTeamStats.draws / MyTeamStats.games * 100) + '%'
     n_l.classList.add('bg_bad')
     r_div.appendChild(n_l)
     //
@@ -854,7 +854,7 @@ function render_finaldata () {
         //
         let n_l = document.createElement('p')   
         n_l.innerHTML = MyTeamStats[name].defeats
-        n_l.style.width = MyTeamStats[name].defeats / MyTeamStats[name].games * 100 + '%'
+        n_l.style.width = 100 - (MyTeamStats[name].wins / MyTeamStats[name].games * 100) - (MyTeamStats[name].draws / MyTeamStats[name].games * 100) + '%'
         n_l.classList.add('bg_bad')
         r_div.appendChild(n_l)
         //
@@ -947,7 +947,7 @@ function evaluate_achievements () {
         if ((value > ach.level ) && (ach.cond == 'lt')) {
             ldb.achievements.states[i] = 'Failed'
         }
-        console.log(lookup,value,ach.cond,ach.level,ldb.achievements.states[i],ldb.achievements[i].scope)
+        //console.log(lookup,value,ach.cond,ach.level,ldb.achievements.states[i],ldb.achievements[i].scope)
     }
 }
 
@@ -1007,5 +1007,60 @@ function render_objectives (w) {
         r_nal.style.width = 100 - size + '%'        
         r_nal.classList.add(isleft)
         r_div.appendChild(r_nal)
+    }
+}
+
+function get_winners() {
+    ldb.winners = []
+    let gwwinners = ldb.winners[ldb.year]
+    let gwlgs = GameTypes.filter(x => x.includes('lg|'))[0].split('|')[1].split(',')
+    for (let i = 0;i < gwlgs.length;i++) {
+        drawteams = []
+        source_table(gwlgs[i],1)
+        let gwtm = Teams.filter(x => x.includes(drawteams[0]))[0].split(' ')[0]
+        ldb.winners.push(ldb.year + '-' + gwlgs[i] + '-' + gwtm)
+    }
+    let gwpos = GameTypes.filter(x => x.includes('FINALpo|'))[0].split('|')[1].split(',')
+    gwpos.push('WORLD_CUPpo')
+    gwpos.push('club')
+    //console.log(gwpos)
+    for (let i = 0;i < gwpos.length;i++) {
+        let gwwho = ldb.teams_ordered[POLOC[gwpos[i]]][1][ldb.teams_ordered[POLOC[gwpos[i]]][1].length - 1]
+        let gwtm = Teams.filter(x => x.includes(gwwho))[0].split(' ')[0]
+        let gwwhodebug = ldb.teams_ordered[POLOC[gwpos[i]]][1]
+        //console.log(gwwho,gwtm)
+        ldb.winners.push(ldb.year + '-' + gwpos[i] + '-' + gwtm)
+    }
+}
+
+function render_winners() {
+    let content = document.getElementById('ns_content')
+    content.innerHTML = ''
+    let rwhead = document.createElement('h2')
+    rwhead.innerHTML = "Winners"
+    rwhead.style.marginBottom = '3%'
+    content.appendChild(rwhead)
+    let rwinners = ldb.winners.filter(x => x.includes(ldb.year))
+    for (let i = 0;i < rwinners.length;i++) {
+        let rwval = rwinners[i].split('-')
+        let rwtit = document.createElement('p')
+        rwtit.innerHTML = "Winner of " + rwval[1] + ' ' + rwval[0] + ' is'
+        rwtit.style.width = '50%'
+        rwtit.style.textAlign = 'right'
+        rwtit.style.float = 'left'
+        rwtit.style.marginBottom = '2%'
+        let rwtim = document.createElement('p')
+        rwtm = Teams.filter(x => x.includes(rwval[2]))[0].split(' ')
+        rwtim.innerHTML = rwtm[0]
+        rwtim.style.backgroundColor = rwtm[6]
+        rwtim.style.color = rwtm[7]
+        rwtim.style.marginLeft = '1%'
+        rwtim.style.marginBottom = '2%'
+        if (rwtm[0] == ldb.my_team) {
+            rwtit.classList.add('good')
+        }
+        
+        content.appendChild(rwtit)
+        content.appendChild(rwtim)
     }
 }
