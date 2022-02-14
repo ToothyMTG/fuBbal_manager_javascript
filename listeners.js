@@ -92,6 +92,7 @@ window.addEventListener('keydown', function (e) {
         document.getElementById('datatop').innerHTML = ''
         document.getElementById('datatop').style.display = 'none'
         gather_team_info(ldb.my_team[0])
+        render_specific_winner(ldb.my_team[0],'dataright')
     }
 })
 ELmystats.addEventListener('click', function (e) {
@@ -100,6 +101,7 @@ ELmystats.addEventListener('click', function (e) {
         document.getElementById('datatop').innerHTML = ''
         document.getElementById('datatop').style.display = 'none'
         gather_team_info(ldb.my_team[0])
+        render_specific_winner(ldb.my_team[0],'dataright')
     }
 })
 
@@ -124,12 +126,16 @@ window.addEventListener('keydown', function (e) {
     if ((e.key === "2") && (ns_listener.style.display !== "none")) {
         document.getElementById('ns_content').innerHTML = ''
         render_objectives('ns_content')
+        render_manager_rank('ns_content')
+        render_specific_winner(ldb.my_team[0],'ns_content')
     }
 })
 NSobjectives.addEventListener('click', function (e) {
     if (ns_listener.style.display !== "none") {
         document.getElementById('ns_content').innerHTML = ''
         render_objectives('ns_content')
+        render_manager_rank('ns_content')
+        render_specific_winner(ldb.my_team[0],'ns_content')
     }
 })
 //New Season - Winners
@@ -144,6 +150,21 @@ NSwinners.addEventListener('click', function (e) {
     if (ns_listener.style.display !== "none") {
         document.getElementById('ns_content').innerHTML = ''
         render_winners()
+    }
+})
+//New Season - Offers
+let NSoffers = document.getElementById('ns_offers')
+window.addEventListener('keydown', function (e) {
+    if ((e.key === "4") && (ns_listener.style.display !== "none")) {
+        document.getElementById('ns_content').innerHTML = ''
+        render_offers('ns_content')
+        NSoffers.focus()
+    }
+})
+NSoffers.addEventListener('click', function (e) {
+    if (ns_listener.style.display !== "none") {
+        document.getElementById('ns_content').innerHTML = ''
+        render_offers('ns_content')
     }
 })
 

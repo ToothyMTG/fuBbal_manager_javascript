@@ -499,6 +499,7 @@ function showteam() {
         seek2.style.backgroundColor = fancy[6]
         seek2.style.color = fancy[7]
         gather_team_info(seek2.value)
+        render_specific_winner(seek2.value,'dataright')
     }
     window.addEventListener('keydown', function (e) {
         if ((e.key === "z") && (seek1.style.display !== "none")) {
@@ -888,32 +889,39 @@ function render_finaldata () {
     }
 }
 
-function generate_achievements () {
-    ldb.achievements = []
+function generate_achievements (rnk,t,ml,mp,tp) {
+    let achs = []
+    let gatim = Teams.filter(x => x.includes(t))[0].split(' ')
     for (let i = 0; i < Achievements.achies.length; i++) {
         let randscope = Math.floor(Math.random() * 3)
-        ldb.achievements[i] = {}
-        ldb.achievements[i].param = Achievements.achies[i][0]
+        achs[i] = {}
+        achs[i].param = Achievements.achies[i][0]
         let tempscope = Achievements.scope[randscope]
         if (tempscope == 'global') {
-            ldb.achievements[i].scope = 'global'
+            achs[i].scope = 'global'
         }
         if (tempscope == 'myleague') {
-            ldb.achievements[i].scope = ldb.my_league
+            ml = Leagues.filter(x => x.includes(gatim[4]))[0].split(' ')[4]
+            achs[i].scope = ml
         }
         if (tempscope == 'playoffs') {
-            ldb.achievements[i].scope = ldb.my_playoffs
+            mp = Leagues.filter(x => x.includes(gatim[4]))[0].split(' ')[5]
+            achs[i].scope = mp
         }
         if (Achievements.achies[i][0] == 'maxgoaldiff') {
-            ldb.achievements[i].scope = 'global'
+            achs[i].scope = 'global'
         }
-        ldb.achievements[i].definition = Achievements.achies[i][2]
+        achs[i].definition = Achievements.achies[i][2]
         let randlevel = Math.floor(Math.random() * 3 - 1)
         //console.log(randlevel)
-        ldb.achievements[i].level = Achievements.achies[i][1][ldb.rank + randlevel]
-        ldb.achievements[i].cond = Achievements.achies[i][3]
+        achs[i].level = Achievements.achies[i][1][rnk + randlevel]
+        achs[i].cond = Achievements.achies[i][3]
     }
-    //console.log(ldb.achievements)
+    if (tp == 'my') {    
+        ldb.achievements = achs
+    } else {
+        AchsTable.push(achs)      
+    }
 }
 
 function evaluate_achievements () {
@@ -1011,7 +1019,6 @@ function render_objectives (w) {
 }
 
 function get_winners() {
-    ldb.winners = []
     let gwwinners = ldb.winners[ldb.year]
     let gwlgs = GameTypes.filter(x => x.includes('lg|'))[0].split('|')[1].split(',')
     for (let i = 0;i < gwlgs.length;i++) {
@@ -1063,4 +1070,133 @@ function render_winners() {
         content.appendChild(rwtit)
         content.appendChild(rwtim)
     }
+}
+
+function get_manager_rank () {
+    ldb.newrank = ldb.rank + ldb.achievements.states.filter(x => x.includes('Passed')).length - 2
+    if (ldb.newrank < 1) {ldb.newrank = 1}
+    if (ldb.newrank > 6) {ldb.newrank = 6}
+}
+
+function render_manager_rank (d) {
+    get_manager_rank ()
+    let mrinfo = document.createElement('h2')
+    mrinfo.innerHTML = 'Your manager rank is now ' + ldb.newrank
+    mrinfo.style.marginTop = "5%"
+    document.getElementById(d).appendChild(mrinfo)
+}
+
+function render_specific_winner(t,d) {
+    let rstim = Teams.filter(x => x.includes(t))[0].split(' ')
+    let rswins = ldb.winners.filter(x => x.includes(rstim[0]))
+    let rstit = document.createElement('h2')
+    rstit.innerHTML = "Achievements"
+    rstit.style.marginTop = "2%"
+    document.getElementById(d).appendChild(rstit)
+    for (let i = 0; i < rswins.length; i++) {
+        let rsval = rswins[i].split('-')
+        let rsinfo = document.createElement('h3')
+        rsinfo.innerHTML = "Winner of " + rsval[1] + ' in ' + rsval[0]     
+        document.getElementById(d).appendChild(rsinfo)
+    }        
+}
+
+function generate_offers (r) {
+    let goachs = ldb.achievements.states.filter(x => x.includes('Passed')).length
+    let seekpat = ' ' + r + ' '
+    let teampick = Teams.filter(x => x.includes(seekpat)).sort(() => Math.random() - 0.5)
+    GOtms = []
+    let gocount
+    if (goachs > 1) {
+        GOtms.push(ldb.my_team)
+        gocount = 4
+    } else {
+        gocount = 5
+    }
+    for (let i = 0; i < gocount; i++) {
+        GOtms.push(teampick[i].split(' '))
+    }
+    console.log(GOtms)
+    for (let i = 0; i < GOtms.length; i++) {
+        generate_achievements(ldb.newrank,GOtms[i][0],GOtms[i][4],GOtms[i][5]) 
+    }
+}
+
+function render_offers (d) {
+    for (let i = 0; i < GOtms.length; i++) {
+        let robut = document.createElement('button')
+        robut.classList.add('robut')
+        robut.value = GOtms[i][0]
+        robut.onclick = () => {
+            start_new_season(robut.value, i)
+        }
+        document.getElementById(d).appendChild(robut)
+        let rotim = document.createElement('p')
+        rotim.innerHTML = GOtms[i][0]
+        rotim.classList.add('robutel')
+        rotim.style.backgroundColor = GOtms[i][6]
+        rotim.style.color = GOtms[i][7]
+        rotim.style.height = '15%'
+        rotim.style.width = '30%'
+        rotim.style.fontSize = '100%'
+        robut.appendChild(rotim)
+        let rolig = document.createElement('p')
+        rolig.innerHTML = GOtms[i][4]
+        rolig.style.width = '10%'
+        rolig.style.height = '15%'
+        rolig.style.fontSize = '100%'
+        robut.appendChild(rolig)
+        let rostatmax = Number(GOtms[i][1]) + Number(GOtms[i][2]) + Number(GOtms[i][3])
+        roatk = document.createElement('p')
+        roatk.innerHTML = 'Atk: ' + GOtms[i][1]
+        roatk.style.width = Number(GOtms[i][1]) / rostatmax * 60 + '%'
+        roatk.style.height = '15%'
+        roatk.style.fontSize = '100%'
+        roatk.classList.add('bg_bad')
+        robut.appendChild(roatk)
+        romid = document.createElement('p')
+        romid.innerHTML = 'Mid: ' + GOtms[i][2]
+        romid.style.width = Number(GOtms[i][2]) / rostatmax * 60 + '%'
+        romid.style.height = '15%'
+        romid.style.fontSize = '100%'
+        romid.classList.add('bg_good')
+        robut.appendChild(romid)
+        rodef = document.createElement('p')
+        rodef.innerHTML = 'Def: ' + GOtms[i][3]
+        rodef.style.width = Number(GOtms[i][3]) / rostatmax * 60 + '%'
+        rodef.style.height = '15%'
+        rodef.style.fontSize = '100%'
+        rodef.classList.add('bg_neutral')
+        robut.appendChild(rodef)
+        for (let h = 0; h < AchsTable[i].length; h++) {
+            let roach = document.createElement('p')
+            let rosource = AchsTable[i][h]
+            roach.innerHTML = rosource['definition'] + ' ' + rosource['level'] + " (" + rosource['scope'] + ')'
+            roach.style.width = '100%'
+            roach.style.height = '10%'
+            robut.appendChild(roach)
+        }
+    }
+}
+
+function start_new_season (t, snsa) {
+        ldb.achievements = AchsTable[snsa]
+        document.getElementById('new_season').style.display = 'none'
+        ldb.rank = ldb.newrank
+        document.getElementById('matchbox').style.display = 'none'
+        assign_team(t);
+        populate_tactics ()
+        generate_season ()
+        document.getElementById('settings').style.display = "none"
+        ldb.Results = []
+        ldb.Tables = []
+        ldb.fxt = 0
+        ldb.year++
+        document.getElementById('loginbox').style.display = 'none'
+        document.getElementById('menubox').style.display = 'block'
+        document.getElementById('infofield').style.display = 'block'
+        document.getElementById('databox').style.display = 'block'
+        document.getElementById('dataright').innerHTML = ''
+        document.getElementById('ns_content').innerHTML = ''
+        document.getElementById('runfixture').style.display = 'block'
 }

@@ -463,3 +463,23 @@ button {
 #dataright h2 {
     margin:0;
 }
+
+.robut {
+    width: 100%;
+    height: 20%;
+    border-color: var(--blue);
+    background-color: black;
+    color: white;
+    text-align: left;
+    float:left;
+}
+.robut:hover {
+    border-color: var(--red);
+}
+.robut:active {
+    border-color: var(--red);
+}
+.robutel {
+    height: 60%;
+    margin: 0;
+}

@@ -77,11 +77,12 @@ function ngdo () {
         ldb.fxt = 0
         ldb.year = 2022
         ldb.manager = m
+        ldb.winners = []
         document.getElementById('loginbox').style.display = 'none'
         document.getElementById('menubox').style.display = 'block'
         document.getElementById('infofield').style.display = 'block'
         document.getElementById('databox').style.display = 'block'
-        generate_achievements ()
+        generate_achievements (r,ldb.my_team[0],ldb.my_league,ldb.my_playoffs,'my')
     }
 }
 //New Game button
