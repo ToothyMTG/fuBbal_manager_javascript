@@ -168,3 +168,30 @@ NSoffers.addEventListener('click', function (e) {
     }
 })
 
+
+//Save game button
+let ELsavegame = document.getElementById('save')
+window.addEventListener('keydown', function (e) {
+    if ((e.key === "c") && (ELrfix.style.display !== "none")) {
+        save_game ()
+    }
+})
+ELsavegame.addEventListener('click', function (e) {
+    if (ELrfix.style.display !== "none") {
+        save_game ()
+    }
+})
+//Save and exit button
+let ELsaveexit = document.getElementById('save_exit')
+window.addEventListener('keydown', function (e) {
+    if ((e.key === "x") && (ELrfix.style.display !== "none")) {
+        save_game ()
+        window.close()
+    }
+})
+ELsaveexit.addEventListener('click', function (e) {
+    if (ELrfix.style.display !== "none") {
+        save_game ()
+        window.close()
+    }
+})

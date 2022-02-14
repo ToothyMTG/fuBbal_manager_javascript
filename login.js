@@ -102,7 +102,54 @@ function lgdo () {
     ngsel.style.display = 'none'
     loadgame.style.display = 'none'
     lgsel.style.display = 'block'
+    lgsel.innerHTML = ''
+    let ldsel = document.createElement('select')
+    ldsel.style.width = '80%'
+    ldsel.style.marginLeft = '10%'
+    ldsel.style.marginTop = '5%'
+    ldsaves = JSON.parse(localStorage.SAVES)
+    let blank = document.createElement('option')
+    blank.style.display = "none"
+    ldsel.appendChild(blank)
+    for (let i = 0; i < ldsaves.length; i++) {
+        let ldopt = document.createElement('option')
+        ldopt.innerHTML = ldsaves[i]
+        ldopt.value = ldsaves[i]
+        ldsel.appendChild(ldopt)
+    }
+    lgsel.appendChild(ldsel)
+    ldsel.onchange = () => {
+        let oper = ldsel.value
+        let tempdet = JSON.parse(localStorage[oper])
+        console.log(tempdet)
+        let ldtim = document.createElement('h3')
+        ldtim.innerHTML = tempdet.my_team[0]
+        ldtim.style.backgroundColor = tempdet.my_team[6]
+        ldtim.style.color = tempdet.my_team[7]
+        ldtim.style.textAlign = 'center'
+        ldtim.style.width = '80%'
+        ldtim.style.marginLeft = '10%'
+        lgsel.appendChild(ldtim)
+        let ldfix = document.createElement('h4')
+        ldfix.innerHTML = 'Fixture ' + tempdet.fxt
+        ldfix.style.textAlign = 'center'
+        lgsel.appendChild(ldfix)
+        let ldyr = document.createElement('h4')
+        ldyr.innerHTML = 'Year ' + tempdet.year
+        ldyr.style.textAlign = 'center'
+        lgsel.appendChild(ldyr)
+        let ldbut = document.createElement('button')
+        ldbut.innerHTML = 'Load Game'
+        ldbut.value = ldsel.value
+        ldbut.classList.add('loadbut')
+        ldbut.onclick = () => {
+            load_game(ldbut.value)
+        }
+        lgsel.appendChild(ldbut)
+    }
+    ldsel.focus()
 }
+
 //Load Game button
 window.addEventListener('keydown', function (e) {
     if ((e.key === "l") && (loadgame.style.display !== "none")) {
@@ -114,3 +161,22 @@ loadgame.addEventListener('click', function (e) {
         lgdo ()
     }
 })
+
+function load_game (s) {
+    console.log(s)
+    ldb = JSON.parse(localStorage[s])
+    document.getElementById('matchbox').style.display = 'none'
+    populate_tactics ()
+    document.getElementById('settings').style.display = "none"
+    document.getElementById('loginbox').style.display = 'none'
+    document.getElementById('menubox').style.display = 'block'
+    document.getElementById('infofield').style.display = 'block'
+    document.getElementById('databox').style.display = 'block'
+    let teamname = document.getElementById('teamname')
+    teamname.innerHTML = ldb.my_team[0]
+    teamname.style.backgroundColor = ldb.my_team[6]
+    teamname.style.color = ldb.my_team[7]
+    document.getElementById('pbox1').innerHTML = "Atk<br>" + ldb.my_team[1]
+    document.getElementById('pbox2').innerHTML = "Mid<br>" + ldb.my_team[2]
+    document.getElementById('pbox3').innerHTML = "Def<br>" + ldb.my_team[3]
+}

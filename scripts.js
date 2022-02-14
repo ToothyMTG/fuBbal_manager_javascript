@@ -1200,3 +1200,21 @@ function start_new_season (t, snsa) {
         document.getElementById('ns_content').innerHTML = ''
         document.getElementById('runfixture').style.display = 'block'
 }
+
+function save_game () {
+    localStorage[ldb.manager] = JSON.stringify(ldb)
+    if (localStorage.SAVES === undefined) {
+        let SAVES = []
+        SAVES.push(ldb.manager)
+        localStorage.SAVES = JSON.stringify(SAVES)
+    } else {
+        let SAVES = JSON.parse(localStorage.SAVES)
+        let sgnum = SAVES.indexOf(ldb.manager)
+        if (sgnum < 0) {
+            SAVES.push(ldb.manager)
+        } else {
+            SAVES[sgnum] = ldb.manager
+        }
+        localStorage.SAVES = JSON.stringify(SAVES)
+    }
+}

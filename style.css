@@ -483,3 +483,14 @@ button {
     height: 60%;
     margin: 0;
 }
+.loadbut {
+    width: 50%;
+    margin-left: 25%;
+    height: 10%;
+}
+.loadbut:hover {
+    background-color: var(--blue);
+}
+.loadbut:active {
+    background-color: var(--red);
+}
