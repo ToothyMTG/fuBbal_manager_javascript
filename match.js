@@ -55,7 +55,7 @@ function match_runner() {
         result = t_1 + "-" + g_1 + '-' + t_2 + '-' + g_2 + '-' + cnt
         ldb.Results.push(result)
         let p = document.createElement('p')
-        p.innerHTML = team1[0] + " : " + g_1 + " - " + g_2 + " : " + team2[0] + " (" + cnt + ")"
+        p.innerHTML = team1[0] + " : " + g_1 + " - " + g_2 + " : " + team2[0] + " (" + fn[cnt] + ")"
         p.classList.add('good')
         document.getElementById('dataleft').appendChild(p)
         if (md == "po") {

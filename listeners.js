@@ -186,12 +186,12 @@ let ELsaveexit = document.getElementById('save_exit')
 window.addEventListener('keydown', function (e) {
     if ((e.key === "x") && (ELrfix.style.display !== "none")) {
         save_game ()
-        window.close()
+        exit_to_main ()
     }
 })
 ELsaveexit.addEventListener('click', function (e) {
     if (ELrfix.style.display !== "none") {
         save_game ()
-        window.close()
+        exit_to_main ()
     }
 })

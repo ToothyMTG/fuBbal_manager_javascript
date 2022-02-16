@@ -15,6 +15,10 @@ function ngdo () {
     managername.classList.add('boxlogin')
     managername.placeholder = "Please enter your name"
     managername.style.marginTop = "8%"
+    managername.id = 'ngdomag'
+    managername.onkeydown = () => {
+        event.stopPropagation()
+    }
     //--
     ldb.rank = 2
     let rankinfo = document.createElement('p')
@@ -27,6 +31,7 @@ function ngdo () {
     teamlist.style.float = 'left'
     teamlist.id = 'teamlist'
     teamlist.style.overflow = 'auto'
+    teamlist.style.marginTop = '10%'
     teamlist.style.textAlign = 'center'
     let seekpat = ' ' + ldb.rank + ' '
     let teampick = Teams.filter(x => x.includes(seekpat)).sort(() => Math.random() - 0.5)
@@ -58,12 +63,20 @@ function ngdo () {
     startgame.style.marginTop = "8%"
     //
     ngsel.innerHTML = ''
+    ngsel.appendChild(teamlist)
     ngsel.appendChild(managername)
     ngsel.appendChild(rankinfo)
-    ngsel.appendChild(teamlist)
     ngsel.appendChild(startgame)
     //
     startgame.onclick = (m,t,r) => {
+        if (managername.value == '') {
+            managername.placeholder = 'Name cannot be empty'
+            return
+        }
+        if (teamlist.value == '') {
+            teamlist.focus()
+            return
+        }
         m = managername.value
         t = teamlist.value
         r = ldb.rank
@@ -82,13 +95,20 @@ function ngdo () {
         document.getElementById('menubox').style.display = 'block'
         document.getElementById('infofield').style.display = 'block'
         document.getElementById('databox').style.display = 'block'
+        document.getElementById('dataright').innerHTML = ''
+        document.getElementById('dataleft').innerHTML = ''
+        document.getElementById('datatop').innerHTML = ''
+        document.getElementById('runfixture').style.display = 'block'
         generate_achievements (r,ldb.my_team[0],ldb.my_league,ldb.my_playoffs,'my')
+        document.getElementById('season').innerHTML = "Year " + ldb.year + " | Fixture " + (ldb.fxt)
+        document.getElementById('manager').innerHTML = ldb.manager
     }
 }
 //New Game button
 window.addEventListener('keydown', function (e) {
     if ((e.key === "n") && (newgame.style.display !== "none")) {
         ngdo ()
+        this.document.getElementById('teamlist').focus()
     }
 })
 newgame.addEventListener('click', function (e) {
@@ -119,9 +139,12 @@ function lgdo () {
     }
     lgsel.appendChild(ldsel)
     ldsel.onchange = () => {
+        lgsel.innerHTML = ''
+        lgsel.appendChild(ldsel)
+        ldsel.focus()
         let oper = ldsel.value
         let tempdet = JSON.parse(localStorage[oper])
-        console.log(tempdet)
+        //console.log(tempdet)
         let ldtim = document.createElement('h3')
         ldtim.innerHTML = tempdet.my_team[0]
         ldtim.style.backgroundColor = tempdet.my_team[6]
@@ -163,7 +186,7 @@ loadgame.addEventListener('click', function (e) {
 })
 
 function load_game (s) {
-    console.log(s)
+    //console.log(s)
     ldb = JSON.parse(localStorage[s])
     document.getElementById('matchbox').style.display = 'none'
     populate_tactics ()
@@ -172,6 +195,12 @@ function load_game (s) {
     document.getElementById('menubox').style.display = 'block'
     document.getElementById('infofield').style.display = 'block'
     document.getElementById('databox').style.display = 'block'
+    document.getElementById('dataright').innerHTML = ''
+    document.getElementById('dataleft').innerHTML = ''
+    document.getElementById('datatop').innerHTML = ''
+    document.getElementById('runfixture').style.display = 'block'
+    document.getElementById('new_season').style.display = 'none'
+    document.getElementById('manager').innerHTML = ldb.manager
     let teamname = document.getElementById('teamname')
     teamname.innerHTML = ldb.my_team[0]
     teamname.style.backgroundColor = ldb.my_team[6]
@@ -179,4 +208,5 @@ function load_game (s) {
     document.getElementById('pbox1').innerHTML = "Atk<br>" + ldb.my_team[1]
     document.getElementById('pbox2').innerHTML = "Mid<br>" + ldb.my_team[2]
     document.getElementById('pbox3').innerHTML = "Def<br>" + ldb.my_team[3]
+    document.getElementById('season').innerHTML = "Year " + ldb.year + " | Fixture " + (ldb.fxt)
 }

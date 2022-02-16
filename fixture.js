@@ -22,6 +22,7 @@ function fixture(t, n) {
     fixt_pat = fixt_pat.split(',')
     //console.log(fixt_pat)
     if (t == 'NS') {
+        cnt = 'null'
         document.getElementById('new_season').style.display = 'block'
         document.getElementById('menubox').style.display = 'none'
         document.getElementById('infofield').style.display = 'none'
@@ -37,6 +38,7 @@ function fixture(t, n) {
         generate_offers(ldb.newrank)
     }
     if (t == 'draw3') {
+        cnt = 'null'
         draw_playoffs(lgs[0])
         let lg = ldb.teams_ordered[46][0]
         let tms = ldb.teams_ordered[46][1]
@@ -59,6 +61,7 @@ function fixture(t, n) {
         
     }
     if (t == 'draw2') {
+        cnt = 'null'
         for (let i = 0; i < lgs.length; i++) {
             draw_playoffs(lgs[i])
         }
@@ -84,6 +87,7 @@ function fixture(t, n) {
         }
     }
     if (t == "draw1") {
+        cnt = 'null'
         for (let i = 0; i < lgs.length; i++) {
             draw_tournament(lgs[i])
             }
@@ -108,6 +112,7 @@ function fixture(t, n) {
         }
     }
     if ((t == "club") || (t == 'TOURpo') || (t == 'FINALpo') || (t == 'WCpo') || (t =='WCFINAL')) {
+        cnt = 'null'
         for (let dd = 0; dd < lgs.length; dd++) {
             let tt = lgs[dd]
             ponum = POLOC[tt]
@@ -137,7 +142,7 @@ function fixture(t, n) {
                 //console.log(tmm1, tmm2)
                 simulate_match(tmm1,tmm2)
                 let p = document.createElement('p')
-                p.innerHTML = tmm1 + " : " + g_1 + " - " + g_2 + " : " + tmm2 + " (" + tt + ")"
+                p.innerHTML = tmm1 + " : " + g_1 + " - " + g_2 + " : " + tmm2 + " (" + fn[tt] + ")"
                 document.getElementById('dataleft').appendChild(p)
                 let result = t_1 + "-" + g_1 + '-' + t_2 + '-' + g_2 + '-' + tt
                 ldb.Results.push(result)
@@ -176,7 +181,7 @@ function fixture(t, n) {
                 //console.log(tmm1, tmm2)
                 simulate_match(tmm1,tmm2)
                 let p = document.createElement('p')
-                p.innerHTML = tmm1 + " : " + g_1 + " - " + g_2 + " : " + tmm2 + " (" + container[0] + ")"
+                p.innerHTML = tmm1 + " : " + g_1 + " - " + g_2 + " : " + tmm2 + " (" + fn[container[0]] + ")"
                 document.getElementById('dataleft').appendChild(p)
                 let result = t_1 + "-" + g_1 + '-' + t_2 + '-' + g_2 + '-' + container[0]
                 if (g_1 > g_2) {

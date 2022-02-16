@@ -36,6 +36,8 @@ function set_matchbox (t1, t2) {
     document.getElementById('fieldright').style.backgroundColor = color2
     document.getElementById('start_match').style.display = 'block'
     document.getElementById('tactic_selection').style.display = 'block'
+    document.getElementById('posbox').style.display = 'none'
+    document.getElementById('chanbox').style.display = 'none'
 }
 
 function assign_team (a) {
@@ -53,6 +55,7 @@ document.getElementById('pbox3').innerHTML = "Def<br>" + ldb.my_team[3]
 }
 
 function populate_tactics () {
+    document.getElementById('tactic_selection').innerHTML = ''
     for (let i = 0; i < Tactics.length; i++) {
         let option = document.createElement('option')
         option.innerHTML = Tactics[i][0] + '-' + Tactics[i][1] + '-' + Tactics[i][2]
@@ -103,6 +106,8 @@ function start_match () {
     goals1 = 0
     goals2 = 0
     pen_mode = 0
+    document.getElementById('posbox').style.display = 'block'
+    document.getElementById('chanbox').style.display = 'block'
 }
 
 function generate_season () {
@@ -195,7 +200,7 @@ function run_fixture () {
     document.getElementById('matchbox').style.display = "none"
     let fxt_var = Schedule[ldb.fxt].split(' ')
     fixture(fxt_var[0],fxt_var[1])
-    document.getElementById('season').innerHTML = "Season 1 (" + ldb.year + ") | Fixture " + (ldb.fxt + 1) + " | " + fxt_var[0] + ' - ' + fxt_var[1] 
+    document.getElementById('season').innerHTML = "Year " + ldb.year + " | Fixture " + (ldb.fxt + 1) + " | " + fxt_var[0] + ' - ' + fxt_var[1] 
     //console.log(fxt_var)
     ldb.fxt++
 }
@@ -284,7 +289,7 @@ function make_table (t) {
         let team = document.createElement(["p"])
         team.innerHTML = sortedtable[i][1]
         team.style.backgroundColor = sortedtable[i][2]
-        team.style.width = "40%"
+        team.style.width = "60%"
         team.style.color = sortedtable[i][3]
         team.style.float = "left"
         team.style.margin = '0'
@@ -307,7 +312,7 @@ function make_results (r) {
         let goals2 = data[3]
         let league = data[4]
         let p = document.createElement('p')
-        p.innerHTML = team1 + " : " + goals1 + " - " + goals2 + " : " + team2 + " (" + league + ")"
+        p.innerHTML = team1 + " : " + goals1 + " - " + goals2 + " : " + team2 + " (" + fn[league] + ")"
         if ((team1 == ldb.my_team[0]) || (team2 == ldb.my_team[0])) {
             p.classList.add('good')
         }
@@ -341,7 +346,7 @@ function res_list () {
     opts.push('ee')
     for (let i = 0; i < GameTypes.length; i++) {
         let typeo = GameTypes[i].split('|')[0].split(',')[0]
-        if ((typeo == 'TOURpo') || (typeo == 'WCFINAL') || (typeo == 'draw1') || (typeo == 'draw2') || (typeo == 'draw3')) {
+        if ((typeo == 'TOURpo') || (typeo == 'WCFINAL') || (typeo == 'draw1') || (typeo == 'draw2') || (typeo == 'draw3') || (typeo =='NS'))  {
             continue
         }
         let type = GameTypes[i].split('|')[1].split(',')
@@ -357,7 +362,7 @@ function res_list () {
     let types = opts
     for (let i = 0; i < types.length; i++) {
         let option = document.createElement('option')
-        option.innerHTML = types[i]
+        option.innerHTML = fn[types[i]]
         option.value = types[i]
         sel.appendChild(option)
     }
@@ -404,7 +409,7 @@ function gather_team_info (t) {
         //console.log(team1[0],golas1,team2[0],golas2,gmtype,colorclass)
         let p = document.createElement('p')
         p.classList.add(colorclass)
-        p.innerHTML = team1[0] + " : " + golas1 + " - " + golas2 + " : " + team2[0] + " (" + gmtype + ")"
+        p.innerHTML = team1[0] + " : " + golas1 + " - " + golas2 + " : " + team2[0] + " (" + fn[gmtype] + ")"
         dataleft.appendChild(p)
     }
     dataleft.scrollTop = dataleft.scrollHeight
@@ -439,7 +444,7 @@ function gather_team_info (t) {
         let count = teampoints.filter(x => x.includes(uniq[i])).length
         //console.log(count)
         let p = document.createElement('p')
-        p.innerHTML = count + " points in " + uniq[i].split('-')[1]
+        p.innerHTML = count + " points in " + fn[uniq[i].split('-')[1]]
         dataright.appendChild(p)
     }
     if (t == ldb.my_team[0]) {
@@ -489,6 +494,8 @@ function showteam() {
         for (let i = 0; i < things.length; i++) {
             let option = document.createElement('option')
             option.innerHTML = things[i].split(' ')[0]
+            option.style.backgroundColor = things[i].split(' ')[6]
+            option.style.color = things[i].split(' ')[7]
             option.value = option.innerHTML
             seek2.appendChild(option)
             seek2.focus()
@@ -517,7 +524,7 @@ function team_info (t) {
     let the_powtot = the_atk + the_def + the_mid
     let div = document.getElementById('dataright')
     let p_atk = document.createElement('p')
-    p_atk.innerHTML = "Atk: " + the_atk
+    p_atk.innerHTML = "A: " + the_atk
     p_atk.classList.add('bg_bad')
     p_atk.style.float = 'left'
     p_atk.id = 'patk'
@@ -525,7 +532,7 @@ function team_info (t) {
     p_atk.style.textAlign = 'center'
     div.appendChild(p_atk) 
     let p_mid = document.createElement('p')
-    p_mid.innerHTML = "Mid: " + the_mid
+    p_mid.innerHTML = "M: " + the_mid
     p_mid.classList.add('bg_good')
     p_mid.style.float = 'left'
     p_mid.id = 'pmid'
@@ -533,7 +540,7 @@ function team_info (t) {
     p_mid.style.textAlign = 'center'
     div.appendChild(p_mid) 
     let p_def = document.createElement('p')
-    p_def.innerHTML = "Def: " + the_def
+    p_def.innerHTML = "D: " + the_def
     p_def.classList.add('bg_neutral')
     p_def.style.float = 'left'
     p_def.id = 'pdef'
@@ -1096,7 +1103,7 @@ function render_specific_winner(t,d) {
     for (let i = 0; i < rswins.length; i++) {
         let rsval = rswins[i].split('-')
         let rsinfo = document.createElement('h3')
-        rsinfo.innerHTML = "Winner of " + rsval[1] + ' in ' + rsval[0]     
+        rsinfo.innerHTML = "Winner of " + fn[rsval[1]] + ' in ' + rsval[0]     
         document.getElementById(d).appendChild(rsinfo)
     }        
 }
@@ -1116,7 +1123,7 @@ function generate_offers (r) {
     for (let i = 0; i < gocount; i++) {
         GOtms.push(teampick[i].split(' '))
     }
-    console.log(GOtms)
+    //console.log(GOtms)
     for (let i = 0; i < GOtms.length; i++) {
         generate_achievements(ldb.newrank,GOtms[i][0],GOtms[i][4],GOtms[i][5]) 
     }
@@ -1217,4 +1224,19 @@ function save_game () {
         }
         localStorage.SAVES = JSON.stringify(SAVES)
     }
+}
+
+function exit_to_main () {
+    document.getElementById('loginbox').style.display = 'block'
+    document.getElementById('menubox').style.display = 'none'
+    document.getElementById('infofield').style.display = 'none'
+    document.getElementById('databox').style.display = 'none'
+    document.getElementById('new_season').style.display = 'none'
+    document.getElementById('runfixture').style.display = 'none'
+    document.getElementById('loadgame').style.display = 'block'
+    document.getElementById('newgame').style.display = 'block'
+    document.getElementById('ngsel').style.display = 'none'
+    document.getElementById('lgsel').style.display = 'none'
+    document.getElementById('matchbox').style.display = 'none'
+
 }

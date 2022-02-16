@@ -14,6 +14,10 @@
 - [x] New Season
 - [x] Save/load module
 - [x] Load Game button
+- [x] Save and Exit to bring back login screen
+- [x] Friendly Names
+- [ ] Exit Game to close window
+- [ ] Hotkeys cheat sheet
 - [ ] Settings
 
 ### Known bugs

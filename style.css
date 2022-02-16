@@ -144,11 +144,13 @@ button {
     overflow:auto;
     margin: 0;
     line-height: 50%;
+    width: 60%;
 }
 
 #dataright {
     background-color: grey;
     overflow:auto;
+    width: 40%;
 }
 
 
@@ -227,14 +229,15 @@ button {
     display:none;
 }
 #dataleft{
-    width: 50%;
+    width: 60%;
     float:left;
     height:100%;
     background-color:black;
+    text-align: center;
 }
 
 #dataright{
-    width: 50%;
+    width: 40%;
     float:left;
     height:100%;
     background-color: black;
@@ -376,11 +379,19 @@ button {
 }
 
 .seek {
-    width: 50%;
     height: 60%;
     float:left;
     text-align: center;
     font-size: 150%;
+}
+#seek1 {
+    width: 60%;
+}
+#seek2 {
+    width: 40%;
+}
+.seek option {
+    text-align: center;
 }
 
 /* New Season */
