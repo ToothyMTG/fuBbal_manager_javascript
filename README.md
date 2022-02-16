@@ -33,7 +33,7 @@
 - [x] 0.5 New Season can be started
 - [x] 0.6 Game is playable in loop
 - [x] 0.7 Game state can be saved and loaded
-- [ ] 0.8 Game is optimised for keyboard/mouse
+- [x] 0.8 Game is optimised for keyboard/mouse
 - [ ] 0.9 Game look is in final shape
 - [ ] 1.0 Leftovers are removed and game can be published.
 
