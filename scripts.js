@@ -249,7 +249,7 @@ function make_table (t) {
             p.style.textAlign = 'center'
             p.style.width = "100%"
             p.style.float = "left"
-            p.style.height = "6%"
+            p.style.height = "5%"
             p.style.margin = "0"
             p.style.fontSize = '80%'
             if ((tm1o == ldb.my_team[0]) || (tm2o == ldb.my_team[0])) {
@@ -264,6 +264,7 @@ function make_table (t) {
     for (let i = 0; i < sortedtable.length; i++) {
         let p = document.createElement('div')
         p.style.height = "6%"
+        p.style.fontSize = '80%'
         p.style.width = "100%"
         p.style.float = "left"
         let pos = document.createElement('p')
@@ -841,7 +842,7 @@ function render_finaldata () {
     for (let i = 0; i < MyTeamStats.lgs.length; i++) {
         let name = MyTeamStats.lgs[i]
         let h_title = document.createElement('h2')
-        h_title.innerHTML = name
+        h_title.innerHTML = fn[name]
         r_div.appendChild(h_title)       
         //
         let n_games = document.createElement('h3')
@@ -974,9 +975,10 @@ function render_objectives (w) {
     r_div.appendChild(r_head)
     for (let i = 0; i < ldb.achievements.length; i++) {
         let r_tit = document.createElement('h3')
-        r_tit.innerHTML = ldb.achievements[i].definition + ldb.achievements[i].level + ' (' + ldb.achievements[i].scope + ')'
+        r_tit.innerHTML = ldb.achievements[i].definition + ldb.achievements[i].level + ' (' + fn[ldb.achievements[i].scope] + ')'
         r_div.appendChild(r_tit)
         let r_val = document.createElement('div')
+        r_val.style.fontSize = '80%'
         let size = ldb.achievements[i].value / ldb.achievements[i].level * 100
         if (isNaN(size)) {
             size = 0

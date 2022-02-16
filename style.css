@@ -169,6 +169,7 @@ button {
     float:left;
     margin:0;
     line-height: 200%;
+    text-align: center;
 }
 
 #teamname:hover {
@@ -464,15 +465,17 @@ button {
 }
 #dataright h3 {
     margin: 0;
-    font-size: 80%;;
+    font-size: 70%;;
     text-align: center;
     line-height: 200%;
 }
 #dataright p {
+    font-size: 90%;
     margin: 0;
 }
 #dataright h2 {
     margin:0;
+    font-size: 100%;
 }
 
 .robut {
