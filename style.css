@@ -22,13 +22,15 @@ body {
 }
 .gametitle:hover {color: var(--red);}
 
-#mainframe {
-    background-color:black;
-    width: 50vw;
-    height: 45vw;
-    left: 25vw; 
-    position: relative;
-    font-size: 1vw;
+@media (min-width: 1000px) {
+    #mainframe {
+        background-color:black;
+        width: 50vw;
+        height: 45vw;
+        left: 25vw; 
+        position: relative;
+        font-size: 1vw;
+    }
 }
 
 @media (max-width: 1000px) {
@@ -492,6 +494,7 @@ button {
 }
 .robut:active {
     border-color: var(--red);
+    background-color: gray;
 }
 .robutel {
     height: 60%;

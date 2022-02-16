@@ -338,6 +338,7 @@ function res_list () {
     document.getElementById('databox').style.height = "75%"
     let sel = document.createElement('select')
     sel.style.width = "50%"
+    sel.style.marginLeft = '25%'
     sel.style.height = "60%"
     sel.style.textAlign = "center"
     sel.style.fontSize = "150%"
