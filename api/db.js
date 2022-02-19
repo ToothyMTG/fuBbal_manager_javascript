@@ -400,4 +400,17 @@ fn = {
     'WORLD_CUP7':'WC Group 7',    
     'WORLD_CUP8':'WC Group 8',    
     'global':'global',    
+    'lg':'League',
+    'euroelim':'Euro Eliminations',
+    'wcelim':'World Cup Eliminations',
+    'TOUR':'Tournament',
+    'TOURpo':'Tournament Play-Offs',
+    'FINALpo':'Tournament Finals',
+    'WC':'World Cup',
+    'WCpo':'World Cup Play-Offs',
+    'WCFINAL':'World Cup Final',
+    'draw1':'Tournament Groups Draw',
+    'draw2':'Tournament Play-Offs Draw',
+    'draw3':'World Cup Play-Offs Draw',
+    'NS':'New Season'
 }

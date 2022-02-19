@@ -200,7 +200,7 @@ function run_fixture () {
     document.getElementById('matchbox').style.display = "none"
     let fxt_var = Schedule[ldb.fxt].split(' ')
     fixture(fxt_var[0],fxt_var[1])
-    document.getElementById('season').innerHTML = "Year " + ldb.year + " | Fixture " + (ldb.fxt + 1) + " | " + fxt_var[0] + ' - ' + fxt_var[1] 
+    document.getElementById('season').innerHTML = "Year " + ldb.year + " | Fixture " + (ldb.fxt + 1) + " | " + fn[fxt_var[0]] + ' - ' + fxt_var[1] 
     //console.log(fxt_var)
     ldb.fxt++
 }
