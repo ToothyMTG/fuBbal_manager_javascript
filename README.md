@@ -18,6 +18,7 @@
 - [x] Friendly Names
 - [x] Save Game button to show prompt
 - [ ] Credits
+- [ ] Collect Manager History
 - [ ] Manager History button
 - [ ] Exit Game to close window
 - [ ] Hotkeys cheat sheet
@@ -29,6 +30,7 @@
 - [x] Team results display incorrectly
 - [x] Doubled offers of the same team
 - [x] Unexpected game saving while trying to Exit Game from main screen
+- [ ] Defeat Rate objective works incorrectly
 
 ## Milestones
 - [x] 0.1 Fixtures window is designed

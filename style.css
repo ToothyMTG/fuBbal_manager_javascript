@@ -10,6 +10,7 @@ body {
     padding: none;
     background-color: black;
     font-family:monospace;
+    font-weight:bolder;
 }
 
 .gametitle {
