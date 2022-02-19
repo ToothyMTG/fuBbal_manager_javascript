@@ -1266,3 +1266,26 @@ function credits () {
     document.getElementById('mainframe').appendChild(credits)
 
 }
+
+function hotkeys () {
+    let hdiv = document.createElement('div')
+    hdiv.classList.add('hotkeys')
+    hdiv.id = 'hot-keys'
+    document.getElementById('mainframe').appendChild(hdiv)
+    let closebut = document.createElement('button')
+    closebut.classList.add('closebutton')
+    closebut.innerHTML = 'X'
+    closebut.onclick = () => {
+        hdiv.remove()
+    }
+    hdiv.appendChild(closebut)
+    var keytit = document.createElement('h2')
+    keytit.innerHTML = 'Hotkeys'
+    hdiv.appendChild(keytit)
+    for (let i = 0; i < HotKeys.length; i++) {
+        var key = HotKeys[i].split('-')
+        var keylist = document.createElement('p')
+        keylist.innerHTML = key[0] + ' - ' + key[1]
+        hdiv.appendChild(keylist)
+    }
+}

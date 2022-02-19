@@ -533,3 +533,32 @@ button {
     left: 20%;
     text-align: center;
 }
+
+.hotkeys {
+    background-color:gray;
+    width: 79%;
+    height: 79%;
+    border-width: 1%;
+    border-style: solid;
+    position: absolute;
+    top: 10%;
+    left: 10%;
+    color: white;
+    text-align: center;
+}
+
+.closebutton {
+    width: 5%;
+    position:absolute;
+    left: 95%;
+    height: 5%;
+    background-color: transparent;
+    border: 0;
+    font-size: 150%;
+    font-weight: bold;
+    text-align: center;
+    color: white;
+}
+.closebutton:hover {
+    color: var(--red)
+}

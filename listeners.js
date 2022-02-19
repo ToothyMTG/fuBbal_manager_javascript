@@ -195,3 +195,22 @@ ELsaveexit.addEventListener('click', function (e) {
         exit_to_main ()
     }
 })
+//Call Hotkeys
+let ELhotkeys = document.getElementById('hot-keys')
+window.addEventListener('keydown', function (e) {
+    if ((e.key === "?") && (document.getElementById('menubox').style.display !== "none")) {
+        hotkeys ()
+    }
+})
+/*ELsavegame.addEventListener('click', function (e) {
+    if (ELrfix.style.display !== "none") {
+        save_game ()
+    }
+    
+})*/
+//Close hotkeys
+window.addEventListener('keydown', function (e) {
+    if ((e.key === "Escape") && (document.getElementById('hot-keys').style.display !== "none")) {
+        document.getElementById('hot-keys').remove()
+    }
+})

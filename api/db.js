@@ -414,3 +414,20 @@ fn = {
     'draw3':'World Cup Play-Offs Draw',
     'NS':'New Season'
 }
+
+HotKeys = [
+'R-Run Fixture',
+'1-My Stats',
+'2-My League',
+'3-Results',
+'4-Team Info',
+'C-Save',
+'X-Save and Exit',
+'Q-Focus on left info box',
+'W-Focus on right info box',
+'Z-Focus on selection button',
+'M-Tactic selection',
+'P-Match proceeding',
+'S-Match start',
+'Esc-Close this window'
+]
