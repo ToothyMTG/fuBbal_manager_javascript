@@ -1,6 +1,6 @@
 Teams = [
 "Germany 5 6 5 eur n01 white black",
-"France 6 6 5 eur n02 blue white",
+"France 6 5 5 eur n02 blue white",
 "Spain 5 6 5 eur n03 red yellow",
 "Belgium 5 5 5 eur n04 black red",
 "Italy 5 5 6 eur n05 blue white",

@@ -210,3 +210,16 @@ function load_game (s) {
     document.getElementById('pbox3').innerHTML = "Def<br>" + ldb.my_team[3]
     document.getElementById('season').innerHTML = "Year " + ldb.year + " | Fixture " + (ldb.fxt)
 }
+
+//Exit Game button
+window.addEventListener('keydown', function (e) {
+    if ((e.key === "x") && (exitgame.style.display !== "none")) {
+        window.close()
+        console.log('pressed')
+    }
+})
+exitgame.addEventListener('click', function (e) {
+    if (loadgame.style.display !== "none") {
+        window.close()
+    }
+})

@@ -16,6 +16,9 @@
 - [x] Load Game button
 - [x] Save and Exit to bring back login screen
 - [x] Friendly Names
+- [x] Save Game button to show prompt
+- [ ] Credits
+- [ ] Manager History button
 - [ ] Exit Game to close window
 - [ ] Hotkeys cheat sheet
 - [ ] Settings
@@ -24,6 +27,8 @@
 - [x] Frame doesn't show properly when in wide screen mode
 - [x] Doubled entries in Results
 - [x] Team results display incorrectly
+- [x] Doubled offers of the same team
+- [x] Unexpected game saving while trying to Exit Game from main screen
 
 ## Milestones
 - [x] 0.1 Fixtures window is designed

@@ -1124,6 +1124,9 @@ function generate_offers (r) {
         gocount = 5
     }
     for (let i = 0; i < gocount; i++) {
+        if (teampick[i].split(' ')[0] == ldb.my_team[0]) {
+            continue
+        }
         GOtms.push(teampick[i].split(' '))
     }
     //console.log(GOtms)
@@ -1227,6 +1230,7 @@ function save_game () {
         }
         localStorage.SAVES = JSON.stringify(SAVES)
     }
+    save_game_prompt ()
 }
 
 function exit_to_main () {
@@ -1241,5 +1245,24 @@ function exit_to_main () {
     document.getElementById('ngsel').style.display = 'none'
     document.getElementById('lgsel').style.display = 'none'
     document.getElementById('matchbox').style.display = 'none'
+
+}
+
+function save_game_prompt () {
+    let prompt = document.createElement('div')
+    prompt.classList.add('sg_prompt')
+    prompt.innerHTML = 'Game saved'
+    prompt.id = 'sg-prompt'
+    document.getElementById('mainframe').appendChild(prompt)
+    setTimeout(() => {
+        prompt.remove()
+    },5000)
+}
+
+function credits () {
+    let credits = document.createElement('h5')
+    credits.innerHTML = 'Made by Tooth'
+    credits.style.color = 'white'
+    document.getElementById('mainframe').appendChild(credits)
 
 }

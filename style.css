@@ -512,3 +512,23 @@ button {
 .loadbut:active {
     background-color: var(--red);
 }
+
+@keyframes prompt-anim {
+    0% {opacity: 0}
+    25% {opacity: 0.6}
+    75% {opacity: 0.6}
+    100% {opacity: 0}
+}
+
+.sg_prompt {
+    background-color: var(--red);
+    width: 60%;
+    position: absolute;
+    z-index: 10;
+    top: 0;
+    animation-name: prompt-anim;
+    animation-duration: 5s;
+    animation-fill-mode: forwards;
+    left: 20%;
+    text-align: center;
+}
