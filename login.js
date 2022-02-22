@@ -215,7 +215,6 @@ function load_game (s) {
 window.addEventListener('keydown', function (e) {
     if ((e.key === "x") && (exitgame.style.display !== "none")) {
         window.close()
-        console.log('pressed')
     }
 })
 exitgame.addEventListener('click', function (e) {

@@ -1,32 +1,21 @@
 # fuBbal_manager_javascript
 
-## To do
+fuBbal manager is a project that was originally created as part of my learning path. Initially made for Bash, later involved into full scale game done entirely using JavaScript, as I wanted things to be looking nice and in color.
 
-- [x] add CSS for default colors bg
-- [x] Team info
-- [x] Tournament mode
-- [x] Display upcoming matches for Playoff mode
-- [x] New Game button
-- [x] Achievements
-- [x] Adapt New Game screen team selection to display better
-- [x] Final Fixture - winners and other statistics
-- [x] Next season offers
-- [x] New Season
-- [x] Save/load module
-- [x] Load Game button
-- [x] Save and Exit to bring back login screen
-- [x] Friendly Names
-- [x] Save Game button to show prompt
-- [x] Hotkeys cheat sheet
-- [x] Refine draw 1 look
-- [x] Credits
+## Features
+- 8 leagues with 16 teams inside with full league schedule
+- Club Cup playoff tournament involving all clubs. Let the best win it all!
+- 30 national teams with their own regional tournaments and World Cup.
+- 7 tactics to be selected prior to match start so you can shape your approach for specific team
+- Objectives are assigned to you during season therefore you need to match leadership expectations
+- Save and Load module are implemented using local storage. Game state will persist unless you clear your cookies!
+- Full keyboard support. You don't need to use your mouse!
 
-### Planned features
-- [ ] Manager History button
-- [ ] Settings
-- [ ] Graphical representation of match state
-- [ ] Collect Manager History
-- [ ] Exit Game to close window
+## Planned features
+- Manager History
+- Graphical representation of match state
+- Settings
+- Save/Load module over JSON REST API
 
 ### Known bugs
 - [x] Frame doesn't show properly when in wide screen mode
@@ -36,7 +25,7 @@
 - [x] Unexpected game saving while trying to Exit Game from main screen
 - [ ] Defeat Rate objective works incorrectly
 
-## Milestones
+### Milestones
 - [x] 0.1 Fixtures window is designed
 - [x] 0.2 Menu and functionalities are designed and implemented
 - [x] 0.3 Whole season can be played
@@ -46,7 +35,7 @@
 - [x] 0.7 Game state can be saved and loaded
 - [x] 0.8 Game is optimised for keyboard/mouse
 - [x] 0.9 Game look is in final shape
-- [ ] 1.0 Leftovers are removed and game can be published.
+- [x] 1.0 Leftovers are removed and game can be published.
 
 ## Hotkeys
 
