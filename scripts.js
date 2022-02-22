@@ -38,6 +38,8 @@ function set_matchbox (t1, t2) {
     document.getElementById('tactic_selection').style.display = 'block'
     document.getElementById('posbox').style.display = 'none'
     document.getElementById('chanbox').style.display = 'none'
+    document.getElementById('who').innerHTML = ''
+    document.getElementById('what').innerHTML = ''
 }
 
 function assign_team (a) {
@@ -1288,4 +1290,9 @@ function hotkeys () {
         keylist.innerHTML = key[0] + ' - ' + key[1]
         hdiv.appendChild(keylist)
     }
+    var credits = document.createElement('h3')
+    credits.innerHTML = "Made by <a href=https://github.com/ToothyMTG>Tooth</a>"
+    credits.style.marginTop = '10%'
+    credits.style.fontSize = '70%'
+    hdiv.appendChild(credits)
 }

@@ -17,12 +17,16 @@
 - [x] Save and Exit to bring back login screen
 - [x] Friendly Names
 - [x] Save Game button to show prompt
-- [ ] Credits
-- [ ] Collect Manager History
+- [x] Hotkeys cheat sheet
+- [x] Refine draw 1 look
+- [x] Credits
+
+### Planned features
 - [ ] Manager History button
-- [ ] Exit Game to close window
-- [ ] Hotkeys cheat sheet
 - [ ] Settings
+- [ ] Graphical representation of match state
+- [ ] Collect Manager History
+- [ ] Exit Game to close window
 
 ### Known bugs
 - [x] Frame doesn't show properly when in wide screen mode
@@ -41,7 +45,7 @@
 - [x] 0.6 Game is playable in loop
 - [x] 0.7 Game state can be saved and loaded
 - [x] 0.8 Game is optimised for keyboard/mouse
-- [ ] 0.9 Game look is in final shape
+- [x] 0.9 Game look is in final shape
 - [ ] 1.0 Leftovers are removed and game can be published.
 
 ## Hotkeys
