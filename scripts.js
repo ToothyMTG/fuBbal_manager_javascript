@@ -3,43 +3,36 @@ ldb = {}
 function set_matchbox (t1, t2) {
     team1 = Teams.filter(x => x.includes(t1))[0].split(' ')
     team2 = Teams.filter(x => x.includes(t2))[0].split(' ')
-    //console.log(team1)
-    //console.log(team2)
-    let t1name = document.getElementById('team1name')
-    t1name.innerHTML = team1[0]
-    t1name.style.backgroundColor = team1[6]
-    t1name.style.color = team1[7]
-    document.getElementById('team1stars').innerHTML = "D:" + team1[3] + "|M:" + team1[2] + "|A:" + team1[1]
-    let t2name = document.getElementById('team2name')
-    t2name.innerHTML = team2[0]
-    t2name.style.backgroundColor = team2[6]
-    t2name.style.color = team2[7]
-    document.getElementById('team2stars').innerHTML = "A:" + team2[1] + "|M:" + team2[2] + "|D:" + team2[3]
-    document.getElementById('teamnames').innerHTML = team1[0] + " 0 : 0 " + team2[0]
-    color1 = team1[6]
+    var pitchbox = document.getElementById('pitchbox')
+    var team11name = document.getElementById('team1name')
+    team11name.innerHTML = team1[0]
+    team11name.style.backgroundColor = team1[6]
+    team11name.style.color = team1[7]
+    var team12name = document.getElementById('team2name')
+    team12name.innerHTML = team2[0]
+    team12name.style.backgroundColor = team2[6]
+    team12name.style.color = team2[7]
     if (team1[6] == team2[6]) {
-        color2 = team2[7]
-    } else {
-        color2 = team2[6]
+        team12name.style.backgroundColor = team2[7]
+        team12name.style.color = team2[6]
     }
-    let fieldleft1 = document.getElementById('fieldleft1')
-    fieldleft1.style.height = ( Number(team1[3]) / ( Number(team1[3]) + Number(team2[1]) ) * 100 ) + "%"
-    fieldleft1.style.backgroundColor = color1
-    document.getElementById('fieldleft').style.backgroundColor = color2
-    let fieldcenter1 = document.getElementById('fieldcenter1')
-    fieldcenter1.style.height = ( Number(team1[2]) / ( Number(team1[2]) + Number(team2[2]) ) * 100 ) + "%"
-    fieldcenter1.style.backgroundColor = color1
-    document.getElementById('fieldcenter').style.backgroundColor = color2
-    let fieldright1 = document.getElementById('fieldright1')
-    fieldright1.style.height = ( Number(team1[1]) / ( Number(team1[1]) + Number(team2[3]) ) * 100 ) + "%"
-    fieldright1.style.backgroundColor = color1
-    document.getElementById('fieldright').style.backgroundColor = color2
-    document.getElementById('start_match').style.display = 'block'
-    document.getElementById('tactic_selection').style.display = 'block'
-    document.getElementById('posbox').style.display = 'none'
-    document.getElementById('chanbox').style.display = 'none'
-    document.getElementById('who').innerHTML = ''
-    document.getElementById('what').innerHTML = ''
+    var matchfield = document.getElementById('matchfield')
+    matchfield.innerHTML = ''
+    matchfield.style.backgroundColor = 'lightgrey'
+    for (let i = 0; i < 6; i++) {
+        var div = document.createElement('div')
+        div.classList.add('matchfield-div')
+        div.id = 'sector' + i
+        matchfield.appendChild(div)
+    }
+    for (let i = 0; i < 6; i++) {
+        var div = document.getElementById('sector' + i)
+        for (let x = 0; x < 5; x++) {
+            var button = document.createElement('button')
+            button.style.height = 100 / 5 + "%"
+            div.appendChild(button)
+        } 
+    }
 }
 
 function assign_team (a) {
@@ -69,23 +62,52 @@ function populate_tactics () {
 function start_match () {
     let my_tactics = document.getElementById('tactic_selection').value
     mytact = [ Number(my_tactics[0]), Number(my_tactics[1]), Number(my_tactics[2])]
-    enemtact = Tactics[Math.floor(Math.random() * 7)]   
+    enemtact = Tactics[Math.floor(Math.random() * 7)]
+    var team1tact
+    var team2tact   
+    var team1fields = [4,2,0]
+    var team2fields = [1,3,5]
+    var renpat = [[],[2],[1,3],[0,2,4],[0,1,3,4],[0,1,2,3,4]]
+    var teamrenpat = [1,2,1,2,1,2]
     if (ldb.my_team[0] == team1[0]) {
         team1pow = [ (mytact[0] + Number(team1[1])),(mytact[1] + Number(team1[2])),(mytact[2] + Number(team1[3]))]
         team2pow = [ (enemtact[0] + Number(team2[1])),(enemtact[1] + Number(team2[2])),(enemtact[2] + Number(team2[3]))]
+        team1tact = mytact
+        team2tact = enemtact
     }
     if (ldb.my_team[0] == team2[0]) {
         team2pow = [ (mytact[0] + Number(team2[1])),(mytact[1] + Number(team2[2])),(mytact[2] + Number(team2[3]))]
         team1pow = [ (enemtact[0] + Number(team1[1])),(enemtact[1] + Number(team1[2])),(enemtact[2] + Number(team1[3]))]
+        team2tact = mytact
+        team1tact = enemtact 
     }
-    document.getElementById('team1stars').innerHTML = "D:" + team1pow[2] + "|M:" + team1pow[1] + "|A:" + team1pow[0]
-    document.getElementById('team2stars').innerHTML = "A:" + team2pow[0] + "|M:" + team2pow[1] + "|D:" + team2pow[2]
-    leftpow = team1pow[2] + team2pow[0]
-    centerpow = team1pow[1] + team2pow[1]
-    rightpow = team1pow[0] + team2pow[2]
-    document.getElementById('fieldleft1').style.height = (team1pow[2] / leftpow * 100) + "%"
-    document.getElementById('fieldcenter1').style.height = (team1pow[1] / centerpow * 100) + "%"
-    document.getElementById('fieldright1').style.height = (team1pow[0] / rightpow * 100) + "%"
+    var rendermap = [team1tact[2],team2tact[0],team1tact[1],team2tact[1],team1tact[0],team2tact[2]]
+    console.log(team1tact,team1fields,team2tact,team2fields)
+    console.log(team1,team2)
+    console.log(renpat)
+    console.log(rendermap)
+    for (let i = 0; i < rendermap.length; i++) {
+        var div =  document.getElementById('sector' + i)
+        var val  = rendermap[i]
+        var pat = renpat[val]
+        var buttons = div.getElementsByTagName('button')
+        var teamcolors
+        if (teamrenpat[i] == 1) {
+           teamcolors = [team1[6],team1[7]]
+        }
+        if (teamrenpat[i] == 2) {
+           teamcolors = [team2[6],team2[7]]
+            if (team1[6] == team2[6]) {
+                teamcolors = [team2[7],team2[6]]   
+            }
+        }
+        for (let x = 0; x < pat.length; x++) {
+            buttons[pat[x]].style.backgroundColor = teamcolors[0]
+            buttons[pat[x]].style.borderColor = teamcolors[1]
+            buttons[pat[x]].style.opacity = 1
+        }
+    }
+
     document.getElementById('start_match').style.display = 'none'
     document.getElementById('tactic_selection').style.display = 'none'
     let group1 = document.getElementsByClassName('ebgroup1')

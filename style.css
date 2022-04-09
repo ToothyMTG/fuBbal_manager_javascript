@@ -279,6 +279,24 @@ button {
     width: 100%;
     height: 60%;
 }
+.matchfield-div {
+    width: 10%;
+    height: 100%;
+    text-align: center;
+    float:left;
+    margin-left: 2%;
+    margin-right: 2%;
+}
+.matchfield-div:first-child {
+    margin-left: 10%;
+}
+#matchfield button {
+    width: 100%;
+    border-radius: 100%;
+    border-width: 5;
+    opacity: 0;
+    border-style: solid;
+}
 
 .fieldpart {
     float:left;
@@ -300,17 +318,15 @@ button {
     font-size: 80%;
     line-height: 300%;
 }
-
-#team1box h2 {
-    width: 50%;
+.teamname {
+    width: 40%;
     float:left;
     text-align: center;
 }
-
-#team2box h2 {
-    width: 50%;
+.teamresult {
+    width: 10%;
     float:left;
-    text-align:center;
+    text-align: center;
 }
 
 #eventbox {
