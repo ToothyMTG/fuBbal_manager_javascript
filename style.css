@@ -265,6 +265,25 @@ button {
     background-color: white;
     color:white;
 }
+.team-pow-box {
+    width: 30%;
+    height: 40%;
+    margin-left: 2.5%;
+    margin-top: 1%;
+    float:left
+}
+.team-pow-box div {
+    height: 100%;
+}
+#pitch-sectors {
+    width: 100%;
+    height: 50%;
+    background-color: red;
+}
+#pitch-sectors div {
+    height: 100%;
+    float:left;
+}
 
 #pitchbox {
     float:left;
@@ -347,6 +366,16 @@ button {
 
 .ebgroup1 {
     display:none;
+}
+#minutebox {
+    background-color: red;
+    height: 10%;
+    background-color: var(--blue);
+}
+#minutebox-prog {
+    height: 100%;
+    background-color: #3EF278;
+    width: 50%;
 }
 
 #match_runner {

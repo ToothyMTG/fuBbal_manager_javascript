@@ -3,6 +3,11 @@ ldb = {}
 function set_matchbox (t1, t2) {
     team1 = Teams.filter(x => x.includes(t1))[0].split(' ')
     team2 = Teams.filter(x => x.includes(t2))[0].split(' ')
+    color1 = team1[6]
+    color2 = team2[6]
+    if (color1 == color2) {
+        color2 = team2[7]
+    }
     var pitchbox = document.getElementById('pitchbox')
     var team11name = document.getElementById('team1name')
     team11name.innerHTML = team1[0]
@@ -16,6 +21,40 @@ function set_matchbox (t1, t2) {
         team12name.style.backgroundColor = team2[7]
         team12name.style.color = team2[6]
     }
+    var team1def = document.getElementById('team1def')
+    team1def.innerHTML = ''
+    var left1 = document.createElement('div')
+    left1.style.width = Number(team1[3]) / (Number(team1[3]) + Number(team2[1])) * 100 + "%"
+    left1.style.backgroundColor = color1
+    team1def.style.backgroundColor = color2
+    team1def.appendChild(left1)
+    var pitchcenter = document.getElementById('pitchcenter')
+    pitchcenter.innerHTML = ''
+    var left2 = document.createElement('div')
+    left2.style.width = Number(team1[2]) / (Number(team1[2]) + Number(team2[2])) * 100 + "%"
+    left2.style.backgroundColor = color1
+    pitchcenter.style.backgroundColor = color2
+    pitchcenter.appendChild(left2)
+    var team2def = document.getElementById('team2def')
+    team2def.innerHTML = ''
+    var left3 = document.createElement('div')
+    left3.style.width = Number(team1[1]) / (Number(team1[1]) + Number(team2[3])) * 100 + "%"
+    left3.style.backgroundColor = color1
+    team2def.style.backgroundColor = color2
+    team2def.appendChild(left3)
+
+    var team1sector = document.getElementById('team1-sector')
+    team1sector.style.backgroundColor = color1
+    team1sector.style.width = '50%'
+    var team2sector = document.getElementById('team2-sector')
+    team2sector.style.backgroundColor = color2
+    team2sector.style.width = '50%'
+    document.getElementById('minutebox-prog').style.width = '0%'
+    document.getElementById('start_match').style.display = 'block'
+    document.getElementById('tactic_selection').style.display = 'block'
+    document.getElementById('team1result').innerHTML = '0'
+    document.getElementById('team2result').innerHTML = '0'
+
     var matchfield = document.getElementById('matchfield')
     matchfield.innerHTML = ''
     matchfield.style.backgroundColor = 'lightgrey'
@@ -81,11 +120,8 @@ function start_match () {
         team2tact = mytact
         team1tact = enemtact 
     }
+    centerpow = team1pow[1] + team2pow[1]
     var rendermap = [team1tact[2],team2tact[0],team1tact[1],team2tact[1],team1tact[0],team2tact[2]]
-    console.log(team1tact,team1fields,team2tact,team2fields)
-    console.log(team1,team2)
-    console.log(renpat)
-    console.log(rendermap)
     for (let i = 0; i < rendermap.length; i++) {
         var div =  document.getElementById('sector' + i)
         var val  = rendermap[i]
@@ -114,7 +150,6 @@ function start_match () {
     for (let x = 0;x < group1.length; x++) {
         group1[x].style.display = "block"
     }
-    document.getElementById('minutebox').innerHTML = "0 Minute:"
     match_minute = 0
     total_minutes = 95
     turn_stage = 1

@@ -2,9 +2,14 @@ function match_runner() {
     
     let g1 = goals1
     let g2 = goals2
+    var team1sector = document.getElementById('team1-sector')
+    var team1result = document.getElementById('team1result')
+    var team2sector = document.getElementById('team2-sector')
+    var team2result = document.getElementById('team2result')
+    var minuteboxprog = document.getElementById('minutebox-prog')
     document.getElementById('matchbox').style.backgroundColor = 'white'
     if (pen_mode == 1) {
-        document.getElementById('minutebox').innerHTML = "Round " + (pens_round + 1)
+    document.getElementById('teamnames').innerHTML = "Round " + (pens_round + 1)
         rand_pen = Math.floor(Math.random() * 4)
         if (rand_pen !== 0) {
             document.getElementById('who').innerHTML = team1[0] + " GOAL!"
@@ -45,7 +50,6 @@ function match_runner() {
     if (match_minute >= total_minutes) {
         document.getElementById('match_runner').style.display = "none"
         turn_stage = -5
-        document.getElementById('minutebox').style.display = "none"
         document.getElementById('dummybutton').style.display = 'none'
         document.getElementById('runfixture').style.display = 'block'
         t_1 = team1[5]
@@ -79,9 +83,14 @@ function match_runner() {
     if (turn_stage == 1) {
         let randminute = Math.floor((Math.random() * 9) + 1)
         match_minute += randminute
-        document.getElementById('minutebox').innerHTML = match_minute + " Minute:"
+        minuteboxprog.style.width = match_minute / total_minutes * 100 + '%'
+        if (match_minute > total_minutes) {
+            minuteboxprog.style.width = '100%'
+        }
         document.getElementById('who').innerHTML = ''
         document.getElementById('what').innerHTML = ''
+        team1sector.style.width = '50%'
+        team2sector.style.width = '50%'
     }
     if (turn_stage == 2) {
         let randwho = Math.floor((Math.random() * centerpow) + 1)
@@ -91,13 +100,19 @@ function match_runner() {
             atkval = team1pow[0]
             defval = team2pow[2]
             teamdef = team2
+            sectdef = team2sector
+            sectatk = team1sector
         } else {
             teamsel = team2
             atkval = team1pow[2]
             defval = team2pow[0]
             teamdef = team1
+            sectdef = team1sector
+            sectatk = team2sector
         }
-        document.getElementById('who').innerHTML = teamsel[0] + " takes the ball." 
+        //document.getElementById('who').innerHTML = teamsel[0] + " takes the ball." 
+        sectdef.style.width = '40%'
+        sectatk.style.width = '60%'
         totalval = atkval + defval
         //console.log(teamsel)
         matchfacts.push(teamsel[0] + "-a")
@@ -110,11 +125,15 @@ function match_runner() {
         let randwhat = Math.floor((Math.random() * totalval) + 1)
         //console.log(randwhat)
         if (randwhat <= atkval) {
-            document.getElementById('what').innerHTML = "There's a chance..."
+            //document.getElementById('what').innerHTML = "There's a chance..."
+            sectdef.style.width = '20%'
+            sectatk.style.width = '80%'
             matchfacts.push(teamsel[0] + "-c")
             goalval = Number(teamsel[1]) + Number(teamdef[3]) + 10
         } else {
-            document.getElementById('what').innerHTML = teamsel[0] + " lost the ball."
+            //document.getElementById('what').innerHTML = teamsel[0] + " lost the ball."
+            sectdef.style.width = '45%'
+            sectatk.style.width = '55%'
             turn_stage = 0
         }
         let chanvar = matchfacts.filter(x => x.includes(team1[0] + '-c')).length
@@ -126,7 +145,9 @@ function match_runner() {
         let randgoal = Math.floor((Math.random() * goalval) + 1)
         //console.log(randgoal)
         if ( randgoal <= Number(teamsel[1]) ) {
-            document.getElementById('what').innerHTML += " GOAL!"
+            //document.getElementById('what').innerHTML += " GOAL!"
+            sectdef.style.width = '0%'
+            sectatk.style.width = '100%'
             document.getElementById('matchbox').style.backgroundColor = 'gold'
             matchfacts.push(teamsel[0] + "-g")
             goals1 = matchfacts.filter(x => x.includes(team1[0] + "-g")).length
@@ -134,9 +155,13 @@ function match_runner() {
             goals2 = matchfacts.filter(x => x.includes(team2[0] + "-g")).length
             if (goals2 < 1) {goals2 = 0}
             let tmnms = document.getElementById('teamnames')
-            tmnms.innerHTML = team1[0] + ' ' + goals1 + " : " + goals2 + ' ' + team2[0]
+
+            team1result.innerHTML = goals1
+            team2result.innerHTML = goals2
         } else {
-            document.getElementById('what').innerHTML += " and there's a miss!"
+            //document.getElementById('what').innerHTML += " and there's a miss!"
+            sectdef.style.width = '30%'
+            sectatk.style.width = '70%'
         } 
         turn_stage = 0
     }

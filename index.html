@@ -54,20 +54,27 @@
                     <h2 id="team2name" class="teamname">Germany</h2>
                 </div>
                 <div id="teamdatabox" class="teamsbox">
-                    <h2 id="team1stars">A:3|M:4|D:6 </h2>
-                    <h2 id="team2stars">A:1|M:3|D:6</h2>
+                    <div id="pitch-sectors">
+                        <div id="team1-sector"></div>
+                        <div id="team2-sector"></div>
+                    </div>
+                    <div id="team1def" class="team-pow-box"></div>
+                    <div id="pitchcenter" class="team-pow-box"></div>
+                    <div id="team2def" class="team-pow-box"></div>
                 </div>
                 <div id="matchfield">
                 </div>
             </div>
             <div id="eventbox">
-                <p id="teamnames" class="eventboxinfo">Poland 0 : 0 Germany</p>
+                <p id="teamnames" class="eventboxinfo"></p>
+                <div id="minutebox">
+                    <div id="minutebox-prog"></div>
+                </div> 
                 <select id="tactic_selection" name="tactica"></select>
                 <button id="start_match" onclick=start_match()>Begin Match (S)</button>
                 <button id="match_runner" class="ebgroup1">Advance Game (P)</button>
-                <p id="minutebox" class="ebgroup1">26 Minute:</p>
-                <p id="who" class="ebgroup1"></p>
-                <p id="what" class="ebgroup1"></p>
+                <div id="who" class="ebgroup1"></div>
+                <div id="what" class="ebgroup1"></div>
                 <p id='poslabel'>Possesion</p>
                 <div id="posbox" class="statbox">
                     <div id='posbar' class='statbar'></div>
