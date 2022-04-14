@@ -9,23 +9,35 @@ function match_runner() {
     var minuteboxprog = document.getElementById('minutebox-prog')
     document.getElementById('matchbox').style.backgroundColor = 'white'
     if (pen_mode == 1) {
-    document.getElementById('teamnames').innerHTML = "Round " + (pens_round + 1)
+    document.getElementById('what').innerHTML = "Round " + (pens_round + 1)
         rand_pen = Math.floor(Math.random() * 4)
         if (rand_pen !== 0) {
-            document.getElementById('who').innerHTML = team1[0] + " GOAL!"
+            var field = document.createElement('div')
+            field.classList.add('bg_good')
+            field.classList.add('pen_graph')
+            document.getElementById('who').appendChild(field)
             goals1++
         } else {
-            document.getElementById('who').innerHTML = team1[0] + " MISS!"
+            var field = document.createElement('div')
+            field.classList.add('bg_bad')
+            field.classList.add('pen_graph')
+            document.getElementById('who').appendChild(field)
         }
         rand_pen = Math.floor(Math.random() * 4)
         if (rand_pen !== 0) {
-            document.getElementById('what').innerHTML = team2[0] + " GOAL!"
+            var field = document.createElement('div')
+            field.classList.add('bg_good')
+            field.classList.add('pen_graph')
+            document.getElementById('who').appendChild(field)
             goals2++
         } else {
-            document.getElementById('what').innerHTML = team2[0] + " MISS!"
+            var field = document.createElement('div')
+            field.classList.add('bg_bad')
+            field.classList.add('pen_graph')
+            document.getElementById('who').appendChild(field)
         }
-        let tmnms = document.getElementById('teamnames')
-        tmnms.innerHTML = team1[0] + ' ' + goals1 + " : " + goals2 + ' ' + team2[0]
+        team1result.innerHTML = goals1
+        team2result.innerHTML = goals2
         pens_round++
         if (pens_round < 5) {
             return
@@ -36,7 +48,6 @@ function match_runner() {
         g1 = goals1
         g2 = goals2
         pen_mode = 0
-        
     }
     if ((g1 == g2) && (md == "po") && (total_minutes == 125) && (match_minute >= total_minutes)) {
         pen_mode = 1
@@ -87,8 +98,6 @@ function match_runner() {
         if (match_minute > total_minutes) {
             minuteboxprog.style.width = '100%'
         }
-        document.getElementById('who').innerHTML = ''
-        document.getElementById('what').innerHTML = ''
         team1sector.style.width = '50%'
         team2sector.style.width = '50%'
     }

@@ -437,6 +437,11 @@ button {
     color: black;
     background-color:var(--red)
 }
+.pen_graph {
+    width: 50%;
+    height: 2%;
+    float:left;
+}
 
 .seek {
     height: 60%;
