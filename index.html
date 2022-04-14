@@ -47,34 +47,34 @@
         </div>
         <div id='matchbox' style='display:none' >
             <div id='pitchbox'>
-                <div id='team1box' class="teamsbox">
-                    <h2 id="team1name">Poland</h2>
-                    <h2 id="team1stars">A:1|M:1|D:1 </h2>
+                <div id='teamsbox' class="teamsbox">
+                    <h2 id="team1name" class="teamname">Poland</h2>
+                    <h2 id="team1result" class="teamresult">0</h2>
+                    <h2 id="team2result" class="teamresult">0</h2>
+                    <h2 id="team2name" class="teamname">Germany</h2>
+                </div>
+                <div id="teamdatabox" class="teamsbox">
+                    <div id="pitch-sectors">
+                        <div id="team1-sector"></div>
+                        <div id="team2-sector"></div>
+                    </div>
+                    <div id="team1def" class="team-pow-box"></div>
+                    <div id="pitchcenter" class="team-pow-box"></div>
+                    <div id="team2def" class="team-pow-box"></div>
                 </div>
                 <div id="matchfield">
-                    <div id="fieldleft" class="fieldpart">
-                        <div id="fieldleft1"></div><div id="fieldleft2"></div>
-                    </div>
-                    <div id="fieldcenter" class="fieldpart">
-                        <div id="fieldcenter1"></div><div id="fieldcenter2"></div>
-                    </div>
-                    <div id="fieldright" class="fieldpart">
-                        <div id="fieldright1"></div><div id="fieldright2"></div>
-                    </div>
-                </div>
-                <div id="team2box" class="teamsbox">
-                    <h2 id="team2stars">A:3|M:4|D:6 </h2>
-                    <h2 id="team2name">Germany</h2>
                 </div>
             </div>
             <div id="eventbox">
-                <p id="teamnames" class="eventboxinfo">Poland 0 : 0 Germany</p>
+                <p id="teamnames" class="eventboxinfo"></p>
+                <div id="minutebox">
+                    <div id="minutebox-prog"></div>
+                </div> 
                 <select id="tactic_selection" name="tactica"></select>
                 <button id="start_match" onclick=start_match()>Begin Match (S)</button>
                 <button id="match_runner" class="ebgroup1">Advance Game (P)</button>
-                <p id="minutebox" class="ebgroup1">26 Minute:</p>
-                <p id="who" class="ebgroup1"></p>
-                <p id="what" class="ebgroup1"></p>
+                <div id="who" class="ebgroup1"></div>
+                <div id="what" class="ebgroup1"></div>
                 <p id='poslabel'>Possesion</p>
                 <div id="posbox" class="statbox">
                     <div id='posbar' class='statbar'></div>
@@ -99,5 +99,6 @@
     <script src="fixture.js"></script>
     <script src='login.js'></script>
     <script src="listeners.js"></script>
+    <script src="debug.js"></script>
 </body>
 </html>

@@ -23,3 +23,22 @@
         //render_offers('ns_content')
         //credits ()
         //hotkeys ()
+        console.clear()
+
+        function renderMatch () {
+                assign_team('p01')
+                document.getElementById('loginbox').style.display = 'none'
+                document.getElementById('menubox').style.display = 'block'
+                document.getElementById('infofield').style.display = 'block'
+                document.getElementById('databox').style.display = 'block'
+                document.getElementById('matchbox').style.display = 'block'
+                set_matchbox('n01','p01')
+                populate_tactics()
+                start_match ()
+                md = 'po'
+                pen_mode = 1
+                pens_round = 0
+                total_minutes = 125
+                match_minute = 126
+        }
+        //renderMatch ()
