@@ -9,6 +9,8 @@ function set_matchbox (t1, t2) {
         color2 = team2[7]
     }
     var pitchbox = document.getElementById('pitchbox')
+    document.getElementById('who').innerHTML = ''
+    document.getElementById('what').innerHTML = ''
     var team11name = document.getElementById('team1name')
     team11name.innerHTML = team1[0]
     team11name.style.backgroundColor = team1[6]
