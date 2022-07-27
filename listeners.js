@@ -6,6 +6,19 @@ window.addEventListener('keydown', function (e) {
         match_runner ()
     }
 })
+// init tactic change
+window.addEventListener('keydown', function (e) {
+    if ((e.key === "c") && (ELmrun.style.display == "block")) {
+        tc_init ()
+    }
+})
+// resume match
+ELmres = document.getElementById('resume_match')
+window.addEventListener('keydown', function (e) {
+    if ((e.key === "b") && (ELmres.style.display == "block")) {
+        tc_resume ()
+    }
+})
 // expand tactics_menu
 let ELtsel = document.getElementById('tactic_selection')
 window.addEventListener('keydown', function (e) {

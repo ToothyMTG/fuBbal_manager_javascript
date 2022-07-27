@@ -403,6 +403,17 @@ button {
 #start_match:active {
     background-color: var(--red);
 }
+#resume_match {
+    width: 60%;
+    height: 10%;
+    float:left;
+}
+#resume_match:hover {
+    background-color: var(--blue);
+}
+#resume_match:active {
+    background-color: var(--red);
+}
 
 .statbox {
     background-color: var(--green);

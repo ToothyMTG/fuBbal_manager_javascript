@@ -175,6 +175,7 @@ function match_runner() {
         turn_stage = 0
     }
     turn_stage++
+    tc_rand()
 }
 
 //document.addEventListener('keydown', x => {if (x.keyCode === 13){mrun.click()} })

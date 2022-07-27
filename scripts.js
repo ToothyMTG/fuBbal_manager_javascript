@@ -53,6 +53,7 @@ function set_matchbox (t1, t2) {
     team2sector.style.width = '50%'
     document.getElementById('minutebox-prog').style.width = '0%'
     document.getElementById('start_match').style.display = 'block'
+    document.getElementById('resume_match').style.display = 'none'
     document.getElementById('tactic_selection').style.display = 'block'
     document.getElementById('team1result').innerHTML = '0'
     document.getElementById('team2result').innerHTML = '0'
@@ -104,6 +105,8 @@ function start_match () {
     let my_tactics = document.getElementById('tactic_selection').value
     mytact = [ Number(my_tactics[0]), Number(my_tactics[1]), Number(my_tactics[2])]
     enemtact = Tactics[Math.floor(Math.random() * 7)]
+    tc_team1 = 1
+    tc_team2 = 1
     var team1tact
     var team2tact   
     var team1fields = [4,2,0]

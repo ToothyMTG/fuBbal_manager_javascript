@@ -42,3 +42,4 @@
                 match_minute = 1
         }
         //renderMatch ()
+        //tc_init ()
