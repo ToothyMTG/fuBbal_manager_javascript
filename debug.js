@@ -36,9 +36,9 @@
                 populate_tactics()
                 start_match ()
                 md = 'po'
-                pen_mode = 1
+                pen_mode = 0
                 pens_round = 0
                 total_minutes = 125
-                match_minute = 126
+                match_minute = 1
         }
         //renderMatch ()
