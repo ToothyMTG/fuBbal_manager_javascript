@@ -1,6 +1,6 @@
 // match_runner
 let ELmrun = document.getElementById('match_runner')
-ELmrun.addEventListener('click', match_runner)
+ELmrun.addEventListener('mousedown', match_runner)
 window.addEventListener('keydown', function (e) {
     if ((e.key === "p") && (ELmrun.style.display == "block")) {
         match_runner ()
