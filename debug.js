@@ -22,8 +22,8 @@
         //generate_offers(ldb.newrank)
         //render_offers('ns_content')
         //credits ()
-        //hotkeys ()
-        console.clear()
+                //hotkeys ()
+                console.clear()
 
         function renderMatch () {
                 assign_team('p01')

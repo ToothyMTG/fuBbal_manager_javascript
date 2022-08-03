@@ -6,14 +6,19 @@ window.addEventListener('keydown', function (e) {
         match_runner ()
     }
 })
-// init tactic change
+// init tactic change and resume match
+ELmres = document.getElementById('resume_match')
 window.addEventListener('keydown', function (e) {
-    if ((e.key === "c") && (ELmrun.style.display == "block")) {
-        tc_init ()
+    if (e.key === "c") { 
+        if (ELmres.style.display == "block") {
+            tc_resume ()
+        }
+        if (ELmrun.style.display == "block") {
+            tc_init ()
+        }
     }
 })
 // resume match
-ELmres = document.getElementById('resume_match')
 window.addEventListener('keydown', function (e) {
     if ((e.key === "b") && (ELmres.style.display == "block")) {
         tc_resume ()
@@ -22,7 +27,7 @@ window.addEventListener('keydown', function (e) {
 // expand tactics_menu
 let ELtsel = document.getElementById('tactic_selection')
 window.addEventListener('keydown', function (e) {
-    if ((e.key === "m") && (ELtsel.style.display == "block")) {
+    if ((e.key === "c") && (ELtsel.style.display == "block")) {
         ELtsel.focus()
     }
 })

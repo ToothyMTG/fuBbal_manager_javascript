@@ -426,9 +426,10 @@ HotKeys = [
 'Q-Focus on left info box',
 'W-Focus on right info box',
 'Z-Focus on selection button',
-'M-Tactic selection',
+'C-Tactic selection',
+'S-Match start',
 'P-Match proceeding',
 'V-Match autoplay',
-'S-Match start',
+'C-Change tactic',
 'Esc-Close this window'
 ]
