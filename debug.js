@@ -7,7 +7,7 @@
         //render_finaldata ()
         //generate_achievements ()
         //render_objectives ('ns_right')
-        //DEBUG VALUES
+        //DEBUG VALUESz n
         //document.getElementById('newgame').click()
         //document.getElementById('runfixture').style.display = 'none'
         //get_winners ()
