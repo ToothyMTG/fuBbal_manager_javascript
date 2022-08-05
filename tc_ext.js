@@ -4,6 +4,7 @@ function tc_init () {
     document.getElementById('match_runner').style.display = 'none'
     document.getElementById('tactic_selection').style.display = 'block'
     document.getElementById('resume_match').style.display = 'block'
+    document.getElementById('tactic_change').style.display = 'none'
     if (ap_state == 1) {
     ap_stop ()
     }

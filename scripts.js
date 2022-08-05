@@ -55,6 +55,7 @@ function set_matchbox (t1, t2) {
     document.getElementById('start_match').style.display = 'block'
     document.getElementById('resume_match').style.display = 'none'
     document.getElementById('tactic_selection').style.display = 'block'
+    document.getElementById('tactic_change').style.display = 'none'
     document.getElementById('team1result').innerHTML = '0'
     document.getElementById('team2result').innerHTML = '0'
 
@@ -172,6 +173,7 @@ function start_match () {
     pen_mode = 0
     document.getElementById('posbox').style.display = 'block'
     document.getElementById('chanbox').style.display = 'block'
+    document.getElementById('tactic_change').style.display = 'block'
 }
 
 function generate_season () {
