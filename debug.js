@@ -7,7 +7,7 @@
         //render_finaldata ()
         //generate_achievements ()
         //render_objectives ('ns_right')
-        //DEBUG VALUES
+        //DEBUG VALUESz n
         //document.getElementById('newgame').click()
         //document.getElementById('runfixture').style.display = 'none'
         //get_winners ()
@@ -22,8 +22,8 @@
         //generate_offers(ldb.newrank)
         //render_offers('ns_content')
         //credits ()
-        //hotkeys ()
-        console.clear()
+                //hotkeys ()
+                console.clear()
 
         function renderMatch () {
                 assign_team('p01')
@@ -42,3 +42,4 @@
                 match_minute = 1
         }
         //renderMatch ()
+        //tc_init ()

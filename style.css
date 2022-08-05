@@ -383,6 +383,12 @@ button {
     height: 10%;
 }
 
+#tactic_change {
+    width: 50%;
+    height: 7%;
+    margin-left: 25%;
+}
+
 #tactic_selection {
     width: 40%;
     height: 10%;
@@ -401,6 +407,17 @@ button {
     background-color: var(--blue);
 }
 #start_match:active {
+    background-color: var(--red);
+}
+#resume_match {
+    width: 60%;
+    height: 10%;
+    float:left;
+}
+#resume_match:hover {
+    background-color: var(--blue);
+}
+#resume_match:active {
     background-color: var(--red);
 }
 

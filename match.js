@@ -60,6 +60,7 @@ function match_runner() {
     }
     if (match_minute >= total_minutes) {
         document.getElementById('match_runner').style.display = "none"
+        document.getElementById('tactic_change').style.display = "none"
         turn_stage = -5
         document.getElementById('dummybutton').style.display = 'none'
         document.getElementById('runfixture').style.display = 'block'
@@ -175,6 +176,7 @@ function match_runner() {
         turn_stage = 0
     }
     turn_stage++
+    tc_rand()
 }
 
 //document.addEventListener('keydown', x => {if (x.keyCode === 13){mrun.click()} })
