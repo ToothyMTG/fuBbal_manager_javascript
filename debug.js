@@ -40,6 +40,8 @@
                 pens_round = 0
                 total_minutes = 125
                 match_minute = 1
+                //match_init ('n06','e05')
+                match_runner()
         }
         //renderMatch ()
         //tc_init ()

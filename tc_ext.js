@@ -1,6 +1,6 @@
 function tc_init () {
-    if ((team1[0] == ldb.my_team[0]) && (tc_team1 == 0) ) {return}
-    if ((team2[0] == ldb.my_team[0]) && (tc_team2 == 0) ) {return}
+    if ((M[1].i[0] == ldb.my_team[0]) && (M[1].tc == 0) ) {return}
+    if ((M[2].i[0] == ldb.my_team[0]) && (M[2].tc == 0) ) {return}
     document.getElementById('match_runner').style.display = 'none'
     document.getElementById('tactic_selection').style.display = 'block'
     document.getElementById('resume_match').style.display = 'block'
@@ -12,13 +12,13 @@ function tc_init () {
 }
 
 function tc_enem_tact () {
-    if ((team1[0] == ldb.my_team[0]) && (tc_team2 == 0) ) {return}
-    if ((team2[0] == ldb.my_team[0]) && (tc_team1 == 0) ) {return}
+    if ((M[1].i[0] == ldb.my_team[0]) && (M[2].tc == 0) ) {return}
+    if ((M[2].i[0] == ldb.my_team[0]) && (M[1].tc == 0) ) {return}
     var randtact = Math.floor(Math.random() * Tactics.length)
-    enemtact = Tactics[randtact]
+    M.enemtact = Tactics[randtact]
     tc_rerender ()
-    if (team1[0] == ldb.my_team[0]) {tc_team2 = 0}
-    if (team2[0] == ldb.my_team[0]) {tc_team1 = 0}
+    if (M[1].i[0] == ldb.my_team[0]) {M[2].tc = 0}
+    if (M[2].i[0] == ldb.my_team[0]) {M[1].tc = 0}
 }
 
 function tc_rand () {
@@ -30,13 +30,13 @@ function tc_rand () {
 
 function tc_resume () {
     let my_tactics = document.getElementById('tactic_selection').value
-    mytact = [ Number(my_tactics[0]), Number(my_tactics[1]), Number(my_tactics[2])]
+    M.mytact = [ Number(my_tactics[0]), Number(my_tactics[1]), Number(my_tactics[2])]
     tc_rerender ()
     document.getElementById('match_runner').style.display = 'block'
     document.getElementById('tactic_selection').style.display = 'none'
     document.getElementById('resume_match').style.display = 'none'
-    if (team1[0] == ldb.my_team[0]) {tc_team1 = 0}
-    if (team2[0] == ldb.my_team[0]) {tc_team2 = 0}
+    if (M[1].i[0] == ldb.my_team[0]) {M[1].tc = 0}
+    if (M[2].i[0] == ldb.my_team[0]) {M[2].tc = 0}
 }
 
 function tc_rerender () {
@@ -63,19 +63,19 @@ function tc_rerender () {
     var team2fields = [1,3,5]
     var renpat = [[],[2],[1,3],[0,2,4],[0,1,3,4],[0,1,2,3,4]]
     var teamrenpat = [1,2,1,2,1,2]
-    if (ldb.my_team[0] == team1[0]) {
-        team1pow = [ (mytact[0] + Number(team1[1])),(mytact[1] + Number(team1[2])),(mytact[2] + Number(team1[3]))]
-        team2pow = [ (enemtact[0] + Number(team2[1])),(enemtact[1] + Number(team2[2])),(enemtact[2] + Number(team2[3]))]
-        team1tact = mytact
-        team2tact = enemtact
+    if (ldb.my_team[0] == M[1].i[0]) {
+        M[1].pow = [ (M.mytact[0] + Number(M[1].i[1])),(M.mytact[1] + Number(M[1].i[2])),(M.mytact[2] + Number(M[1].i[3]))]
+        M[2].pow = [ (M.enemtact[0] + Number(M[2].i[1])),(M.enemtact[1] + Number(M[2].i[2])),(M.enemtact[2] + Number(M[2].i[3]))]
+        team1tact = M.mytact
+        team2tact = M.enemtact
     }
-    if (ldb.my_team[0] == team2[0]) {
-        team2pow = [ (mytact[0] + Number(team2[1])),(mytact[1] + Number(team2[2])),(mytact[2] + Number(team2[3]))]
-        team1pow = [ (enemtact[0] + Number(team1[1])),(enemtact[1] + Number(team1[2])),(enemtact[2] + Number(team1[3]))]
-        team2tact = mytact
-        team1tact = enemtact 
+    if (ldb.my_team[0] == M[2].i[0]) {
+        M[2].pow = [ (M.mytact[0] + Number(M[2].i[1])),(M.mytact[1] + Number(M[2].i[2])),(M.mytact[2] + Number(M[2].i[3]))]
+        M[1].pow = [ (M.enemtact[0] + Number(M[1].i[1])),(M.enemtact[1] + Number(M[1].i[2])),(M.enemtact[2] + Number(M[1].i[3]))]
+        team2tact = M.mytact
+        team1tact = M.enemtact 
     }
-    centerpow = team1pow[1] + team2pow[1]
+    M.centerpow = M[1].pow[1] + M[2].pow[1]
     var rendermap = [team1tact[2],team2tact[0],team1tact[1],team2tact[1],team1tact[0],team2tact[2]]
     for (let i = 0; i < rendermap.length; i++) {
         var div =  document.getElementById('sector' + i)
@@ -84,12 +84,12 @@ function tc_rerender () {
         var buttons = div.getElementsByTagName('button')
         var teamcolors
         if (teamrenpat[i] == 1) {
-           teamcolors = [team1[6],team1[7]]
+           teamcolors = [M[1].i[6],M[1].i[7]]
         }
         if (teamrenpat[i] == 2) {
-           teamcolors = [team2[6],team2[7]]
-            if (team1[6] == team2[6]) {
-                teamcolors = [team2[7],team2[6]]   
+           teamcolors = [M[2].i[6],M[2].i[7]]
+            if (M[1].i[6] == M[2].i[6]) {
+                teamcolors = [M[2].i[7],M[2].i[6]]   
             }
         }
         for (let x = 0; x < pat.length; x++) {

@@ -1,56 +1,24 @@
 ldb = {}
 
 function set_matchbox (t1, t2) {
-    team1 = Teams.filter(x => x.includes(t1))[0].split(' ')
-    team2 = Teams.filter(x => x.includes(t2))[0].split(' ')
-    color1 = team1[6]
-    color2 = team2[6]
-    if (color1 == color2) {
-        color2 = team2[7]
-    }
-    var pitchbox = document.getElementById('pitchbox')
-    document.getElementById('who').innerHTML = ''
-    document.getElementById('what').innerHTML = ''
-    var team11name = document.getElementById('team1name')
-    team11name.innerHTML = team1[0]
-    team11name.style.backgroundColor = team1[6]
-    team11name.style.color = team1[7]
-    var team12name = document.getElementById('team2name')
-    team12name.innerHTML = team2[0]
-    team12name.style.backgroundColor = team2[6]
-    team12name.style.color = team2[7]
-    if (team1[6] == team2[6]) {
-        team12name.style.backgroundColor = team2[7]
-        team12name.style.color = team2[6]
-    }
-    var team1def = document.getElementById('team1def')
-    team1def.innerHTML = ''
-    var left1 = document.createElement('div')
-    left1.style.width = Number(team1[3]) / (Number(team1[3]) + Number(team2[1])) * 100 + "%"
-    left1.style.backgroundColor = color1
-    team1def.style.backgroundColor = color2
-    team1def.appendChild(left1)
-    var pitchcenter = document.getElementById('pitchcenter')
-    pitchcenter.innerHTML = ''
-    var left2 = document.createElement('div')
-    left2.style.width = Number(team1[2]) / (Number(team1[2]) + Number(team2[2])) * 100 + "%"
-    left2.style.backgroundColor = color1
-    pitchcenter.style.backgroundColor = color2
-    pitchcenter.appendChild(left2)
-    var team2def = document.getElementById('team2def')
-    team2def.innerHTML = ''
-    var left3 = document.createElement('div')
-    left3.style.width = Number(team1[1]) / (Number(team1[1]) + Number(team2[3])) * 100 + "%"
-    left3.style.backgroundColor = color1
-    team2def.style.backgroundColor = color2
-    team2def.appendChild(left3)
+    match_init(t1,t2)
+    //team1 = Teams.filter(x => x.includes(t1))[0].split(' ')
+    //team2 = Teams.filter(x => x.includes(t2))[0].split(' ')
+    //var team11name = document.getElementById('team1name')
+    //team11name.innerHTML = team1[0]
+    //team11name.style.backgroundColor = team1[6]
+    //team11name.style.color = team1[7]
+    //var team12name = document.getElementById('team2name')
+    //team12name.innerHTML = team2[0]
+    //team12name.style.backgroundColor = team2[6]
+    //team12name.style.color = team2[7]
+    //if (team1[6] == team2[6]) {
+        //team12name.style.backgroundColor = team2[7]
+        //team12name.style.color = team2[6]
+    //}
 
-    var team1sector = document.getElementById('team1-sector')
-    team1sector.style.backgroundColor = color1
-    team1sector.style.width = '50%'
-    var team2sector = document.getElementById('team2-sector')
-    team2sector.style.backgroundColor = color2
-    team2sector.style.width = '50%'
+    matchbox_init()
+
     document.getElementById('minutebox-prog').style.width = '0%'
     document.getElementById('start_match').style.display = 'block'
     document.getElementById('resume_match').style.display = 'none'
@@ -103,52 +71,7 @@ function populate_tactics () {
 }
 
 function start_match () {
-    let my_tactics = document.getElementById('tactic_selection').value
-    mytact = [ Number(my_tactics[0]), Number(my_tactics[1]), Number(my_tactics[2])]
-    enemtact = Tactics[Math.floor(Math.random() * 7)]
-    tc_team1 = 1
-    tc_team2 = 1
-    var team1tact
-    var team2tact   
-    var team1fields = [4,2,0]
-    var team2fields = [1,3,5]
-    var renpat = [[],[2],[1,3],[0,2,4],[0,1,3,4],[0,1,2,3,4]]
-    var teamrenpat = [1,2,1,2,1,2]
-    if (ldb.my_team[0] == team1[0]) {
-        team1pow = [ (mytact[0] + Number(team1[1])),(mytact[1] + Number(team1[2])),(mytact[2] + Number(team1[3]))]
-        team2pow = [ (enemtact[0] + Number(team2[1])),(enemtact[1] + Number(team2[2])),(enemtact[2] + Number(team2[3]))]
-        team1tact = mytact
-        team2tact = enemtact
-    }
-    if (ldb.my_team[0] == team2[0]) {
-        team2pow = [ (mytact[0] + Number(team2[1])),(mytact[1] + Number(team2[2])),(mytact[2] + Number(team2[3]))]
-        team1pow = [ (enemtact[0] + Number(team1[1])),(enemtact[1] + Number(team1[2])),(enemtact[2] + Number(team1[3]))]
-        team2tact = mytact
-        team1tact = enemtact 
-    }
-    centerpow = team1pow[1] + team2pow[1]
-    var rendermap = [team1tact[2],team2tact[0],team1tact[1],team2tact[1],team1tact[0],team2tact[2]]
-    for (let i = 0; i < rendermap.length; i++) {
-        var div =  document.getElementById('sector' + i)
-        var val  = rendermap[i]
-        var pat = renpat[val]
-        var buttons = div.getElementsByTagName('button')
-        var teamcolors
-        if (teamrenpat[i] == 1) {
-           teamcolors = [team1[6],team1[7]]
-        }
-        if (teamrenpat[i] == 2) {
-           teamcolors = [team2[6],team2[7]]
-            if (team1[6] == team2[6]) {
-                teamcolors = [team2[7],team2[6]]   
-            }
-        }
-        for (let x = 0; x < pat.length; x++) {
-            buttons[pat[x]].style.backgroundColor = teamcolors[0]
-            buttons[pat[x]].style.borderColor = teamcolors[1]
-            buttons[pat[x]].style.opacity = 1
-        }
-    }
+    match_powerset ()
 
     document.getElementById('start_match').style.display = 'none'
     document.getElementById('tactic_selection').style.display = 'none'
@@ -156,21 +79,13 @@ function start_match () {
     for (let x = 0;x < group1.length; x++) {
         group1[x].style.display = "block"
     }
-    match_minute = 0
-    total_minutes = 95
-    turn_stage = 1
-    matchfacts = []
-    let posesion = document.getElementById('posbar')
-    posesion.style.width = '50%'
-    posesion.style.backgroundColor = color1;
-    document.getElementById('posbox').style.backgroundColor = color2;
-    let chances = document.getElementById('chanbar')
-    chances.style.width = '50%'
-    chances.style.backgroundColor = color1;
-    document.getElementById('chanbox').style.backgroundColor = color2;
-    goals1 = 0
-    goals2 = 0
-    pen_mode = 0
+    //match_minute = 0
+    //total_minutes = 95
+    //turn_stage = 1
+    //matchfacts = []
+    //goals1 = 0
+    //goals2 = 0
+    //pen_mode = 0
     document.getElementById('posbox').style.display = 'block'
     document.getElementById('chanbox').style.display = 'block'
     document.getElementById('tactic_change').style.display = 'block'
