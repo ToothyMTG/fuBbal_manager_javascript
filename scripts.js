@@ -1174,6 +1174,7 @@ function render_offers (d) {
 }
 
 function start_new_season (t, snsa) {
+        mc_gatherendseasonhistory()
         ldb.achievements = AchsTable[snsa]
         document.getElementById('new_season').style.display = 'none'
         ldb.rank = ldb.newrank

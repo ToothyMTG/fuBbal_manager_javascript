@@ -1,6 +1,12 @@
 // match_runner
 let ELmrun = document.getElementById('match_runner')
-ELmrun.addEventListener('mousedown', match_runner)
+ELmrun.addEventListener('mousedown', () => {
+    if (ap_state == 1) {
+        ap_stop () 
+    } else {
+        ap_start() 
+    }
+})
 window.addEventListener('keydown', function (e) {
     if ((e.key === "p") && (ELmrun.style.display == "block")) {
         match_runner ()
@@ -100,6 +106,18 @@ window.addEventListener('keydown', function (e) {
 ELshowteam.addEventListener('click', function (e) {
     if (ELrfix.style.display !== "none") {
         showteam ()
+    }
+})
+//Manager Center button
+let MCbutton = document.getElementById('mc_button')
+window.addEventListener('keydown', function (e) {
+    if ((e.key === "5") && (ELrfix.style.display !== "none")) {
+        mc_render(ldb.my_league)
+    }
+})
+MCbutton.addEventListener('click', function (e) {
+    if (ELrfix.style.display !== "none") {
+        mc_render(ldb.my_league)
     }
 })
 //Show my stats
