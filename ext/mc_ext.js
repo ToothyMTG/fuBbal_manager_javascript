@@ -96,6 +96,7 @@ function mc_getresultdata(x) {
         var gametypelabel = document.createElement('div')
         gametypelabel.innerHTML = 'Game type: ' + fn[data[0].t]
         gametypelabel.style.width = '100%'
+        gametypelabel.style.fontSize = '70%'
         gametypelabel.classList.add('mc-results-box')
         dataright.appendChild(gametypelabel)    
     }
@@ -394,6 +395,7 @@ function mc_renderoldteamdata (x) {
     for (let i = 0; i < data.lgs.length; i++) {
         var leaguedata = document.createElement('div')
         leaguedata.classList.add('mc-old-right')
+        leaguedata.style.fontSize = '70%'
         leaguedata.innerHTML = fn[data.lgs[i][0]]
         if (data.lgs[i][1] > 1) {
             leaguedata.innerHTML += ' (' + data.lgs[i][1] + ' rounds)'
@@ -409,7 +411,7 @@ function mc_renderoldteamdata (x) {
         var achs = data.achs[i].split('-')
         var achdata = document.createElement('div')
         achdata.classList.add('mc-old-right')
-        achdata.innerHTML =  achs[2] + ' (' + fn[achs[1]] + ')'
+        achdata.innerHTML =  'Winner of ' + fn[achs[1]]
         dataright.appendChild(achdata)
     }   
     var gameslabel = document.createElement('div')
@@ -423,11 +425,23 @@ function mc_renderoldteamdata (x) {
     for (let i = 0; i < data.res.length; i++) {
         var game = data.res[i].split('-')
         var match = document.createElement('div')
-        match.style.fontSize = '60%'
-        match.classList.add('mc-old-right')
+        match.style.fontSize = '70%'
+        match.classList.add('mc-old-results')
         var tt1 = Teams.filter(x => x.includes(game[0]))[0].split(' ')
         var tt2 = Teams.filter(x => x.includes(game[2]))[0].split(' ')
-        match.innerHTML = tt1[0] + ' ' + game[1] + ' : ' + game[3] + ' ' + tt2[0] + ' (' + fn[game[4]] + ')'
+        var res1 = Number(game[1])
+        var res2 = Number(game[3])
+        if (tt1[5] == data.id) {
+            if (res1 > res2) {match.classList.add('good')}
+            if (res1 < res2) {match.classList.add('bad')}
+            if (res1 == res2) {match.classList.add('neutral')}
+        }
+        if (tt2[5] == data.id) {
+            if (res1 > res2) {match.classList.add('bad')}
+            if (res1 < res2) {match.classList.add('good')}
+            if (res1 == res2) {match.classList.add('neutral')}
+        }
+        match.innerHTML = tt1[0] + ' ' + game[1] + ' : ' + game[3] + ' ' + tt2[0] + '<br>(' + fn[game[4]] + ')'
         dataright.appendChild(match)
         
     }

@@ -52,8 +52,8 @@
                 //var div = document.getElementById('lgsel')
                 //div.children[0].value = 'hehe'
                 load_game('hehe')
-                mc_gatherendseasonhistory()
+                mc_render()
         }
-        mc_debug()
+        //mc_debug()
         //renderMatch ()
         //tc_init ()
