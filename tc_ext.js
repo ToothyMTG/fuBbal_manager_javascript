@@ -16,6 +16,7 @@ function tc_enem_tact () {
     if ((M[2].i[0] == ldb.my_team[0]) && (M[1].tc == 0) ) {return}
     var randtact = Math.floor(Math.random() * Tactics.length)
     M.enemtact = Tactics[randtact]
+    tc_who = 0
     tc_rerender ()
     if (M[1].i[0] == ldb.my_team[0]) {M[2].tc = 0}
     if (M[2].i[0] == ldb.my_team[0]) {M[1].tc = 0}
@@ -31,6 +32,7 @@ function tc_rand () {
 function tc_resume () {
     let my_tactics = document.getElementById('tactic_selection').value
     M.mytact = [ Number(my_tactics[0]), Number(my_tactics[1]), Number(my_tactics[2])]
+    tc_who = 1
     tc_rerender ()
     document.getElementById('match_runner').style.display = 'block'
     document.getElementById('tactic_selection').style.display = 'none'
@@ -47,6 +49,7 @@ function tc_rerender () {
         var div = document.createElement('div')
         div.classList.add('matchfield-div')
         div.id = 'sector' + i
+        //div.tabIndex = '-1'
         matchfield.appendChild(div)
     }
     for (let i = 0; i < 6; i++) {
@@ -68,12 +71,24 @@ function tc_rerender () {
         M[2].pow = [ (M.enemtact[0] + Number(M[2].i[1])),(M.enemtact[1] + Number(M[2].i[2])),(M.enemtact[2] + Number(M[2].i[3]))]
         team1tact = M.mytact
         team2tact = M.enemtact
+        if (tc_who == 1) {tc_whoc = 1}
+        if (tc_who == 0) {tc_whoc = 2}
     }
     if (ldb.my_team[0] == M[2].i[0]) {
         M[2].pow = [ (M.mytact[0] + Number(M[2].i[1])),(M.mytact[1] + Number(M[2].i[2])),(M.mytact[2] + Number(M[2].i[3]))]
         M[1].pow = [ (M.enemtact[0] + Number(M[1].i[1])),(M.enemtact[1] + Number(M[1].i[2])),(M.enemtact[2] + Number(M[1].i[3]))]
         team2tact = M.mytact
         team1tact = M.enemtact 
+        if (tc_who == 1) {tc_whoc = 2}
+        if (tc_who == 0) {tc_whoc = 1}
+    }
+    var tc_tacts = [team1tact,team2tact]
+    for (let i = 1; i < 3; i++) {
+        if (tc_whoc == i) {
+            M[i].tt.push(tc_tacts[i-1])
+            M[i].tt.push(M.minute)
+            M[i].tt.push([M[1].g,M[2].g])
+        }
     }
     M.centerpow = M[1].pow[1] + M[2].pow[1]
     var rendermap = [team1tact[2],team2tact[0],team1tact[1],team2tact[1],team1tact[0],team2tact[2]]

@@ -91,6 +91,7 @@ function ngdo () {
         ldb.year = 2022
         ldb.manager = m
         ldb.winners = []
+        mc_init()
         document.getElementById('loginbox').style.display = 'none'
         document.getElementById('menubox').style.display = 'block'
         document.getElementById('infofield').style.display = 'block'

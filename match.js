@@ -68,6 +68,7 @@ function match_runner() {
         g_1 = M[1].g
         t_2 = M[2].i[5]
         g_2 = M[2].g
+        mc_gatherhistory ()
         result = t_1 + "-" + g_1 + '-' + t_2 + '-' + g_2 + '-' + cnt
         ldb.Results.push(result)
         let p = document.createElement('p')
@@ -289,6 +290,7 @@ function match_init (a,b) {
         M[v].g = 0
         M[v].p = 0
         M[v].tc = 1
+        M[v].tt = []
     }
     M[1].color = [M[1].i[6],M[1].i[7]]
 
@@ -377,6 +379,9 @@ function match_powerset () {
         M[2].tact = M.mytact
         M[1].tact = M.enemtact 
     }
+    M[1].tt.push(M[1].tact)
+    M[2].tt.push(M[2].tact)
+
     M.centerpow = M[1].pow[1] + M[2].pow[1]
     var rendermap = [M[1].tact[2],M[2].tact[0],M[1].tact[1],M[2].tact[1],M[1].tact[0],M[2].tact[2]]
     for (let i = 0; i < rendermap.length; i++) {

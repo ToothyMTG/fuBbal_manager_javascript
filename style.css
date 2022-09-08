@@ -640,3 +640,93 @@ button {
 .closebutton:hover {
     color: var(--red)
 }
+
+.nc-top-but {
+    width: 50%;
+    height: 100%;
+    font-size: 80%;
+    background-color: black;
+    color: white;
+    border-color: white;
+}
+.nc-top-but:hover {
+    background-color: #00B5FF;
+}
+.nc-top-but:focus {
+    background-color: #3EF278;
+}
+
+.mc-match-div {
+    width: 100%;
+    height: 3%;
+    font-size: 150%;
+    line-height: 100%;  
+}
+.mc-match-div:hover {
+    background-color: lightgrey;
+}
+.mc-match-div:focus {
+    background-color: gray;
+}
+.mc-team-div {
+    width: 40%;
+    height: 100%;
+    float:left;
+}
+.mc-result-div {
+    width: 20%;
+    height: 100%;
+    float:left;
+}
+
+.mc-results-box {
+    margin-top: 1%;
+    margin-bottom: 3%;
+    text-align: center;
+}
+
+.mc-search {
+    margin-top: 2%;
+    margin-bottom: 2%;
+    width: 80%;
+    margin-left: 10%;
+    margin-right: 10%;
+}
+
+.mc-old-left {
+    height: 3%;
+    width: 100%;
+    line-height: 100%;
+    float:left;
+    font-size: 150%;
+    margin-top: 1%;;
+}
+.mc-old-left:hover {
+    background-color: lightgray;
+}
+.mc-old-left:focus {
+    background-color: grey;
+}
+.mc-old-team {
+    width: 70%;
+    float:left;
+    height: 100%;
+}
+.mc-old-year {
+    width: 30%;
+    float:left;
+    height: 100%;
+}
+
+.mc-old-right {
+    color: white;
+    width: 80%;
+    height: 3%;
+    font-size: 80%;
+    float:left;
+    margin-top: 3%;
+    margin-bottom: 1%;
+    margin-left: 10%;
+    margin-right: 10%;
+
+}

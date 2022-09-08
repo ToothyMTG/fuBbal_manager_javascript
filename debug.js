@@ -41,7 +41,19 @@
                 total_minutes = 125
                 match_minute = 1
                 //match_init ('n06','e05')
-                match_runner()
+                set_ap = 0
+                mc_init()
+                ap_start()
+                //setTimeout(mc_render(),3000)
         }
+
+        function mc_debug () {
+                //document.getElementById('loadgame').click()
+                //var div = document.getElementById('lgsel')
+                //div.children[0].value = 'hehe'
+                load_game('hehe')
+                mc_gatherendseasonhistory()
+        }
+        mc_debug()
         //renderMatch ()
         //tc_init ()
