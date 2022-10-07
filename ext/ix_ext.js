@@ -38,4 +38,15 @@ function ix_l_id(y) {
     ix_l_code(base)
 }
 
-ix_l_id(8)
+function ix_schedule(y) {
+    var base = Schedule[y]
+    S = {}
+    S.name = base.split(' ')[0]
+    S.id = y
+    S.fixture = base.split(' ')[1]
+    S.leagues = GameTypes.filter(x => x.includes(S.name+'|'))[0].split('|')[1].split(',')
+    console.log(S)
+}
+
+ix_schedule(22)
+debug(JSON.stringify(S))
