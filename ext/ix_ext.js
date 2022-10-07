@@ -19,3 +19,23 @@ function ix_t_id (y) {
     var base = Teams[y].split(' ')[5]
     ix_t_code(base)
 }
+
+function ix_l_code(y) {
+    var base = Leagues.filter(x => x.includes(y))[0].split(' ')
+    L = {}
+    L.name = base[0]
+    L.code = base[1]
+    L.pot = base[2]
+    L.capacity = base[3]
+    L.main_league = base[4]
+    L.main_cup = base[5]
+    L.teams = Teams.filter(x => x.includes(' '+y))
+    console.log(L)
+}
+
+function ix_l_id(y) {
+    var base = Leagues[y].split(' ')[1]
+    ix_l_code(base)
+}
+
+ix_l_id(8)
