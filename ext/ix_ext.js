@@ -46,7 +46,7 @@ function ix_schedule(y) {
     S.fixture = base.split(' ')[1]
     S.leagues = GameTypes.filter(x => x.includes(S.name+'|'))[0].split('|')[1].split(',')
     console.log(S)
+    debug(S)
 }
 
 ix_schedule(22)
-debug(JSON.stringify(S))

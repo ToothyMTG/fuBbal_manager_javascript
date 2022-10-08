@@ -9,6 +9,6 @@ function debug(x) {
     div.style.top = '0'
     div.style.left = '0'
     div.style.zIndex = 100
-    div.innerHTML = x
+    div.innerHTML = JSON.stringify(x)
     document.body.appendChild(div)
 }
