@@ -1,4 +1,5 @@
 function mc_render () {
+    document.getElementById('databox').style.display = "block"
     var datatop = document.getElementById('datatop')
     var dataleft = document.getElementById('dataleft')
     var dataright = document.getElementById('dataright')
@@ -8,7 +9,6 @@ function mc_render () {
     dataleft.innerHTML = ''
     dataright.innerHTML = ''
     document.getElementById('matchbox').style.display = 'none'
-    document.getElementById('databox').style.height = "75%"
 
     var nc_gamesbut = document.createElement('button')
     nc_gamesbut.innerHTML = 'Match Analysis (7)'

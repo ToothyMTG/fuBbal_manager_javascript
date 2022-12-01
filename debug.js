@@ -32,7 +32,7 @@
                 document.getElementById('infofield').style.display = 'block'
                 document.getElementById('databox').style.display = 'block'
                 document.getElementById('matchbox').style.display = 'block'
-                set_matchbox('n01','p01')
+                set_matchbox('n01','p01','lg')
                 populate_tactics()
                 start_match ()
                 md = 'po'
@@ -43,7 +43,7 @@
                 //match_init ('n06','e05')
                 set_ap = 0
                 mc_init()
-                ap_start()
+                //ap_start()
                 //setTimeout(mc_render(),3000)
         }
 
@@ -51,9 +51,10 @@
                 //document.getElementById('loadgame').click()
                 //var div = document.getElementById('lgsel')
                 //div.children[0].value = 'hehe'
-                load_game('hehe')
-                mc_render()
+                load_game('Hehe')
+                run_fixture()
+                //mc_render()
         }
-        //mc_debug()
+        mc_debug()
         //renderMatch ()
         //tc_init ()

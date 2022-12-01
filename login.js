@@ -3,12 +3,18 @@ let loadgame = document.getElementById('loadgame')
 let exitgame = document.getElementById('exitgame')
 let ngsel = document.getElementById('ngsel')
 let lgsel = document.getElementById('lgsel')
+let title = document.getElementsByClassName('gametitle')[0]
+title.onclick  = () => {
+    location.reload()
+}
+
 
 function ngdo () {
     newgame.style.display = 'none'
     ngsel.style.display = 'block'
-    loadgame.style.display = 'block'
+    loadgame.style.display = 'none'
     lgsel.style.display = 'none'
+    exitgame.style.display = 'none'
     //
     let managername = document.createElement('input')
     managername.type = 'text'
@@ -119,10 +125,11 @@ newgame.addEventListener('click', function (e) {
 })
 
 function lgdo () {
-    newgame.style.display = 'block'
+    newgame.style.display = 'none'
     ngsel.style.display = 'none'
     loadgame.style.display = 'none'
     lgsel.style.display = 'block'
+    exitgame.style.display = 'none'
     lgsel.innerHTML = ''
     let ldsel = document.createElement('select')
     ldsel.style.width = '80%'
@@ -195,7 +202,7 @@ function load_game (s) {
     document.getElementById('loginbox').style.display = 'none'
     document.getElementById('menubox').style.display = 'block'
     document.getElementById('infofield').style.display = 'block'
-    document.getElementById('databox').style.display = 'block'
+    document.getElementById('databox').style.display = 'none'
     document.getElementById('dataright').innerHTML = ''
     document.getElementById('dataleft').innerHTML = ''
     document.getElementById('datatop').innerHTML = ''

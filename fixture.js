@@ -38,6 +38,7 @@ function fixture(t, n) {
         generate_offers(ldb.newrank)
     }
     if (t == 'draw3') {
+        document.getElementById('databox').style.display = 'block'
         cnt = 'null'
         draw_playoffs(lgs[0])
         let lg = ldb.teams_ordered[46][0]
@@ -56,11 +57,11 @@ function fixture(t, n) {
         p.style.lineHeight = "100%"
         p.style.textAlign = "center"
         p.innerHTML = lg + "<br>" + tmsn
-        document.getElementById('databox').style.height = '85%'
         dataleft.appendChild(p)
         
     }
     if (t == 'draw2') {
+        document.getElementById('databox').style.display = 'block'
         cnt = 'null'
         for (let i = 0; i < lgs.length; i++) {
             draw_playoffs(lgs[i])
@@ -82,7 +83,6 @@ function fixture(t, n) {
             p.style.lineHeight = "100%"
             p.style.textAlign = "center"
             p.innerHTML = lg + "<br>" + tmsn
-            document.getElementById('databox').style.height = '85%'
             dataleft.appendChild(p)
         }
     }

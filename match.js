@@ -272,10 +272,11 @@ function simulate_match(t1, t2) {
     g_2 = gls2
 }
 
-function match_init (a,b) {
+function match_init (a,b,c) {
     var o = [a,b]
     M = {}
     M.pen_mode = 0
+    M.type = c
     M.minute = 0
     M.totalminutes = 95
     M.add_time = 0

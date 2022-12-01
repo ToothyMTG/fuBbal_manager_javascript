@@ -29,7 +29,6 @@ function set_matchbox (t1, t2) {
 
     var matchfield = document.getElementById('matchfield')
     matchfield.innerHTML = ''
-    matchfield.style.backgroundColor = 'lightgrey'
     for (let i = 0; i < 6; i++) {
         var div = document.createElement('div')
         div.classList.add('matchfield-div')
@@ -304,19 +303,19 @@ function make_results (r) {
 }
 
 function myleague (n) {
+    document.getElementById('databox').style.display = "block"
     document.getElementById('datatop').style.display = 'none'
     document.getElementById('matchbox').style.display = 'none'
-    document.getElementById('databox').style.height = "85%"
     make_table (n)
     make_results (n)
 }
 
 function res_list () {
+    document.getElementById('databox').style.display = "block"
     document.getElementById('matchbox').style.display = 'none'
     let datatop = document.getElementById('datatop')
     datatop.style.display = 'block'
     datatop.innerHTML = ''
-    document.getElementById('databox').style.height = "75%"
     let sel = document.createElement('select')
     sel.style.width = "50%"
     sel.style.marginLeft = '25%'
@@ -367,13 +366,13 @@ function res_list () {
 }
 
 function gather_team_info (t) {
+    document.getElementById('databox').style.display = 'block'
     let dataleft = document.getElementById('dataleft')
     dataleft.innerHTML = ''
     let dataright = document.getElementById('dataright')
     dataright.innerHTML = ''
     let datatop = document.getElementById('datatop')
     //datatop.style.display = "block"
-    document.getElementById('databox').style.height = "75%"
     team_info (t)
     let teaminfo = Teams.filter(x => x.includes(t))[0].split(' ')
     let teamresults = ldb.Results.filter(x => x.includes(teaminfo[5]))
@@ -437,8 +436,8 @@ function gather_team_info (t) {
 }
 
 function showteam() {
+    document.getElementById('databox').style.display = "block"
     document.getElementById('matchbox').style.display = "none"
-    document.getElementById('databox').style.height = "75%"
     let datatop = document.getElementById('datatop')
     datatop.innerHTML = ''
     let dataleft = document.getElementById('dataleft')
@@ -1275,4 +1274,8 @@ function hotkeys () {
     credits.style.marginTop = '10%'
     credits.style.fontSize = '70%'
     hdiv.appendChild(credits)
+}
+
+function close_box () {
+    document.getElementById('databox').style.display = 'none'
 }
