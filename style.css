@@ -346,9 +346,13 @@ button {
     margin-left: 10%;
 }
 #matchfield button {
-    width: 100%;
-    border-radius: 100%;
-    border-width: 5;
+    width: 50%;
+    height: 10%;
+    margin-top: 23%;
+    margin-bottom: 23%;
+    margin-left:25%;
+    border-radius: 50%;
+    border-width: 3;
     opacity: 0;
     border-style: solid;
 }
@@ -412,36 +416,65 @@ button {
 }
 #minutebox-prog {
     height: 100%;
-    background-color: #3EF278;
+    background-color: var(--red);
     width: 50%;
 }
 
 #match_runner {
-    width: 60%;
+    width: 56%;
     height: 10%;
-    margin-left: 20%;
+    margin-left: 22%;
+    border: 0;
+    border-top: 1px solid var(--red);
+    border-bottom: 1px solid var(--red);
+    margin-bottom: 1%;
+    color: white;
+    background-color: transparent;
+}
+#match_runner:hover {
+    background-color: var(--blue);
 }
 
 #tactic_change {
     width: 50%;
     height: 7%;
     margin-left: 25%;
+    border: 0;
+    border-top: 1px solid var(--red);
+    border-bottom: 1px solid var(--red);
+    color: white;
+    background-color: transparent;
+}
+#tactic_change:hover {
+    background-color: var(--blue);
 }
 
+
 #tactic_selection {
-    width: 20%;
+    width: 18%;
+    background-color: transparent;
+    border: 0;
+    border-top: 1px solid var(--red);
+    border-bottom: 1px solid var(--red);
+    color:var(--red);
     height: 10%;
     margin: 0;
-    margin-left:20%;
-    border: 0;
+    margin-left:21%;
+    margin-right:1%;
     float:left;
     text-align: center;
 }
 
 #start_match {
-    width: 40%;
+    width: 38%;
+    margin-left: 1%;
     height: 10%;
     float:left;
+    background-color: transparent;
+    border: 0;
+    border-top: 1px solid var(--red);
+    border-bottom: 1px solid var(--red);
+    color: white;
 }
 #start_match:hover {
     background-color: var(--blue);
@@ -450,9 +483,15 @@ button {
     background-color: var(--red);
 }
 #resume_match {
-    width: 40%;
+    width: 38%;
+    margin-left: 1%;
     height: 10%;
     float:left;
+    background-color: transparent;
+    border: 0;
+    border-top: 1px solid var(--red);
+    border-bottom: 1px solid var(--red);
+    color: white;
 }
 #resume_match:hover {
     background-color: var(--blue);
@@ -472,6 +511,20 @@ button {
 .statbar {
     float:left;
     height: 100%;
+}
+
+#close_matchbox {
+    width: 30%;
+    height: 7%;
+    margin-top: 1%;
+    background-color:var(--red);
+    border: 0;
+    border-top: 1px solid var(--red);
+    border-bottom: 1px solid var(--red);
+    color: black;
+}
+#close_matchbox:hover {
+    background-color: var(--blue);
 }
 
 .good {
@@ -779,4 +832,17 @@ button {
     margin-bottom: 1%;
     margin-left: 10%;
     margin-right: 10%;
+}
+
+.table-item {
+    width: 100%;
+    float:left;
+    border-bottom: 1px solid grey;
+}
+.table-item:hover {
+    background-color: grey;
+}
+.table-item:first-of-type {
+    margin-top: 5%;
+    border-top: 1px solid grey;
 }

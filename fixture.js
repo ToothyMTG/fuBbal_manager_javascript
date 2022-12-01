@@ -107,7 +107,6 @@ function fixture(t, n) {
             p.style.lineHeight = "100%"
             p.style.textAlign = "center"
             p.innerHTML = fn[lg] + "<br>" + tmsn[0] + ' | ' + tmsn[1] + ' | ' + tmsn[2] + ' | ' + tmsn[3]
-            document.getElementById('databox').style.height = '85%'
             dataleft.appendChild(p)
         }
     }

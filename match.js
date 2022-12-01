@@ -7,7 +7,7 @@ function match_runner() {
     var team2sector = document.getElementById('team2-sector')
     var team2result = document.getElementById('team2result')
     var minuteboxprog = document.getElementById('minutebox-prog')
-    document.getElementById('matchbox').style.backgroundColor = 'white'
+    document.getElementById('matchbox').style.backgroundColor = 'grey'
     if (M.pen_mode == 1) {
     document.getElementById('what').innerHTML = "Round " + (pens_round + 1)
         rand_pen = Math.floor(Math.random() * 4)
@@ -92,6 +92,7 @@ function match_runner() {
         }
         make_table(cnt)
         document.getElementById("dataleft").scrollTop = document.getElementById('dataleft').scrollHeight
+        document.getElementById('close_matchbox').style.display = 'initial'
     }
     if (M.stage == 1) {
         let randminute = Math.floor((Math.random() * 9) + 1)
@@ -352,6 +353,7 @@ function matchbox_init () {
         item.style.backgroundColor = M[i].color[0]
         item.style.width = '50%'
     }
+    document.getElementById('close_matchbox').style.display = 'none'
 }
 
 function match_powerset () {
@@ -403,4 +405,14 @@ function match_powerset () {
             buttons[pat[x]].style.opacity = 1
         }
     }
+}
+
+function draw_matchfield () {
+    var matchfield = document.getElementById('matchfield')
+    var lines = document.createElement('div')
+    lines.classList.add('matchfield-borderline')
+}
+
+function close_matchbox () {
+    document.getElementById('matchbox').style.display = 'none'
 }

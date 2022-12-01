@@ -29,6 +29,7 @@ function set_matchbox (t1, t2) {
 
     var matchfield = document.getElementById('matchfield')
     matchfield.innerHTML = ''
+    draw_matchfield()
     for (let i = 0; i < 6; i++) {
         var div = document.createElement('div')
         div.classList.add('matchfield-div')
@@ -39,7 +40,6 @@ function set_matchbox (t1, t2) {
         var div = document.getElementById('sector' + i)
         for (let x = 0; x < 5; x++) {
             var button = document.createElement('button')
-            button.style.height = 100 / 5 + "%"
             div.appendChild(button)
         } 
     }
@@ -175,7 +175,6 @@ function generate_season () {
 
 function run_fixture () {
     document.getElementById('datatop').style.display = 'none'
-    document.getElementById('databox').style.height = "40%"
     //document.getElementById('season').innerHTML = "Season 1 (" + ldb.year + ") | Fixture " + (ldb.fxt + 1)  
     document.getElementById('matchbox').style.display = "none"
     let fxt_var = Schedule[ldb.fxt].split(' ')
@@ -243,10 +242,7 @@ function make_table (t) {
     }
     for (let i = 0; i < sortedtable.length; i++) {
         let p = document.createElement('div')
-        p.style.height = "6%"
-        p.style.fontSize = '80%'
-        p.style.width = "100%"
-        p.style.float = "left"
+        p.classList.add('table-item')
         let pos = document.createElement('p')
         pos.innerHTML = (i + 1)
         pos.style.width = "20%"

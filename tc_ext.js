@@ -44,7 +44,6 @@ function tc_resume () {
 function tc_rerender () {
     var matchfield = document.getElementById('matchfield')
     matchfield.innerHTML = ''
-    matchfield.style.backgroundColor = 'lightgrey'
     for (let i = 0; i < 6; i++) {
         var div = document.createElement('div')
         div.classList.add('matchfield-div')
@@ -56,7 +55,6 @@ function tc_rerender () {
         var div = document.getElementById('sector' + i)
         for (let x = 0; x < 5; x++) {
             var button = document.createElement('button')
-            button.style.height = 100 / 5 + "%"
             div.appendChild(button)
         } 
     }
