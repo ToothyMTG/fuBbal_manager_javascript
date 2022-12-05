@@ -87,7 +87,7 @@ function start_match () {
     //pen_mode = 0
     document.getElementById('posbox').style.display = 'block'
     document.getElementById('chanbox').style.display = 'block'
-    document.getElementById('tactic_change').style.display = 'block'
+    document.getElementById('tactic_change').style.display = 'none'
 }
 
 function generate_season () {

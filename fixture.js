@@ -1,6 +1,7 @@
 function fixture(t, n) {
     document.getElementById('dataleft').innerHTML = ''
     document.getElementById('dataright').innerHTML = ''
+    document.getElementById('databox').style.display = 'block'
     let lgs = GameTypes.filter(x => x.includes(t))[0].split('|')[1].split(',')
     //console.log(lgs)
     let fixt_pat

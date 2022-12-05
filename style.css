@@ -278,7 +278,7 @@ button {
 #dataleft{
     width: 60%;
     float:left;
-    height:100%;
+    height:90%;
     background-color:black;
     text-align: center;
 }
@@ -286,16 +286,15 @@ button {
 #dataright{
     width: 40%;
     float:left;
-    height:100%;
+    height:90%;
     background-color: black;
 }
 
 #matchbox {
-    width: 95%;
-    height: 95%;
+    width: 98%;
+    height: 97.5%;
     position:absolute;
-    left: 2.5%;
-    top: 2%;
+    left: 1%;
     float:left;
     background-color: grey;
     color:white;

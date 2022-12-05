@@ -39,6 +39,7 @@ function tc_resume () {
     document.getElementById('resume_match').style.display = 'none'
     if (M[1].i[0] == ldb.my_team[0]) {M[1].tc = 0}
     if (M[2].i[0] == ldb.my_team[0]) {M[2].tc = 0}
+    tc_enem_tact()
 }
 
 function tc_rerender () {

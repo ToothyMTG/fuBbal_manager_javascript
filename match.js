@@ -178,7 +178,9 @@ function match_runner() {
         M.stage = 0
     }
     M.stage++
-    tc_rand()
+    if (M.minute > 45) {
+        tc_init()
+    }
 }
 
 //document.addEventListener('keydown', x => {if (x.keyCode === 13){mrun.click()} })
