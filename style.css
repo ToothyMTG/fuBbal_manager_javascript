@@ -2,30 +2,35 @@
     --green:#3EF278 ;
     --blue:#00B5FF;
     --red:#FF9100 ;
+    --dark:#0F0339;
+    --light:#FCC200;
+    --dirt:#4B332B;
+    --sand:#86631D;
+
 }
 
 body {
     margin: 0;
     border: 0;
     padding: none;
-    background-color: black;
+    background-color: var(--dark);
     font-family:arial;
     font-weight:bolder;
 }
 
 .gametitle {
-    color:white;
+    color:var(--light);
     margin-top:30%;
     float:left;
     font-size: 300%;
     width: 100%;
     text-align: center;
 }
-.gametitle:hover {color: var(--red);}
+.gametitle:hover {color: var(--sand);}
 
 @media (orientation: landscape) {
     #mainframe {
-        background-color:black;
+        background-color:var(--dark);
         width: 100vh;
         height: 100vh;
         margin:auto;
@@ -52,7 +57,7 @@ button {
 
 /* Login box */
 #loginbox {
-    background-color: black;
+    background-color: var(--dark);
     width: 100%;
     height: 100%;
 }
@@ -63,10 +68,10 @@ button {
     float:left;
     font-size: 150%;
     /*position:absolute;*/
-    border-color: black;
-    border-top: 2px var(--green);
-    color:white;
-    background-color:black;
+    border-color: var(--sand);
+    border-top: 2px --red;
+    color:var(--light);
+    background-color:var(--dark);
 }
 
 .loginbox:hover {background-color: var(--blue);}
@@ -96,6 +101,8 @@ button {
 }
 #ngsel button {
     height: 15%;
+    background-color: var(--light);
+    color: --dark;
 }
 
 #lgsel {
@@ -106,6 +113,13 @@ button {
 }
 #lgsel select {
     height: 15%;
+}
+#lgsel button {
+    background-color: var(--light);
+    color: --dark;
+}
+#lgsel button:hover {
+    background-color: var(--blue);
 }
 
 .boxlogin {
@@ -138,7 +152,7 @@ button {
 
 /* Menu Box */
 #menubox {
-    background-color: black;
+    background-color: var(--dark);
     width: 100%;
     height: 80%;
     margin: auto;
@@ -148,30 +162,30 @@ button {
 .menubutton {
     width: 90%;
     height: 9%;
-    color: white;
+    color: var(--light);
     float:left;
     font-size: 150%;
-    background-color: black;
-    border-top: 2px solid var(--blue);
-    border-bottom: 2px solid var(--blue);
+    background-color: var(--dark);
+    border-top: 2px solid var(--sand);
+    border-bottom: 2px solid var(--sand);
     border-left: 0;
     border-right: 0;
     margin-left: 5%;
     margin-top:  2%;
 }
 
-#runfixture {background-color: var(--blue);}
-#runfixture:hover {background-color: var(--green);}
+#runfixture {background-color: var(--sand);}
+#runfixture:hover {background-color: var(--dirt);}
 #runfixture:active {background-color: var(--red);}
-#dummybutton {background-color: var(--black); display:none}
+#dummybutton {background-color: var(--dark); display:none}
 
-.menubutton:hover {background-color: var(--green);}
+.menubutton:hover {background-color: var(--dirt);}
 .menubutton:active {background-color: var(--red);}
 
 /* Data Fields */
 #dataleft {
     color:white;
-    font-size: 70%;
+    font-size: 80%;
     overflow:auto;
     margin: 0;
     line-height: 50%;
@@ -192,7 +206,7 @@ button {
     float:left;
     color:white;
     margin-left: 20%;
-    background-color: black;
+    background-color: var(--dark);
 }
 
 #teamname {
@@ -252,7 +266,7 @@ button {
     display: none;
     float:left;
     border: 1px solid white;
-    background-color: black;
+    background-color: var(--dark);
 }
 
 #close-box {
@@ -262,24 +276,24 @@ button {
     position: absolute;
     border: 1px solid var(--red);
     color: white;
-    background-color: grey;
+    background-color: var(--light);
 }
 #close-box:hover {
-    background-color: var(--red)
+    background-color: var(--sand)
 }
 
 #datatop {
     width: 100%;
     float:left;
     height: 10%;
-    background-color: black;
+    background-color: var(--dark);
     display:none;
 }
 #dataleft{
     width: 60%;
     float:left;
     height:90%;
-    background-color:black;
+    background-color:var(--dark);
     text-align: center;
 }
 
@@ -287,7 +301,7 @@ button {
     width: 40%;
     float:left;
     height:90%;
-    background-color: black;
+    background-color: var(--dark);
 }
 
 #matchbox {
@@ -296,12 +310,12 @@ button {
     position:absolute;
     left: 1%;
     float:left;
-    background-color: grey;
+    background-color: var(--dirt);
     color:white;
 }
 .team-pow-box {
     width: 30%;
-    height: 30%;
+    height: 25%;
     margin-left: 2.5%;
     margin-top: 1%;
     float:left
@@ -311,8 +325,8 @@ button {
 }
 #pitch-sectors {
     width: 100%;
-    height: 50%;
-    background-color: red;
+    height: 32%;
+    margin-top: 4%;
 }
 #pitch-sectors div {
     height: 100%;
@@ -342,7 +356,7 @@ button {
     margin-right: 2%;
 }
 .matchfield-div:first-child {
-    margin-left: 10%;
+    margin-left: 8.7%;
 }
 #matchfield button {
     width: 50%;
@@ -351,7 +365,7 @@ button {
     margin-bottom: 23%;
     margin-left:25%;
     border-radius: 50%;
-    border-width: 3;
+    border-width: 4;
     opacity: 0;
     border-style: solid;
 }
@@ -360,7 +374,7 @@ button {
     float:left;
     height: 98%;
     margin: 0.5%;
-    background-color: black;
+    background-color: var(--dirt);
 }
 
 #fieldleft {width: 32%;}
@@ -368,7 +382,7 @@ button {
 #fieldright {width:32%;}
 
 .teamsbox {
-    background-color: grey;
+    background-color: var(--dirt);
     float:left;
     width: 100%;
     height:15%;
@@ -391,7 +405,7 @@ button {
     text-align: center;
     float:left;
     width: 100%;
-    background-color: grey;
+    background-color: var(--dirt);
     height: 40%;
     font-size: 70%;
     line-height: 200%;
@@ -407,15 +421,14 @@ button {
     display:none;
 }
 #minutebox {
-    background-color: red;
-    height: 10%;
+    height: 20%;
     width: 60%;
     margin-left: 20%;
-    background-color: var(--blue);
+    background-color: var(--light);
 }
 #minutebox-prog {
     height: 100%;
-    background-color: var(--red);
+    background-color: var(--sand);
     width: 50%;
 }
 
@@ -424,14 +437,14 @@ button {
     height: 10%;
     margin-left: 22%;
     border: 0;
-    border-top: 1px solid var(--red);
-    border-bottom: 1px solid var(--red);
+    border-top: 1px solid var(--light);
+    border-bottom: 1px solid var(--light);
     margin-bottom: 1%;
-    color: white;
+    color: var(--light);
     background-color: transparent;
 }
 #match_runner:hover {
-    background-color: var(--blue);
+    background-color: var(--sand);
 }
 
 #tactic_change {
@@ -439,13 +452,13 @@ button {
     height: 7%;
     margin-left: 25%;
     border: 0;
-    border-top: 1px solid var(--red);
-    border-bottom: 1px solid var(--red);
+    border-top: 1px solid var(--light);
+    border-bottom: 1px solid var(--light);
     color: white;
     background-color: transparent;
 }
 #tactic_change:hover {
-    background-color: var(--blue);
+    background-color: var(--sand);
 }
 
 
@@ -453,15 +466,18 @@ button {
     width: 18%;
     background-color: transparent;
     border: 0;
-    border-top: 1px solid var(--red);
-    border-bottom: 1px solid var(--red);
-    color:var(--red);
+    border-top: 1px solid var(--light);
+    border-bottom: 1px solid var(--light);
+    color:var(--light);
     height: 10%;
     margin: 0;
     margin-left:21%;
     margin-right:1%;
     float:left;
     text-align: center;
+}
+#tactic_selection option {
+    background-color: var(--dirt);
 }
 
 #start_match {
@@ -471,12 +487,12 @@ button {
     float:left;
     background-color: transparent;
     border: 0;
-    border-top: 1px solid var(--red);
-    border-bottom: 1px solid var(--red);
-    color: white;
+    border-top: 1px solid var(--light);
+    border-bottom: 1px solid var(--light);
+    color: var(--light);
 }
 #start_match:hover {
-    background-color: var(--blue);
+    background-color: var(--sand);
 }
 #start_match:active {
     background-color: var(--red);
@@ -488,12 +504,12 @@ button {
     float:left;
     background-color: transparent;
     border: 0;
-    border-top: 1px solid var(--red);
-    border-bottom: 1px solid var(--red);
-    color: white;
+    border-top: 1px solid var(--light);
+    border-bottom: 1px solid var(--light);
+    color: var(--light);
 }
 #resume_match:hover {
-    background-color: var(--blue);
+    background-color: var(--sand);
 }
 #resume_match:active {
     background-color: var(--red);
@@ -516,14 +532,14 @@ button {
     width: 30%;
     height: 7%;
     margin-top: 1%;
-    background-color:var(--red);
+    background-color:var(--light);
     border: 0;
-    border-top: 1px solid var(--red);
-    border-bottom: 1px solid var(--red);
+    border-top: 1px solid var(--dark);
+    border-bottom: 1px solid var(--dark);
     color: black;
 }
 #close_matchbox:hover {
-    background-color: var(--blue);
+    background-color: var(--sand);
 }
 
 .good {
@@ -571,7 +587,7 @@ button {
 
 /* New Season */
 #new_season {
-    background-color: black;
+    background-color: var(--dark);
     width: 100%;
     height: 100%;
     float:left;
@@ -579,7 +595,7 @@ button {
 }
 
 #ns_nav {
-    background-color: black;
+    background-color: var(--dark);
     width: 100%;
     height: 10%;
     float:left;
@@ -598,7 +614,7 @@ button {
 }
 
 #ns_content {
-    background-color: black;
+    background-color: var(--dark);
     width: 70%;
     margin-left: 15%;
     height: 90%;
@@ -656,7 +672,7 @@ button {
     width: 100%;
     height: 20%;
     border-color: var(--blue);
-    background-color: black;
+    background-color: var(--dark);
     color: white;
     text-align: left;
     float:left;
@@ -737,16 +753,16 @@ button {
 .nc-top-but {
     width: 50%;
     height: 100%;
-    font-size: 80%;
-    background-color: black;
-    color: white;
+    font-size: 100%;
+    background-color: var(--dark);
+    color: var(--light);
     border-color: white;
 }
 .nc-top-but:hover {
-    background-color: #00B5FF;
+    background-color: var(--sand);
 }
 .nc-top-but:focus {
-    background-color: #3EF278;
+    background-color: var(--dirt);
 }
 
 .mc-match-div {
@@ -756,10 +772,10 @@ button {
     line-height: 100%;  
 }
 .mc-match-div:hover {
-    background-color: lightgrey;
+    background-color: var(--sand);
 }
 .mc-match-div:focus {
-    background-color: gray;
+    background-color: var(--dirt);
 }
 .mc-team-div {
     width: 40%;
@@ -784,21 +800,26 @@ button {
     width: 80%;
     margin-left: 10%;
     margin-right: 10%;
+    background-color: transparent;
+    text-align: center;
+    border-top: 1px solid var(--light);
+    border-bottom: 1px solid var(--light);
+    color: var(--light);
 }
 
 .mc-old-left {
     height: 3%;
     width: 100%;
-    line-height: 100%;
+    line-height: 130%;
     float:left;
     font-size: 150%;
     margin-top: 1%;;
 }
 .mc-old-left:hover {
-    background-color: lightgray;
+    background-color: var(--sand);
 }
 .mc-old-left:focus {
-    background-color: grey;
+    background-color: var(--dirt);
 }
 .mc-old-team {
     width: 70%;
@@ -836,12 +857,12 @@ button {
 .table-item {
     width: 100%;
     float:left;
-    border-bottom: 1px solid grey;
+    border-bottom: 1px solid var(--light);
 }
 .table-item:hover {
-    background-color: grey;
+    background-color: var(--sand);
 }
 .table-item:first-of-type {
     margin-top: 5%;
-    border-top: 1px solid grey;
+    border-top: 1px solid var(--light);
 }

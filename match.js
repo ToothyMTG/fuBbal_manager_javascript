@@ -7,7 +7,7 @@ function match_runner() {
     var team2sector = document.getElementById('team2-sector')
     var team2result = document.getElementById('team2result')
     var minuteboxprog = document.getElementById('minutebox-prog')
-    document.getElementById('matchbox').style.backgroundColor = 'grey'
+    document.getElementById('matchbox').style.backgroundColor = '#4B332B'
     if (M.pen_mode == 1) {
     document.getElementById('what').innerHTML = "Round " + (pens_round + 1)
         rand_pen = Math.floor(Math.random() * 4)
