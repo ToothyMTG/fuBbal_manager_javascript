@@ -143,6 +143,11 @@ function fixture(t, n) {
                 simulate_match(tmm1,tmm2)
                 let p = document.createElement('p')
                 p.innerHTML = tmm1 + " : " + g_1 + " - " + g_2 + " : " + tmm2 + " (" + fn[tt] + ")"
+                p.value = tt
+                p.onclick = () => {
+                    make_results(event.target.value)
+                    make_table(event.target.value)
+                }
                 document.getElementById('dataleft').appendChild(p)
                 let result = t_1 + "-" + g_1 + '-' + t_2 + '-' + g_2 + '-' + tt
                 ldb.Results.push(result)
@@ -182,6 +187,11 @@ function fixture(t, n) {
                 simulate_match(tmm1,tmm2)
                 let p = document.createElement('p')
                 p.innerHTML = tmm1 + " : " + g_1 + " - " + g_2 + " : " + tmm2 + " (" + fn[container[0]] + ")"
+                p.value = container[0]
+                p.onclick = () => {
+                    make_results(event.target.value)
+                    make_table(event.target.value)
+                }
                 document.getElementById('dataleft').appendChild(p)
                 let result = t_1 + "-" + g_1 + '-' + t_2 + '-' + g_2 + '-' + container[0]
                 if (g_1 > g_2) {
@@ -203,4 +213,8 @@ function fixture(t, n) {
     }
     make_table(cnt)
     document.getElementById("dataleft").scrollTop = document.getElementById('dataleft').scrollHeight
+}
+
+function add_to_result_list () {
+    
 }

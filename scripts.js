@@ -271,6 +271,9 @@ function make_table (t) {
         team.style.color = sortedtable[i][3]
         team.style.float = "left"
         team.style.margin = '0'
+        team.onclick = () => {
+            render_specific_team(event.target.innerHTML)
+        }
         p.appendChild(pos)
         p.appendChild(team)
         p.appendChild(pts)
@@ -291,6 +294,11 @@ function make_results (r) {
         let league = data[4]
         let p = document.createElement('p')
         p.innerHTML = team1 + " : " + goals1 + " - " + goals2 + " : " + team2 + " (" + fn[league] + ")"
+        p.value = league
+        p.onclick = () => {
+            make_results(event.target.value)
+            make_table(event.target.value)
+        }
         if ((team1 == ldb.my_team[0]) || (team2 == ldb.my_team[0])) {
             p.classList.add('good')
         }
@@ -389,6 +397,11 @@ function gather_team_info (t) {
         let p = document.createElement('p')
         p.classList.add(colorclass)
         p.innerHTML = team1[0] + " : " + golas1 + " - " + golas2 + " : " + team2[0] + " (" + fn[gmtype] + ")"
+        p.value = gmtype
+        p.onclick = () => {
+            make_results(event.target.value)
+            make_table(event.target.value)
+        }
         dataleft.appendChild(p)
     }
     dataleft.scrollTop = dataleft.scrollHeight
@@ -424,6 +437,13 @@ function gather_team_info (t) {
         //console.log(count)
         let p = document.createElement('p')
         p.innerHTML = count + " points in " + fn[uniq[i].split('-')[1]]
+        p.value = uniq[i].split('-')[1]
+        p.onclick = () => {
+           console.log(event.target.value) 
+           var val = event.target.value
+           make_results(val)
+           make_table(val)
+        }
         dataright.appendChild(p)
     }
     if (t == ldb.my_team[0]) {
@@ -493,6 +513,13 @@ function showteam() {
             //console.log('pressed')
         }
     })
+}
+
+function render_specific_team(n) {
+    ix_t_name(n)
+    document.getElementById('datatop').style.display = 'none'
+    gather_team_info(T.code)
+    render_specific_winner(T.code,'dataright')
 }
 
 function team_info (t) {
