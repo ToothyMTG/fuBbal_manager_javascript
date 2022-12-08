@@ -52,7 +52,9 @@
                 //var div = document.getElementById('lgsel')
                 //div.children[0].value = 'hehe'
                 load_game('Hehe')
+                res_list()
                 //run_fixture()
+                
                 //mc_render()
         }
         mc_debug()

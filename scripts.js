@@ -264,6 +264,7 @@ function make_table (t) {
         pts.style.float = "left"
         pts.style.margin = '0'
         let team = document.createElement(["p"])
+        team.classList.add('table-team')
         team.innerHTML = sortedtable[i][1]
         team.style.backgroundColor = sortedtable[i][2]
         team.style.width = "60%"
