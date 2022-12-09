@@ -872,3 +872,19 @@ button {
 .table-team {
     height: 100%;
 }
+
+#matchbox_switcher {
+    width: 20%;
+    height: 2.5%;
+    position:absolute;
+    top: 101%;
+    left: 0%;
+    background-color: var(--dark);
+    color: var(--light);
+    font-size: 80%;
+    border-top: 1px solid var(--light);
+    border-bottom: 1px solid var(--light);
+}
+#matchbox_switcher:hover {
+    background-color: var(--sand);
+}

@@ -356,6 +356,7 @@ function matchbox_init () {
         item.style.width = '50%'
     }
     document.getElementById('close_matchbox').style.display = 'none'
+    document.getElementById('matchbox_switcher').style.display = 'block'
 }
 
 function match_powerset () {
@@ -417,4 +418,5 @@ function draw_matchfield () {
 
 function close_matchbox () {
     document.getElementById('matchbox').style.display = 'none'
+    document.getElementById('matchbox_switcher').style.display = 'none'
 }

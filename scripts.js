@@ -1303,3 +1303,14 @@ function hotkeys () {
 function close_box () {
     document.getElementById('databox').style.display = 'none'
 }
+
+function matchbox_switch() {
+    var matchbox = document.getElementById('matchbox')
+    if (matchbox.style.display != 'block') {
+       matchbox.style.display = 'block'
+       event.target.innerHTML = 'Show results' 
+    } else {
+       matchbox.style.display = 'none'
+       event.target.innerHTML = 'Show match' 
+    }
+}
