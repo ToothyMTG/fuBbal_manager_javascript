@@ -58,5 +58,5 @@
                 //mc_render()
         }
         mc_debug()
-        //renderMatch ()
+        renderMatch ()
         //tc_init ()

@@ -344,7 +344,7 @@ button {
 
 #matchfield {
     float:left;
-    background-color:var(--green);
+    background-color:white;
     margin-left: 5%;
     width: 90%;
     height: 70%;
@@ -887,4 +887,25 @@ button {
 }
 #matchbox_switcher:hover {
     background-color: var(--sand);
+}
+
+.pitch-borderline {
+    width: 99%;
+    margin: 0.5%;
+    height: 98%;
+    background-color: var(--green);
+
+}
+.pitch-mainline {
+    background-color: white;
+    position:static;
+    width: 0.5%;
+    margin-left: 49.25%;
+    height: 100%;
+}
+.pitch-maincircle {
+    background-color: white;
+    position:static;
+    width: 2%;
+    height: 2%;
 }
