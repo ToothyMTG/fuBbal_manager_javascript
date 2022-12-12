@@ -33,7 +33,7 @@ function set_matchbox (t1, t2) {
     for (let i = 0; i < 6; i++) {
         var div = document.createElement('div')
         div.classList.add('matchfield-div')
-        div.style.zIndex = 2
+        div.style.zIndex = 100
         div.id = 'sector' + i
         matchfield.appendChild(div)
     }
@@ -41,18 +41,19 @@ function set_matchbox (t1, t2) {
         var div = document.getElementById('sector' + i)
         for (let x = 0; x < 5; x++) {
             var button = document.createElement('button')
+            button.style.zIndex = 99
             div.appendChild(button)
         } 
     }
     var pitchlines = document.createElement('div')
     pitchlines.classList.add('pitch-borderline')
-    matchfield.appendChild(pitchlines)
+    //matchfield.appendChild(pitchlines)
     var mainline = document.createElement('div')
     mainline.classList.add('pitch-mainline')
-    pitchlines.appendChild(mainline)
+    //pitchlines.appendChild(mainline)
     var maincircle = document.createElement('div')
     maincircle.classList.add('pitch-maincircle')
-    pitchlines.appendChild(maincircle)
+    //pitchlines.appendChild(maincircle)
 }
 
 function assign_team (a) {
@@ -1316,11 +1317,14 @@ function close_box () {
 
 function matchbox_switch() {
     var matchbox = document.getElementById('matchbox')
+    var closebox = document.getElementById('close-box')
     if (matchbox.style.display != 'block') {
        matchbox.style.display = 'block'
+       closebox.style.display = 'intial'
        event.target.innerHTML = 'Show results' 
     } else {
        matchbox.style.display = 'none'
+       closebox.style.display = 'none'
        event.target.innerHTML = 'Show match' 
     }
 }

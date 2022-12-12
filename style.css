@@ -342,9 +342,20 @@ button {
     margin:0.5%;
 }
 
-#matchfield {
-    float:left;
+#pitch {
     background-color:white;
+    position: absolute;
+    margin-left: 5%;
+    z-index: 1;
+    margin-top: 17.4%;
+    width: 89.2%;
+    height: 41%;
+}
+#matchfield {
+    position: relative;
+    float:left;
+    background-color:transparent;
+    z-index: 2;
     margin-left: 5%;
     width: 90%;
     height: 70%;
@@ -889,23 +900,103 @@ button {
     background-color: var(--sand);
 }
 
-.pitch-borderline {
+/* Pitch Sectors */
+
+#pitch-borderline {
     width: 99%;
     margin: 0.5%;
     height: 98%;
     background-color: var(--green);
+    position: absolute;
+}
+#pitch-mainline {
+    background-color: white;
+    position:absolute;
+    width: 0.5%;
+    margin-left: 49.5%;
+    height: 100%;
+    z-index: 2;
+}
+.circle {
+    position: absolute;
+    border-radius: 50%;;
+    z-index: 1;
+}
+#pitch-maincircle {
+    background-color: white;
+    width: 15%;
+    height: 30%;
+    left: 42.5%;
+    top:35%;
+}
+#pitch-innercircle {
+    background-color: var(--green);
+    width: 14%;
+    height: 28%;
+    left: 43%;
+    top:36%;
+}
+.the16 {
+    position: absolute;
+    width: 16%;
+    height: 50%;
+    top: 25%;
+    background-color: white;
+}
+#left16 {
+}
+#right16 {
+    left: 84%;
+}
+.theinner16 {
+    position: absolute;
+    width: 15%;
+    height: 49%;
+    top: 25.5%;
+    background-color: var(--green);
+}
+#left16inner {
+    left: 0.5%;
+}
+#right16inner {
+    left: 84.5%;
+}
+.the11 {
+    position:absolute;
+    width: 6%;
+    height: 30%;
+    background-color: white;
+    top:35%;
+}
+#left11 {
 
 }
-.pitch-mainline {
-    background-color: white;
-    position:static;
-    width: 0.5%;
-    margin-left: 49.25%;
-    height: 100%;
+#right11 {
+    left: 94%;
 }
-.pitch-maincircle {
-    background-color: white;
-    position:static;
-    width: 2%;
-    height: 2%;
+.the11inner {
+    position:absolute;
+    width: 5%;
+    height: 29%;
+    background-color: var(--green);
+    top:35.5%;
+}
+#left11inner {
+    left: 0.5%;
+}
+#right11inner {
+    left: 94.5%;
+}
+.penaltypoint {
+    position: absolute;
+    top: 49.5%;
+    width: 0.5%;
+    height: 1%;
+    background-color: white;;
+}
+#leftpenpt {
+    left: 10.75%;
+}
+#rightpenpt {
+    left: 88.75%;
 }

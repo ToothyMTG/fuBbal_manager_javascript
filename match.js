@@ -420,3 +420,9 @@ function close_matchbox () {
     document.getElementById('matchbox').style.display = 'none'
     document.getElementById('matchbox_switcher').style.display = 'none'
 }
+
+function render_quick_info (x) {
+    ix_t_code(x)
+    var base = T
+    console.log(base.name)
+}

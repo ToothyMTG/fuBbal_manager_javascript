@@ -53,10 +53,10 @@
                 //div.children[0].value = 'hehe'
                 load_game('Hehe')
                 //res_list()
-                //run_fixture()
-                
+                run_fixture()
+                render_quick_info('g01')
                 //mc_render()
         }
         mc_debug()
-        renderMatch ()
+        //renderMatch ()
         //tc_init ()
