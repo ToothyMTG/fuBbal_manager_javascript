@@ -60,3 +60,4 @@
         mc_debug()
         //renderMatch ()
         //tc_init ()
+        get_teams('lg')
