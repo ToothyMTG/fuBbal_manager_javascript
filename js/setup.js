@@ -55,7 +55,14 @@ function create_groups(x, y) {
     var teampergroup = gamemode[2]
     var groups = teams.length / teampergroup
     D = [x,teams,groups,teampergroup]
-    for (let i = 0; i < groups.length; i++) {
+    for (let i = 0; i < groups; i++) {
         DRW[i] = []
+    }
+    var grpcnt = 0
+    for (let i = 0; i < teams.length; i++) {
+        var team = teams[i]
+        DRW[grpcnt].push(team)
+        grpcnt++
+        if (grpcnt > (groups-1)) {grpcnt = 0}
     }
 }
