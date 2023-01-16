@@ -229,4 +229,32 @@ function new_fixture(a, b) {
     var fix = b
     G = GM.filter(x => x[0] == type)[0]
     console.log(G)
+    var fixture  // Getting fixture type
+    if (G[4] == 'fxtlg') {fixture = Fixture_lg}
+    if (G[4] == 'fxt16') {fixture = Fixture_16}
+    if (G[4] == 'fxttour') {fixture = Fixture_tour}
+    if (G[4] == 'fxt32') {fixture = Fixture_32}
+    if (G[4] == 'fxtnel') {fixture = Fixture_nel}
+    if (G[4] == 'fxt8') {fixture = Fixture_8}
+    if (G[4] == 'fxt2') {fixture = Fixture_2}
+    var fixnum = fixture[b].split(',')
+    console.log(fixnum,b)
+    var resprefix
+    if (G[3] == 'lg') {resprefix = 'l/'}
+    if (G[3] == 'gp') {resprefix = 'g/'}
+    if (G[3] == 'po') {resprefix = 'p/'}
+    console.log(resprefix)
+    if (G[0] == 'lg') {
+        var base = LC.lg
+        for (let i = 0; i < base.length; i++) {
+            var ltp = base[i]
+            console.log(ltp) 
+            for (let o = 0; o < fixnum.length; o++) {
+                var TTP = []
+                TTP[0] = ldb.LG[ltp][Number(fixnum[o].split('-')[0])]
+                TTP[1] = ldb.LG[ltp][Number(fixnum[o].split('-')[1])]
+                console.log(TTP)
+            }
+        }
+    }
 }

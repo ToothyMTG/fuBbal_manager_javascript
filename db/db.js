@@ -167,6 +167,9 @@ Fixture_4 = [
     '0-3', //1/2 final
 //    '4-5', //final
 ]
+Fixture_2 = [
+    '0-1',
+]
 
 let schedule = 'lg 1,lg 2,euroelim 1,lg 3,club 1,lg 4,wcelim 1,lg 5,lg 6,euroelim 2,lg 7,lg 8,wcelim 2,lg 9,club 2,lg 10,euroelim 3,lg 11,lg 12,wcelim 3,lg 13,lg 14,euroelim 4,lg 15,club 3,lg 16,wcelim 4,lg 17,euroelim 5,lg 18,wcelim 5,lg 19,euroelim 6,lg 20,club 4,wcelim 6,lg 21,euroelim 7,lg 22,wcelim 7,lg 23,club 5,euroelim 8,lg 24,wcelim 8,lg 25,euroelim 9,lg 26,club 6,wcelim 9,lg 27,euroelim 10,lg 28,wcelim 10,lg 29,club 7,lg 30,'
 
