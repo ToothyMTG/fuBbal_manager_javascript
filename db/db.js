@@ -44,9 +44,11 @@ GM = [
     ['COPA',12,4,'gp','fxttour','ame',3],
     ['COPApo',8,1,'po','fxt8','eur',3],
     ['AFRICUP',4,4,'gp','fxttour','afr',3],
-    ['COPApo',2,1,'po','fxt2','afr',1],
+    ['AFRICUPpo',2,1,'po','fxt2','afr',1],
     ['ASIACUP',4,4,'gp','fxttour','apj',3],
     ['ASIACUPpo',2,1,'po','fxt2','apj',1]
+    ['WC',32,8,'gp','fxttour','nat',3],
+    ['WCpo',16,1,'po','fxt16','nat',4],
 ]
 
 SD = [

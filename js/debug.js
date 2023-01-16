@@ -53,6 +53,9 @@
                 //div.children[0].value = 'hehe'
                 load_game('Hehe')
                 //res_list()
+                ldb.LG = {}
+                ldb.GP = {}
+                ldb.PO = {}
                 run_fixture()
                 render_quick_info('g01')
                 //mc_render()

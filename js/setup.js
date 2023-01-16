@@ -43,9 +43,22 @@ function generate_club_cup_containers () {
     CLT = CLT.sort(() => Math.random() - 0.5)
     TL = CLT
     create_groups(4)
-    //ELT = ELT.sort(() => Math.random() - 0.5)
-    //TL = ELT
-    //create_groups(2)
+    ldb.GP['CLgp'] = DRW
+    ELT = ELT.sort(() => Math.random() - 0.5)
+    TL = ELT
+    create_groups(2)
+    ldb.GP['ELgp'] = DRW
+}
+
+function generate_euroelim_wcelim_containers() {
+     get_teams('eur')
+     TL = TL.sort(() => Math.random() - 0.5)
+     create_groups(6)
+     ldb.GP['EUROelim'] = DRW
+     get_teams('nat')
+     TL = TL.sort(() => Math.random() - 0.5)
+     create_groups(7)
+     ldb.GP['WCelim'] = DRW
 }
 
 function create_groups(x, y) {
@@ -64,5 +77,21 @@ function create_groups(x, y) {
         DRW[grpcnt].push(team)
         grpcnt++
         if (grpcnt > (groups-1)) {grpcnt = 0}
+    }
+}
+
+function generate_leagues () {
+    var leagues = LC['lg']
+    for (let i = 0; i < leagues.length; i++) {
+        var lg = leagues[i]
+        var teamsinit = Teams.filter(x => x.includes(lg + ' '))
+        var teams = []
+        for (let o = 0; o < teamsinit.length; o++) {
+            var base = teamsinit[o].split(' ')[5]
+            ix_t_code(base)
+            teams.push(T.code)
+        }
+        teams = teams.sort(() => Math.random() - 0.5)
+        ldb.LG[lg] = teams
     }
 }

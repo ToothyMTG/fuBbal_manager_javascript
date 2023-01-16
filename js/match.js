@@ -419,6 +419,7 @@ function draw_matchfield () {
 function close_matchbox () {
     document.getElementById('matchbox').style.display = 'none'
     document.getElementById('matchbox_switcher').style.display = 'none'
+    document.getElementById('close-box').style.display = 'initial'
 }
 
 function render_quick_info (x) {
