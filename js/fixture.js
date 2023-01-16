@@ -218,3 +218,15 @@ function fixture(t, n) {
 function add_to_result_list () {
     
 }
+
+function run_new_fixture() {
+    var source = Schedule_new[0].split(' ')
+    new_fixture(source[0],source[1])
+}
+
+function new_fixture(a, b) {
+    var type = a
+    var fix = b
+    G = GM.filter(x => x[0] == type)[0]
+    console.log(G)
+}

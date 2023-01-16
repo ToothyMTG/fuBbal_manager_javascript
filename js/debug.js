@@ -56,8 +56,13 @@
                 ldb.LG = {}
                 ldb.GP = {}
                 ldb.PO = {}
-                run_fixture()
+                //run_fixture()
                 render_quick_info('g01')
+
+                generate_club_cup_containers()
+                generate_leagues()
+                generate_euroelim_wcelim_containers()
+                run_new_fixture()
                 //mc_render()
         }
         mc_debug()
